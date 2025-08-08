@@ -11,6 +11,19 @@ import TwoWheelersInsurance from './pages/TwoWheelersInsurance';
 import CommercialVehicleInsurance from './pages/CommercialVehicleInsurance';
 import MobileInsurance from './pages/MobileInsurance';
 import Footer from './components/Footer';
+import BusinessInsurance from './pages/BusinessInsurance';
+import MarineInsurance from './pages/MarineInsurance';
+import BharatSookshmaInsurance from './pages/BharatSookshmaInsurance';
+import BurglaryInsurance from './pages/BurglaryInsurance';
+import EmployeeCompensationInsurance from './pages/EmployeeCompensationInsurance';
+import GroupMediclaimInsurance from './pages/GroupMediclaimInsurance';
+import MBDInsurance from './pages/MBDInsurance';
+import AllRiskInsurance from './pages/AllRiskInsurance';
+import BharatGrihaRakshaInsurance from './pages/BharatGrihaRakshaInsurance';
+import ShopInsurance from './pages/ShopInsurance';
+
+
+
 
 const App = () => {
   return (
@@ -28,6 +41,19 @@ const App = () => {
             <Route path="/insurance/personal/two-wheelers" element={<TwoWheelersInsurance />} />
             <Route path="/insurance/personal/commercial-vehicle" element={<CommercialVehicleInsurance />} />
             <Route path="/insurance/personal/mobile" element={<MobileInsurance />} />
+            <Route path="/insurance/business" element={<BusinessInsurance />} />
+            <Route path="/insurance/business/marine" element={<MarineInsurance />} />
+            <Route path="/insurance/business/bharat-sookshma" element={<BharatSookshmaInsurance />} />
+            <Route path="/insurance/business/burglary" element={<BurglaryInsurance />} />
+            <Route path="/insurance/business/employee-compensation" element={<EmployeeCompensationInsurance />} />
+            <Route path="/insurance/business/group-mediclaim" element={<GroupMediclaimInsurance />} />
+            <Route path="/insurance/business/mbd" element={<MBDInsurance />} />
+            <Route path="/insurance/business/all-risk" element={<AllRiskInsurance />} />
+            <Route path="/insurance/business/bharat-griha-raksha" element={<BharatGrihaRakshaInsurance />} />
+            <Route path="/insurance/business/shop" element={<ShopInsurance />} />
+            
+
+
           </Routes>
         </main>
         <Footer />

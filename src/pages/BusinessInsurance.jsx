@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheckIcon, TruckIcon, BoltIcon, DevicePhoneMobileIcon, HeartIcon } from '@heroicons/react/24/outline';
+import { TruckIcon, FireIcon, LockClosedIcon, UsersIcon, HeartIcon, CogIcon, ShieldCheckIcon, HomeIcon, BuildingStorefrontIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 
-const PersonalInsurance = () => {
+const BusinessInsurance = () => {
   return (
     <div className="bg-blue-50 min-h-screen pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -15,25 +15,25 @@ const PersonalInsurance = () => {
           className="text-center mb-12"
         >
           <img
-            src="https://via.placeholder.com/1200x400?text=Personal+Insurance+Banner"
-            alt="Personal Insurance Banner"
+            src="https://via.placeholder.com/1200x400?text=Business+Insurance+Banner"
+            alt="Business Insurance Banner"
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Personal Insurance Solutions</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Business Insurance Solutions</h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Protect your life, vehicles, and devices with our comprehensive insurance plans tailored to your needs.
+            Safeguard your business with tailored insurance plans for assets, employees, and operations.
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               to="/quote"
               className="mt-6 inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
             >
-              Get Started
+              Explore Business Plans
             </Link>
           </motion.div>
         </motion.section>
 
-        {/* Insurance Basics */}
+        {/* Why Business Insurance Matters */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -41,17 +41,17 @@ const PersonalInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Why Insurance Matters
+            Why Business Insurance Matters
           </h2>
           <p className="text-base text-gray-600 mb-4">
-            Insurance provides financial protection against unexpected events, from medical emergencies to vehicle accidents. It ensures peace of mind by covering repair costs, medical bills, or replacements, allowing you to focus on what matters most.
+            Business insurance protects your company from financial risks, ensuring continuity during unexpected events like property damage, lawsuits, or employee injuries. It’s essential for compliance and growth.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { title: 'Financial Security', desc: 'Covers unexpected expenses, reducing financial stress.' },
-              { title: 'Risk Management', desc: 'Protects against losses from accidents or theft.' },
-              { title: 'Legal Compliance', desc: 'Meets mandatory insurance requirements for vehicles.' },
-              { title: 'Peace of Mind', desc: 'Ensures you’re prepared for life’s uncertainties.' },
+              { title: 'Asset Protection', desc: 'Covers property, equipment, and inventory.' },
+              { title: 'Liability Coverage', desc: 'Shields against lawsuits and claims.' },
+              { title: 'Employee Safety', desc: 'Supports workers with medical and compensation plans.' },
+              { title: 'Business Continuity', desc: 'Ensures operations resume quickly after disruptions.' },
             ].map((item) => (
               <div key={item.title} className="flex items-start">
                 <ShieldCheckIcon className="h-8 w-8 text-blue-600 mr-4" />
@@ -68,34 +68,58 @@ const PersonalInsurance = () => {
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {[
             {
-              title: 'Health Insurance',
-              path: '/insurance/personal/health',
+              title: 'Marine Insurance',
+              path: '/insurance/business/marine',
+              icon: TruckIcon,
+              description: 'Protects cargo and vessels during transit.',
+            },
+            {
+              title: 'Bharat Sookshma Udyam Suraksha',
+              path: '/insurance/business/bharat-sookshma',
+              icon: FireIcon,
+              description: 'Covers fire and allied perils for small businesses.',
+            },
+            {
+              title: 'Burglary Insurance',
+              path: '/insurance/business/burglary',
+              icon: LockClosedIcon,
+              description: 'Safeguards against theft and burglary losses.',
+            },
+            {
+              title: 'Employee Compensation',
+              path: '/insurance/business/employee-compensation',
+              icon: UsersIcon,
+              description: 'Covers employee injuries and liabilities.',
+            },
+            {
+              title: 'Group Mediclaim',
+              path: '/insurance/business/group-mediclaim',
               icon: HeartIcon,
-              description: 'Covers medical expenses for you and your family.',
+              description: 'Health coverage for your workforce.',
             },
             {
-              title: 'Car Insurance',
-              path: '/insurance/personal/car',
-              icon: TruckIcon,
-              description: 'Protects your car against accidents and theft.',
+              title: 'MBD Insurance',
+              path: '/insurance/business/mbd',
+              icon: CogIcon,
+              description: 'Protects machinery from breakdowns.',
             },
             {
-              title: 'Two Wheelers Insurance',
-              path: '/insurance/personal/two-wheelers',
-              icon: BoltIcon,
-              description: 'Safeguards bikes and scooters for worry-free rides.',
+              title: 'All Risk/Group Affinity',
+              path: '/insurance/business/all-risk',
+              icon: ShieldCheckIcon,
+              description: 'Comprehensive coverage for diverse risks.',
             },
             {
-              title: 'Commercial Vehicle Insurance',
-              path: '/insurance/personal/commercial-vehicle',
-              icon: TruckIcon,
-              description: 'Ensures your business vehicles stay operational.',
+              title: 'Bharat Griha Raksha',
+              path: '/insurance/business/bharat-griha-raksha',
+              icon: HomeIcon,
+              description: 'Protects business properties and homes.',
             },
             {
-              title: 'Mobile Insurance',
-              path: '/insurance/personal/mobile',
-              icon: DevicePhoneMobileIcon,
-              description: 'Protects your devices from damage and loss.',
+              title: 'Shop Insurance',
+              path: '/insurance/business/shop',
+              icon: BuildingStorefrontIcon,
+              description: 'Covers retail shops and inventory.',
             },
           ].map((item) => (
             <motion.div
@@ -123,15 +147,15 @@ const PersonalInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12 text-center"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
-            Our Impact
+            Our Business Impact
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
-              { value: '150K+', label: 'Policies Issued' },
-              { value: '98%', label: 'Customer Satisfaction' },
+              { value: '50K+', label: 'Businesses Protected' },
+              { value: '97%', label: 'Claims Settled' },
               { value: '24/7', label: 'Support Availability' },
-              { value: '50K+', label: 'Claims Processed' },
-              { value: '10+', label: 'Years in Business' },
+              { value: '10K+', label: 'Commercial Policies Issued' },
+              { value: '15+', label: 'Industries Served' },
             ].map((stat) => (
               <motion.div
                 key={stat.label}
@@ -154,15 +178,15 @@ const PersonalInsurance = () => {
           className="bg-blue-50 p-8 rounded-lg"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Customer Experiences
+            What Our Business Clients Say
           </h2>
           <div className="relative">
             <div className="flex overflow-x-auto snap-x snap-mandatory gap-4">
               {[
-                { name: 'Sarah M.', quote: 'The team helped me find the perfect health plan for my family.' },
-                { name: 'James R.', quote: 'Quick claims process for my car accident—highly recommend!' },
-                { name: 'Anita K.', quote: 'Affordable coverage for my phone, with great support.' },
-                { name: 'Rahul P.', quote: 'My bike insurance was easy to set up and saved me during a theft.' },
+                { name: 'Amit S., Logistics', quote: 'Marine insurance saved us during a cargo loss.' },
+                { name: 'Neha K., Retail', quote: 'Shop insurance covered our inventory after a fire.' },
+                { name: 'Ravi P., Factory', quote: 'Machinery breakdown coverage kept our production on track.' },
+                { name: 'Sonia M., HR', quote: 'Group mediclaim boosted employee morale.' },
               ].map((testimonial) => (
                 <motion.div
                   key={testimonial.name}
@@ -181,4 +205,4 @@ const PersonalInsurance = () => {
   );
 };
 
-export default PersonalInsurance;
+export default BusinessInsurance;

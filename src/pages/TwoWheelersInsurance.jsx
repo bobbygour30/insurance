@@ -1,117 +1,156 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { TruckIcon, ShieldCheckIcon, ClockIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
+import { BoltIcon } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
 
 const TwoWheelersInsurance = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="absolute inset-0">
+    <div className="bg-blue-50 min-h-screen pt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Hero Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
           <img
-            src="https://images.unsplash.com/photo-1558981403-c5f9899a28d9"
-            alt="Two Wheelers Insurance Hero"
-            className="w-full h-full object-cover opacity-30"
+            src="https://via.placeholder.com/1200x400?text=Two+Wheelers+Banner"
+            alt="Two Wheelers Insurance Banner"
+            className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">Two Wheelers Insurance</h1>
-          <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-200">
-            Ride worry-free with our motorcycle and scooter coverage
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Two Wheeler Insurance</h1>
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
+            Ride with confidence knowing your bike or scooter is protected against accidents and theft.
           </p>
-        </div>
-      </section>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to="/quote"
+              className="mt-6 inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
+            >
+              Get a Bike Quote
+            </Link>
+          </motion.div>
+        </motion.section>
 
-      {/* Overview Section */}
-      <section className="py-12 sm:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Why Choose Our Two Wheelers Insurance?</h2>
-            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600">
-              Comprehensive protection for your two-wheeler
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            <div>
-              <img
-                src="https://images.unsplash.com/photo-1558981285-6f0c8d3b9849"
-                alt="Two Wheelers Insurance"
-                className="w-full h-64 sm:h-80 object-cover rounded-lg shadow-md"
-              />
-            </div>
-            <div className="flex flex-col justify-center">
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                Our two-wheeler insurance provides coverage for accidents, theft, and third-party liabilities. Benefit from no-claim bonuses, roadside assistance, and quick claim processing. Tailored for motorcycles and scooters, our plans ensure you ride with confidence.
-              </p>
-              <NavLink
-                to="#"
-                className="mt-4 sm:mt-6 inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-semibold transition duration-300"
-              >
-                Get a Quote <ArrowRightIcon className="ml-2 h-5 w-5" />
-              </NavLink>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-12 sm:py-16 bg-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Key Features</h2>
-            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600">
-              Ride with peace of mind
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {/* Two-Wheeler Insurance Benefits */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="bg-white rounded-lg shadow-md p-8 mb-12"
+        >
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
+            Benefits of Two-Wheeler Insurance
+          </h2>
+          <p className="text-base text-gray-600 mb-4">
+            Two-wheeler insurance is mandatory and protects riders from financial losses due to accidents, theft, or third-party damages. It also offers personal accident coverage for added security.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              {
-                icon: TruckIcon,
-                title: 'Comprehensive Coverage',
-                desc: 'Protection against accidents, theft, and damages.',
-              },
-              {
-                icon: ShieldCheckIcon,
-                title: 'Third-Party Liability',
-                desc: 'Covers damages to third-party vehicles or property.',
-              },
-              {
-                icon: ClockIcon,
-                title: 'Roadside Assistance',
-                desc: '24/7 support for breakdowns and emergencies.',
-              },
-            ].map((feature, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
-                <feature.icon className="h-10 w-10 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900">{feature.title}</h3>
-                <p className="mt-2 text-sm sm:text-base text-gray-600">{feature.desc}</p>
+              { title: 'Accident Coverage', desc: 'Covers damages from collisions.' },
+              { title: 'Theft Protection', desc: 'Compensation for stolen vehicles.' },
+              { title: 'Third-Party Liability', desc: 'Covers damages to others.’ property.' },
+              { title: 'Personal Accident', desc: 'Support for rider injuries.' },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start">
+                <BoltIcon className="h-8 w-8 text-blue-600 mr-4" />
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+                  <p className="text-base text-gray-600">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </motion.section>
 
-      {/* CTA Banner */}
-      <section className="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Ready to Protect Your Two-Wheeler?</h2>
-          <p className="text-base sm:text-lg mb-4 sm:mb-6">Get a personalized quote or speak with our experts today!</p>
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <NavLink
-              to="#"
-              className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-white text-blue-600 hover:bg-gray-100 rounded-full font-semibold transition duration-300"
-            >
-              Get a Quote <ArrowRightIcon className="ml-2 h-5 w-5" />
-            </NavLink>
-            <NavLink
-              to="#"
-              className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-transparent border border-white hover:bg-white hover:text-blue-600 rounded-full font-semibold transition duration-300"
-            >
-              Contact Support <ArrowRightIcon className="ml-2 h-5 w-5" />
-            </NavLink>
+        {/* Image Gallery */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="bg-white rounded-lg shadow-md p-8 mb-12"
+        >
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
+            Covered Vehicles
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { name: 'Motorcycles', img: 'https://via.placeholder.com/300x200?text=Motorcycle' },
+              { name: 'Scooters', img: 'https://via.placeholder.com/300x200?text=Scooter' },
+              { name: 'E-Bikes', img: 'https://via.placeholder.com/300x200?text=E-Bike' },
+            ].map((vehicle) => (
+              <motion.div
+                key={vehicle.name}
+                whileHover={{ scale: 1.05 }}
+                className="rounded-lg overflow-hidden shadow-md"
+              >
+                <img src={vehicle.img} alt={vehicle.name} className="w-full h-48 object-cover" />
+                <p className="text-base text-gray-800 font-semibold p-4">{vehicle.name}</p>
+              </motion.div>
+            ))}
           </div>
-        </div>
-      </section>
+        </motion.section>
+
+        {/* Maintenance Tips */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="bg-blue-50 p-8 rounded-lg mb-12"
+        >
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
+            Bike Maintenance Tips
+          </h2>
+          <ul className="text-base text-gray-600 space-y-2">
+            {[
+              'Check tire pressure monthly.',
+              'Service brakes regularly.',
+              'Clean and lubricate the chain.',
+              'Inspect lights and signals before rides.',
+              'Use a secure lock to prevent theft.',
+            ].map((tip) => (
+              <li key={tip} className="flex items-center">
+                <BoltIcon className="h-6 w-6 text-blue-600 mr-2" />
+                {tip}
+              </li>
+            ))}
+          </ul>
+        </motion.section>
+
+        {/* Rider FAQ */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="bg-white rounded-lg shadow-md p-8"
+        >
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
+            Rider FAQs
+          </h2>
+          <div className="space-y-4">
+            {[
+              {
+                question: 'Is two-wheeler insurance mandatory?',
+                answer: 'Yes, third-party insurance is legally required in most regions.',
+              },
+              {
+                question: 'What if my bike is damaged in an accident?',
+                answer: 'Comprehensive plans cover repair costs, subject to your policy’s terms.',
+              },
+              {
+                question: 'Does insurance cover theft?',
+                answer: 'Yes, comprehensive plans include theft coverage.',
+              },
+            ].map((faq) => (
+              <div key={faq.question} className="border-b border-gray-200 pb-4">
+                <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
+                <p className="text-base text-gray-600">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+      </div>
     </div>
   );
 };

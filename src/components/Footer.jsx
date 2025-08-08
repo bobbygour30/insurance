@@ -3,7 +3,7 @@ import { EnvelopeIcon, PhoneIcon, MapPinIcon } from '@heroicons/react/24/outline
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-gray-300">
+    <footer className="bg-blue-600 text-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
           {/* Company Info */}
@@ -68,7 +68,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="mt-8 sm:mt-12 border-t border-gray-700 pt-4 text-center">
+        <div className="mt-8 sm:mt-12 border-t border-blue-700 pt-4 text-center">
           <p className="text-sm sm:text-base">&copy; {new Date().getFullYear()} Health Insurance Co. All rights reserved.</p>
         </div>
       </div>

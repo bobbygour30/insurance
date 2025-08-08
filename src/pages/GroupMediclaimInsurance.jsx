@@ -1,15 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { HeartIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 
-const HealthInsurance = () => {
-  const [openFaq, setOpenFaq] = useState(null);
-
-  const toggleFaq = (index) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
-
+const GroupMediclaimInsurance = () => {
   return (
     <div className="bg-blue-50 min-h-screen pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -21,25 +15,25 @@ const HealthInsurance = () => {
           className="text-center mb-12"
         >
           <img
-            src="https://via.placeholder.com/1200x400?text=Health+Insurance+Banner"
-            alt="Health Insurance Banner"
+            src="https://via.placeholder.com/1200x400?text=Group+Mediclaim+Banner"
+            alt="Group Mediclaim Insurance Banner"
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Health Insurance</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Group Mediclaim Insurance</h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Secure your family’s well-being with comprehensive medical coverage for emergencies, routine care, and more.
+            Provide comprehensive health coverage for your employees and their families.
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               to="/quote"
               className="mt-6 inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
             >
-              Get a Health Quote
+              Get a Quote
             </Link>
           </motion.div>
         </motion.section>
 
-        {/* Health Insurance Basics */}
+        {/* Basics Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -47,17 +41,17 @@ const HealthInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Understanding Health Insurance
+            Understanding Group Mediclaim
           </h2>
           <p className="text-base text-gray-600 mb-4">
-            Health insurance covers medical expenses, from doctor visits to surgeries, ensuring you’re financially protected during health challenges. It includes preventive care to maintain wellness and emergency services for unexpected events.
+            Group mediclaim insurance offers health coverage for employees, enhancing morale and ensuring medical support for workplace wellness.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               { title: 'Hospitalization', desc: 'Covers inpatient care and surgeries.' },
               { title: 'Outpatient Care', desc: 'Includes doctor visits and diagnostics.' },
-              { title: 'Preventive Care', desc: 'Free check-ups and vaccinations.' },
-              { title: 'Emergency Services', desc: 'Support for critical medical needs.' },
+              { title: 'Maternity Benefits', desc: 'Covers prenatal and delivery costs.' },
+              { title: 'Preventive Care', desc: 'Includes check-ups and vaccinations.' },
             ].map((item) => (
               <div key={item.title} className="flex items-start">
                 <HeartIcon className="h-8 w-8 text-blue-600 mr-4" />
@@ -90,10 +84,10 @@ const HealthInsurance = () => {
             </thead>
             <tbody>
               {[
-                { type: 'Hospitalization', details: 'Inpatient care, surgeries', limit: 'Up to $50,000/year' },
+                { type: 'Hospitalization', details: 'Inpatient care and surgeries', limit: 'Up to $50,000' },
+                { type: 'Outpatient Care', details: 'Doctor visits, diagnostics', limit: 'Up to $5,000' },
                 { type: 'Maternity', details: 'Prenatal, delivery, newborn care', limit: 'Up to $10,000' },
-                { type: 'Outpatient', details: 'Doctor visits, diagnostics', limit: 'Up to $5,000/year' },
-                { type: 'Emergency', details: 'Ambulance, ER services', limit: 'Unlimited' },
+                { type: 'Preventive Care', details: 'Check-ups, vaccinations', limit: 'Unlimited' },
               ].map((row) => (
                 <motion.tr
                   key={row.type}
@@ -112,7 +106,7 @@ const HealthInsurance = () => {
           </table>
         </motion.section>
 
-        {/* Myths Section */}
+        {/* Wellness Tips */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -120,29 +114,22 @@ const HealthInsurance = () => {
           className="bg-blue-50 p-8 rounded-lg mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Common Health Insurance Myths
+            Employee Wellness Tips
           </h2>
-          <div className="space-y-4">
+          <ul className="text-base text-gray-600 space-y-2">
             {[
-              {
-                myth: 'Health insurance is too expensive.',
-                truth: 'Plans are customizable to fit budgets, with options for low premiums.',
-              },
-              {
-                myth: 'I’m healthy, I don’t need insurance.',
-                truth: 'Unexpected illnesses or injuries can happen to anyone, and insurance covers preventive care.',
-              },
-              {
-                myth: 'Pre-existing conditions aren’t covered.',
-                truth: 'Most plans cover pre-existing conditions after a waiting period.',
-              },
-            ].map((item) => (
-              <div key={item.myth} className="border-b border-gray-200 pb-4">
-                <h3 className="text-lg font-semibold text-gray-800">Myth: {item.myth}</h3>
-                <p className="text-base text-gray-600">Truth: {item.truth}</p>
-              </div>
+              'Offer regular health check-ups.',
+              'Promote stress management programs.',
+              'Provide gym or wellness subsidies.',
+              'Encourage healthy eating at work.',
+              'Organize mental health workshops.',
+            ].map((tip) => (
+              <li key={tip} className="flex items-center">
+                <HeartIcon className="h-6 w-6 text-blue-600 mr-2" />
+                {tip}
+              </li>
             ))}
-          </div>
+          </ul>
         </motion.section>
 
         {/* Case Study */}
@@ -150,17 +137,17 @@ const HealthInsurance = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="bg-white rounded-lg shadow-md p-8"
+          className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
             Real-World Example
           </h2>
           <p className="text-base text-gray-600">
-            Priya, a 35-year-old mother, faced a sudden surgery costing $20,000. Her health insurance covered 90% of the expenses, saving her family from financial strain. With our 24/7 support, she navigated the claims process effortlessly.
+            A company covered $15,000 for an employee’s surgery through group mediclaim, boosting employee satisfaction and retention.
           </p>
         </motion.section>
 
-        {/* FAQ Accordion */}
+        {/* FAQs */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -170,58 +157,31 @@ const HealthInsurance = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
             Frequently Asked Questions
           </h2>
-          {[
-            {
-              question: 'What does health insurance cover?',
-              answer: 'Covers hospitalization, outpatient care, maternity, preventive check-ups, and emergencies.',
-            },
-            {
-              question: 'How do I file a claim?',
-              answer: 'Submit claims online via our portal or call our 24/7 support team.',
-            },
-            {
-              question: 'Are pre-existing conditions covered?',
-              answer: 'Yes, after a waiting period (typically 1-2 years), depending on the plan.',
-            },
-            {
-              question: 'Can I include my family?',
-              answer: 'Yes, family plans cover spouses, children, and sometimes parents.',
-            },
-          ].map((faq, index) => (
-            <motion.div
-              key={faq.question}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="border-b border-gray-200 py-4"
-            >
-              <button
-                className="w-full text-left flex justify-between items-center text-lg font-semibold text-gray-800"
-                onClick={() => toggleFaq(index)}
-              >
-                {faq.question}
-                <HeartIcon
-                  className={`h-5 w-5 transition-transform duration-300 ${
-                    openFaq === index ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-              {openFaq === index && (
-                <motion.p
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="text-base text-gray-600 mt-2"
-                >
-                  {faq.answer}
-                </motion.p>
-              )}
-            </motion.div>
-          ))}
+          <div className="space-y-4">
+            {[
+              {
+                question: 'Can families be included?',
+                answer: 'Yes, plans can cover employees’ spouses and children.',
+              },
+              {
+                question: 'How are premiums paid?',
+                answer: 'Employers typically pay, with optional employee contributions.',
+              },
+              {
+                question: 'What’s the claim process?',
+                answer: 'Submit claims via our portal or contact our 24/7 support.',
+              },
+            ].map((faq) => (
+              <div key={faq.question} className="border-b border-gray-200 pb-4">
+                <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
+                <p className="text-base text-gray-600">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
         </motion.section>
       </div>
     </div>
   );
 };
 
-export default HealthInsurance;
+export default GroupMediclaimInsurance;
