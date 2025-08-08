@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState({
+    personal: false,
+    business: false,
+    services: false,
+    login: false,
+  });
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState({
     personal: false,
     business: false,
     services: false,
@@ -20,31 +27,40 @@ const Navbar = () => {
   const handleMouseLeave = (menu) => {
     setTimeout(() => {
       setDropdownOpen((prev) => ({ ...prev, [menu]: false }));
-    }, 300); // 300ms delay before closing
+    }, 300);
+  };
+
+  const toggleMobileDropdown = (menu) => {
+    setMobileDropdownOpen((prev) => ({ ...prev, [menu]: !prev[menu] }));
   };
 
   return (
-    <nav className="bg-gradient-to-r from-blue-600 to-blue-800 text-white shadow-lg">
+    <nav className="bg-gradient-to-r from-blue-600 to-blue-800 text-white shadow-lg fixed w-full z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <img
-              className="h-8 w-auto"
-              src="https://via.placeholder.com/150x50?text=Logo"
-              alt="Insurance Logo"
-            />
+            <Link to="/">
+              <img
+                className="h-8 w-auto"
+                src="https://via.placeholder.com/150x50?text=Logo"
+                alt="Insurance Logo"
+              />
+            </Link>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-4">
-            <a href="#" className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300">
+            <Link
+              to="/"
+              className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300"
+            >
               Home
-            </a>
+            </Link>
 
             {/* Personal Insurance Dropdown */}
             <div
-              className="relative group"
+              className="relative"
               onMouseEnter={() => handleMouseEnter('personal')}
               onMouseLeave={() => handleMouseLeave('personal')}
             >
@@ -57,7 +73,7 @@ const Navbar = () => {
               <div
                 className={`absolute bg-white text-gray-800 shadow-lg rounded-md mt-2 w-48 z-10 transition-opacity duration-300 ${
                   dropdownOpen.personal ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                } group-hover:opacity-100 group-hover:pointer-events-auto`}
+                }`}
                 style={{ transitionDelay: dropdownOpen.personal ? '0ms' : '300ms' }}
               >
                 {[
@@ -74,20 +90,20 @@ const Navbar = () => {
                   'Cyber Security Insurance',
                   'Travel Insurance',
                 ].map((item) => (
-                  <a
+                  <Link
                     key={item}
-                    href="#"
+                    to="#"
                     className="block px-4 py-2 text-sm hover:bg-blue-100 transition duration-200"
                   >
                     {item}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
 
             {/* Business & Group Insurance Dropdown */}
             <div
-              className="relative group"
+              className="relative"
               onMouseEnter={() => handleMouseEnter('business')}
               onMouseLeave={() => handleMouseLeave('business')}
             >
@@ -100,7 +116,7 @@ const Navbar = () => {
               <div
                 className={`absolute bg-white text-gray-800 shadow-lg rounded-md mt-2 w-48 z-10 transition-opacity duration-300 ${
                   dropdownOpen.business ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                } group-hover:opacity-100 group-hover:pointer-events-auto`}
+                }`}
                 style={{ transitionDelay: dropdownOpen.business ? '0ms' : '300ms' }}
               >
                 {[
@@ -112,20 +128,20 @@ const Navbar = () => {
                   'Affinity & MSME',
                   'PoSP',
                 ].map((item) => (
-                  <a
+                  <Link
                     key={item}
-                    href="#"
+                    to="#"
                     className="block px-4 py-2 text-sm hover:bg-blue-100 transition duration-200"
                   >
                     {item}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
 
             {/* Services Dropdown */}
             <div
-              className="relative group"
+              className="relative"
               onMouseEnter={() => handleMouseEnter('services')}
               onMouseLeave={() => handleMouseLeave('services')}
             >
@@ -138,31 +154,37 @@ const Navbar = () => {
               <div
                 className={`absolute bg-white text-gray-800 shadow-lg rounded-md mt-2 w-48 z-10 transition-opacity duration-300 ${
                   dropdownOpen.services ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                } group-hover:opacity-100 group-hover:pointer-events-auto`}
+                }`}
                 style={{ transitionDelay: dropdownOpen.services ? '0ms' : '300ms' }}
               >
                 {['Claims Management', 'Risk Management', 'Wellness'].map((item) => (
-                  <a
+                  <Link
                     key={item}
-                    href="#"
+                    to="#"
                     className="block px-4 py-2 text-sm hover:bg-blue-100 transition duration-200"
                   >
                     {item}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
 
-            <a href="#" className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300">
+            <Link
+              to="/about"
+              className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300"
+            >
               About Us
-            </a>
-            <a href="#" className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300">
+            </Link>
+            <Link
+              to="/blog"
+              className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300"
+            >
               Blog
-            </a>
+            </Link>
 
             {/* Login Dropdown */}
             <div
-              className="relative group"
+              className="relative"
               onMouseEnter={() => handleMouseEnter('login')}
               onMouseLeave={() => handleMouseLeave('login')}
             >
@@ -175,17 +197,17 @@ const Navbar = () => {
               <div
                 className={`absolute bg-white text-gray-800 shadow-lg rounded-md mt-2 w-48 z-10 transition-opacity duration-300 ${
                   dropdownOpen.login ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                } group-hover:opacity-100 group-hover:pointer-events-auto`}
+                }`}
                 style={{ transitionDelay: dropdownOpen.login ? '0ms' : '300ms' }}
               >
                 {['Individual Customer Login', 'Corporate Customer Login', 'EB Portal Login'].map((item) => (
-                  <a
+                  <Link
                     key={item}
-                    href="#"
+                    to="#"
                     className="block px-4 py-2 text-sm hover:bg-blue-100 transition duration-200"
                   >
                     {item}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -223,25 +245,26 @@ const Navbar = () => {
         }`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1 bg-blue-700">
-          <a
-            href="#"
+          <Link
+            to="/"
             className="block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600 transition duration-200"
+            onClick={toggleMenu}
           >
             Home
-          </a>
+          </Link>
 
           {/* Personal Insurance Mobile */}
           <div>
             <button
               className="w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600 transition duration-200 flex justify-between items-center"
-              onClick={() => setIsOpen((prev) => ({ ...prev, personal: !prev.personal }))}
+              onClick={() => toggleMobileDropdown('personal')}
             >
               Personal Insurance
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div className={`pl-4 ${isOpen.personal ? 'block' : 'hidden'}`}>
+            <div className={`pl-4 ${mobileDropdownOpen.personal ? 'block' : 'hidden'}`}>
               {[
                 'Health Insurance',
                 'Car Insurance',
@@ -256,13 +279,14 @@ const Navbar = () => {
                 'Cyber Security Insurance',
                 'Travel Insurance',
               ].map((item) => (
-                <a
+                <Link
                   key={item}
-                  href="#"
+                  to="#"
                   className="block px-3 py-2 text-sm hover:bg-blue-600 transition duration-200"
+                  onClick={toggleMenu}
                 >
                   {item}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -271,14 +295,14 @@ const Navbar = () => {
           <div>
             <button
               className="w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600 transition duration-200 flex justify-between items-center"
-              onClick={() => setIsOpen((prev) => ({ ...prev, business: !prev.business }))}
+              onClick={() => toggleMobileDropdown('business')}
             >
               Business & Group Insurance
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div className={`pl-4 ${isOpen.business ? 'block' : 'hidden'}`}>
+            <div className={`pl-4 ${mobileDropdownOpen.business ? 'block' : 'hidden'}`}>
               {[
                 'Group Insurance',
                 'Liability Insurance',
@@ -288,13 +312,14 @@ const Navbar = () => {
                 'Affinity & MSME',
                 'PoSP',
               ].map((item) => (
-                <a
+                <Link
                   key={item}
-                  href="#"
+                  to="#"
                   className="block px-3 py-2 text-sm hover:bg-blue-600 transition duration-200"
+                  onClick={toggleMenu}
                 >
                   {item}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -303,59 +328,63 @@ const Navbar = () => {
           <div>
             <button
               className="w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600 transition duration-200 flex justify-between items-center"
-              onClick={() => setIsOpen((prev) => ({ ...prev, services: !prev.services }))}
+              onClick={() => toggleMobileDropdown('services')}
             >
               Services
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div className={`pl-4 ${isOpen.services ? 'block' : 'hidden'}`}>
+            <div className={`pl-4 ${mobileDropdownOpen.services ? 'block' : 'hidden'}`}>
               {['Claims Management', 'Risk Management', 'Wellness'].map((item) => (
-                <a
+                <Link
                   key={item}
-                  href="#"
+                  to="#"
                   className="block px-3 py-2 text-sm hover:bg-blue-600 transition duration-200"
+                  onClick={toggleMenu}
                 >
                   {item}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
 
-          <a
-            href="#"
+          <Link
+            to="/about"
             className="block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600 transition duration-200"
+            onClick={toggleMenu}
           >
             About Us
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/blog"
             className="block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600 transition duration-200"
+            onClick={toggleMenu}
           >
             Blog
-          </a>
+          </Link>
 
           {/* Login Mobile */}
           <div>
             <button
               className="w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600 transition duration-200 flex justify-between items-center"
-              onClick={() => setIsOpen((prev) => ({ ...prev, login: !prev.login }))}
+              onClick={() => toggleMobileDropdown('login')}
             >
               Login
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div className={`pl-4 ${isOpen.login ? 'block' : 'hidden'}`}>
+            <div className={`pl-4 ${mobileDropdownOpen.login ? 'block' : 'hidden'}`}>
               {['Individual Customer Login', 'Corporate Customer Login', 'EB Portal Login'].map((item) => (
-                <a
+                <Link
                   key={item}
-                  href="#"
+                  to="#"
                   className="block px-3 py-2 text-sm hover:bg-blue-600 transition duration-200"
+                  onClick={toggleMenu}
                 >
                   {item}
-                </a>
+                </Link>
               ))}
             </div>
           </div>

@@ -160,6 +160,20 @@ const HomePage = () => {
               className="w-full h-full object-cover"
             />
           </div>
+          <div className="relative h-full">
+            <img
+              src={assets.banner1}
+              alt="Health Insurance Hero 2"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="relative h-full">
+            <img
+              src={assets.banner2}
+              alt="Health Insurance Hero 2"
+              className="w-full h-full object-cover"
+            />
+          </div>
         </Slider>
       </section>
 
