@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import AboutUs from './pages/AboutUs';
-import Blog from './pages/Blog';
 import PersonalInsurance from './pages/PersonalInsurance';
 import HealthInsurance from './pages/HealthInsurance';
 import CarInsurance from './pages/CarInsurance';
@@ -21,9 +20,11 @@ import MBDInsurance from './pages/MBDInsurance';
 import AllRiskInsurance from './pages/AllRiskInsurance';
 import BharatGrihaRakshaInsurance from './pages/BharatGrihaRakshaInsurance';
 import ShopInsurance from './pages/ShopInsurance';
-
-
-
+import ContactUs from './pages/ContactUs';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditions from './pages/TermsAndConditions';
+import RefundPolicy from './pages/RefundPolicy';
+import Login from './pages/Login';
 
 const App = () => {
   return (
@@ -34,7 +35,6 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutUs />} />
-            <Route path="/blog" element={<Blog />} />
             <Route path="/insurance/personal" element={<PersonalInsurance />}/>
             <Route path="//insurance/personal/health" element={<HealthInsurance />} />
             <Route path="/insurance/personal/car" element={<CarInsurance />} />
@@ -51,7 +51,11 @@ const App = () => {
             <Route path="/insurance/business/all-risk" element={<AllRiskInsurance />} />
             <Route path="/insurance/business/bharat-griha-raksha" element={<BharatGrihaRakshaInsurance />} />
             <Route path="/insurance/business/shop" element={<ShopInsurance />} />
-            
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/contact/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/contact/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/contact/refund-policy" element={<RefundPolicy />} />
+            <Route path="/login" element={<Login />} />
 
 
           </Routes>

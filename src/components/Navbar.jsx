@@ -7,25 +7,25 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState({
     personal: false,
     business: false,
-    services: false,
+    legal: false,
     login: false,
   });
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState({
     personal: false,
     business: false,
-    services: false,
+    legal: false,
     login: false,
   });
   const dropdownRefs = {
     personal: useRef(null),
     business: useRef(null),
-    services: useRef(null),
+    legal: useRef(null),
     login: useRef(null),
   };
   const timeoutRefs = {
     personal: useRef(null),
     business: useRef(null),
-    services: useRef(null),
+    legal: useRef(null),
     login: useRef(null),
   };
 
@@ -268,47 +268,64 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Services Dropdown */}
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
+                  isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+                }`
+              }
+            >
+              Contact Us
+            </NavLink>
+
+            {/* Legal Dropdown */}
             <div
               className="relative"
-              ref={dropdownRefs.services}
-              onMouseEnter={() => handleMouseEnter("services")}
-              onMouseLeave={(e) => handleMouseLeave("services", e)}
-              aria-expanded={dropdownOpen.services}
-              aria-controls="services-dropdown"
+              ref={dropdownRefs.legal}
+              onMouseEnter={() => handleMouseEnter("legal")}
+              onMouseLeave={(e) => handleMouseLeave("legal", e)}
+              aria-expanded={dropdownOpen.legal}
+              aria-controls="legal-dropdown"
             >
               <div className="flex items-center">
                 <button className="hover:bg-blue-100 px-3 py-2 rounded-md text-base font-medium transition duration-300">
-                  Services
+                  Legal
                 </button>
                 <span className="pointer-events-none">
                   <ChevronDownIcon
                     className={`ml-0.5 h-4 w-4 transition-transform duration-300 ${
-                      dropdownOpen.services ? "rotate-180" : "rotate-0"
+                      dropdownOpen.legal ? "rotate-180" : "rotate-0"
                     }`}
                   />
                 </span>
               </div>
               <div
-                id="services-dropdown"
+                id="legal-dropdown"
                 className={`absolute bg-blue-50 text-gray-800 shadow-lg rounded-md mt-2 w-56 z-50 transition-opacity duration-300 ${
-                  dropdownOpen.services
+                  dropdownOpen.legal
                     ? "opacity-100"
                     : "opacity-0 pointer-events-none"
                 }`}
               >
-                {["Claims Management", "Risk Management", "Wellness"].map(
-                  (item) => (
-                    <NavLink
-                      key={item}
-                      to="#"
-                      onClick={() => closeDropdown("services")}
-                      className="block px-4 py-3 text-base hover:bg-blue-200 transition duration-200"
-                    >
-                      {item}
-                    </NavLink>
-                  )
-                )}
+                {[
+                  { label: "Privacy Policy", path: "/contact/privacy-policy" },
+                  { label: "Terms & Conditions", path: "/contact/terms-and-conditions" },
+                  { label: "Refund Policy", path: "/contact/refund-policy" },
+                ].map((item) => (
+                  <NavLink
+                    key={item.label}
+                    to={item.path}
+                    onClick={() => closeDropdown("legal")}
+                    className={({ isActive }) =>
+                      `block px-4 py-3 text-base transition duration-200 ${
+                        isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-200"
+                      }`
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                ))}
               </div>
             </div>
 
@@ -322,16 +339,7 @@ const Navbar = () => {
             >
               About Us
             </NavLink>
-            <NavLink
-              to="/blog"
-              className={({ isActive }) =>
-                `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
-                  isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
-                }`
-              }
-            >
-              Blog
-            </NavLink>
+            
 
             {/* Login Dropdown */}
             <div
@@ -343,16 +351,18 @@ const Navbar = () => {
               aria-controls="login-dropdown"
             >
               <div className="flex items-center">
-                <button className="hover:bg-blue-100 px-3 py-2 rounded-md text-base font-medium transition duration-300">
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
+                      isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+                    }`
+                  }
+                >
                   Login
-                </button>
-                <span className="pointer-events-none">
-                  <ChevronDownIcon
-                    className={`ml-0.5 h-4 w-4 transition-transform duration-300 ${
-                      dropdownOpen.login ? "rotate-180" : "rotate-0"
-                    }`}
-                  />
-                </span>
+                </NavLink>
+                
+                
               </div>
               <div
                 id="login-dropdown"
@@ -362,20 +372,6 @@ const Navbar = () => {
                     : "opacity-0 pointer-events-none"
                 }`}
               >
-                {[
-                  "Individual Customer Login",
-                  "Corporate Customer Login",
-                  "EB Portal Login",
-                ].map((item) => (
-                  <NavLink
-                    key={item}
-                    to="#"
-                    onClick={() => closeDropdown("login")}
-                    className="block px-4 py-3 text-base hover:bg-blue-200 transition duration-200"
-                  >
-                    {item}
-                  </NavLink>
-                ))}
               </div>
             </div>
           </div>
@@ -385,6 +381,7 @@ const Navbar = () => {
             <button
               onClick={toggleMenu}
               className="text-gray-800 hover:text-blue-600 focus:outline-none"
+              aria-label="Toggle menu"
             >
               <svg
                 className="h-6 w-6"
@@ -555,33 +552,53 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Services Mobile */}
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              `block px-3 py-2 rounded-md text-lg font-medium transition duration-200 ${
+                isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+              }`
+            }
+            onClick={toggleMenu}
+          >
+            Contact Us
+          </NavLink>
+
+          {/* Legal Mobile */}
           <div>
             <button
               className="w-full text-left px-3 py-2 rounded-md text-lg font-medium hover:bg-blue-100 transition duration-200 flex justify-between items-center"
-              onClick={() => toggleMobileDropdown("services")}
+              onClick={() => toggleMobileDropdown("legal")}
             >
-              Services
+              Legal
               <ChevronDownIcon
                 className={`h-4 w-4 transition-transform duration-300 ${
-                  mobileDropdownOpen.services ? "rotate-180" : "rotate-0"
+                  mobileDropdownOpen.legal ? "rotate-180" : "rotate-0"
                 }`}
               />
             </button>
             <div
-              className={`pl-4 ${mobileDropdownOpen.services ? "block" : "hidden"}`}
+              className={`pl-4 ${mobileDropdownOpen.legal ? "block" : "hidden"}`}
             >
-              {["Claims Management", "Risk Management", "Wellness"].map((item) => (
+              {[
+                { label: "Privacy Policy", path: "/contact/privacy-policy" },
+                { label: "Terms & Conditions", path: "/contact/terms-and-conditions" },
+                { label: "Refund Policy", path: "/contact/refund-policy" },
+              ].map((item) => (
                 <NavLink
-                  key={item}
-                  to="#"
-                  className="block px-3 py-2 text-base hover:bg-blue-100 transition duration-200"
+                  key={item.label}
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `block px-3 py-2 text-base transition duration-200 ${
+                      isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+                    }`
+                  }
                   onClick={() => {
                     toggleMenu();
-                    toggleMobileDropdown("services");
+                    toggleMobileDropdown("legal");
                   }}
                 >
-                  {item}
+                  {item.label}
                 </NavLink>
               ))}
             </div>
@@ -598,51 +615,24 @@ const Navbar = () => {
           >
             About Us
           </NavLink>
-          <NavLink
-            to="/blog"
-            className={({ isActive }) =>
-              `block px-3 py-2 rounded-md text-lg font-medium transition duration-200 ${
-                isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
-              }`
-            }
-            onClick={toggleMenu}
-          >
-            Blog
-          </NavLink>
 
           {/* Login Mobile */}
           <div>
-            <button
-              className="w-full text-left px-3 py-2 rounded-md text-lg font-medium hover:bg-blue-100 transition duration-200 flex justify-between items-center"
-              onClick={() => toggleMobileDropdown("login")}
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                `block px-3 py-2 rounded-md text-lg font-medium transition duration-200 ${
+                  isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+                }`
+              }
+              onClick={toggleMenu}
             >
               Login
-              <ChevronDownIcon
-                className={`h-4 w-4 transition-transform duration-300 ${
-                  mobileDropdownOpen.login ? "rotate-180" : "rotate-0"
-                }`}
-              />
-            </button>
+            </NavLink>
             <div
               className={`pl-4 ${mobileDropdownOpen.login ? "block" : "hidden"}`}
             >
-              {[
-                "Individual Customer Login",
-                "Corporate Customer Login",
-                "EB Portal Login",
-              ].map((item) => (
-                <NavLink
-                  key={item}
-                  to="#"
-                  className="block px-3 py-2 text-base hover:bg-blue-100 transition duration-200"
-                  onClick={() => {
-                    toggleMenu();
-                    toggleMobileDropdown("login");
-                  }}
-                >
-                  {item}
-                </NavLink>
-              ))}
+              
             </div>
           </div>
         </div>
