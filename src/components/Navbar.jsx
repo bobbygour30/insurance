@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,24 +16,65 @@ const Navbar = () => {
     services: false,
     login: false,
   });
+  const dropdownRefs = {
+    personal: useRef(null),
+    business: useRef(null),
+    services: useRef(null),
+    login: useRef(null),
+  };
+  const timeoutRefs = {
+    personal: useRef(null),
+    business: useRef(null),
+    services: useRef(null),
+    login: useRef(null),
+  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   const handleMouseEnter = (menu) => {
+    if (timeoutRefs[menu].current) {
+      clearTimeout(timeoutRefs[menu].current);
+    }
     setDropdownOpen((prev) => ({ ...prev, [menu]: true }));
   };
 
-  const handleMouseLeave = (menu) => {
-    setTimeout(() => {
-      setDropdownOpen((prev) => ({ ...prev, [menu]: false }));
-    }, 300);
+  const handleMouseLeave = (menu, event) => {
+    if (timeoutRefs[menu].current) {
+      clearTimeout(timeoutRefs[menu].current);
+    }
+    timeoutRefs[menu].current = setTimeout(() => {
+      if (
+        dropdownRefs[menu].current &&
+        !dropdownRefs[menu].current.contains(event.relatedTarget)
+      ) {
+        setDropdownOpen((prev) => ({ ...prev, [menu]: false }));
+      }
+    }, 800);
+  };
+
+  const closeDropdown = (menu) => {
+    if (timeoutRefs[menu].current) {
+      clearTimeout(timeoutRefs[menu].current);
+    }
+    setDropdownOpen((prev) => ({ ...prev, [menu]: false }));
   };
 
   const toggleMobileDropdown = (menu) => {
     setMobileDropdownOpen((prev) => ({ ...prev, [menu]: !prev[menu] }));
   };
+
+  useEffect(() => {
+    return () => {
+      // Cleanup timeouts on unmount
+      Object.values(timeoutRefs).forEach((ref) => {
+        if (ref.current) {
+          clearTimeout(ref.current);
+        }
+      });
+    };
+  }, []);
 
   return (
     <nav className="bg-gradient-to-r from-blue-600 to-blue-800 text-white shadow-lg fixed w-full z-20">
@@ -40,63 +82,97 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/">
+            <NavLink to="/">
               <img
                 className="h-8 w-auto"
                 src="https://via.placeholder.com/150x50?text=Logo"
                 alt="Insurance Logo"
               />
-            </Link>
+            </NavLink>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link
+            <NavLink
               to="/"
-              className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300"
+              className={({ isActive }) =>
+                `px-3 py-2 rounded-md text-sm font-medium transition duration-300 ${
+                  isActive ? "bg-blue-700" : "hover:bg-blue-700"
+                }`
+              }
             >
               Home
-            </Link>
+            </NavLink>
 
             {/* Personal Insurance Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => handleMouseEnter('personal')}
-              onMouseLeave={() => handleMouseLeave('personal')}
+              ref={dropdownRefs.personal}
+              onMouseEnter={() => handleMouseEnter("personal")}
+              onMouseLeave={(e) => handleMouseLeave("personal", e)}
+              aria-expanded={dropdownOpen.personal}
+              aria-controls="personal-dropdown"
             >
-              <button className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300 flex items-center">
-                Personal Insurance
-                <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+              <div className="flex items-center">
+                <NavLink
+                  to="/insurance/personal"
+                  className={({ isActive }) =>
+                    `px-3 py-2 rounded-md text-sm font-medium transition duration-300 ${
+                      isActive ? "bg-blue-700" : "hover:bg-blue-700"
+                    }`
+                  }
+                >
+                  Personal Insurance
+                </NavLink>
+                <span className="pointer-events-none">
+                  <ChevronDownIcon
+                    className={`ml-0.5 h-4 w-4 transition-transform duration-300 ${
+                      dropdownOpen.personal ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                </span>
+              </div>
               <div
-                className={`absolute bg-white text-gray-800 shadow-lg rounded-md mt-2 w-48 z-10 transition-opacity duration-300 ${
-                  dropdownOpen.personal ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                id="personal-dropdown"
+                className={`absolute bg-blue-50 text-gray-800 shadow-lg rounded-md mt-2 w-56 z-50 transition-opacity duration-300 ${
+                  dropdownOpen.personal
+                    ? "opacity-100"
+                    : "opacity-0 pointer-events-none"
                 }`}
-                style={{ transitionDelay: dropdownOpen.personal ? '0ms' : '300ms' }}
               >
                 {[
-                  'Health Insurance',
-                  'Car Insurance',
-                  'Two Wheelers Insurance',
-                  'Home Insurance',
-                  'Term Life Insurance',
-                  'Critical Illness Insurance',
-                  'Corona Kavach Insurance',
-                  'Personal Accident Insurance',
-                  'Top Up Health Insurance',
-                  'Mobile Insurance',
-                  'Cyber Security Insurance',
-                  'Travel Insurance',
+                  {
+                    label: "Health Insurance",
+                    path: "/insurance/personal/health",
+                  },
+                  { label: "Car Insurance", path: "/insurance/personal/car" },
+                  {
+                    label: "Two Wheelers Insurance",
+                    path: "/insurance/personal/two-wheelers",
+                  },
+                  {
+                    label: "Commercial Vehicle Insurance",
+                    path: "/insurance/personal/commercial-vehicle",
+                  },
+                  {
+                    label: "Mobile Insurance",
+                    path: "/insurance/personal/mobile",
+                  },
                 ].map((item) => (
-                  <Link
-                    key={item}
-                    to="#"
-                    className="block px-4 py-2 text-sm hover:bg-blue-100 transition duration-200"
+                  <NavLink
+                    key={item.label}
+                    to={item.path}
+                    onClick={() => closeDropdown("personal")}
+                    className={({ isActive }) =>
+                      `block px-4 py-3 text-sm transition duration-200 ${
+                        isActive
+                          ? "bg-blue-100 text-blue-600"
+                          : "hover:bg-blue-200"
+                      }`
+                    }
                   >
-                    {item}
-                  </Link>
+                    {item.label}
+                  </NavLink>
                 ))}
               </div>
             </div>
@@ -104,37 +180,49 @@ const Navbar = () => {
             {/* Business & Group Insurance Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => handleMouseEnter('business')}
-              onMouseLeave={() => handleMouseLeave('business')}
+              ref={dropdownRefs.business}
+              onMouseEnter={() => handleMouseEnter("business")}
+              onMouseLeave={(e) => handleMouseLeave("business", e)}
+              aria-expanded={dropdownOpen.business}
+              aria-controls="business-dropdown"
             >
-              <button className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300 flex items-center">
-                Business & Group Insurance
-                <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+              <div className="flex items-center">
+                <button className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300">
+                  Business & Group Insurance
+                </button>
+                <span className="pointer-events-none">
+                  <ChevronDownIcon
+                    className={`ml-0.5 h-4 w-4 transition-transform duration-300 ${
+                      dropdownOpen.business ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                </span>
+              </div>
               <div
-                className={`absolute bg-white text-gray-800 shadow-lg rounded-md mt-2 w-48 z-10 transition-opacity duration-300 ${
-                  dropdownOpen.business ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                id="business-dropdown"
+                className={`absolute bg-blue-50 text-gray-800 shadow-lg rounded-md mt-2 w-56 z-50 transition-opacity duration-300 ${
+                  dropdownOpen.business
+                    ? "opacity-100"
+                    : "opacity-0 pointer-events-none"
                 }`}
-                style={{ transitionDelay: dropdownOpen.business ? '0ms' : '300ms' }}
               >
                 {[
-                  'Group Insurance',
-                  'Liability Insurance',
-                  'Property Insurance',
-                  'Marine Insurance',
-                  'Engineering and Specialty Business',
-                  'Affinity & MSME',
-                  'PoSP',
+                  "Group Insurance",
+                  "Liability Insurance",
+                  "Property Insurance",
+                  "Marine Insurance",
+                  "Engineering and Specialty Business",
+                  "Affinity & MSME",
+                  "PoSP",
                 ].map((item) => (
-                  <Link
+                  <NavLink
                     key={item}
                     to="#"
-                    className="block px-4 py-2 text-sm hover:bg-blue-100 transition duration-200"
+                    onClick={() => closeDropdown("business")}
+                    className="block px-4 py-3 text-sm hover:bg-blue-200 transition duration-200"
                   >
                     {item}
-                  </Link>
+                  </NavLink>
                 ))}
               </div>
             </div>
@@ -142,72 +230,110 @@ const Navbar = () => {
             {/* Services Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => handleMouseEnter('services')}
-              onMouseLeave={() => handleMouseLeave('services')}
+              ref={dropdownRefs.services}
+              onMouseEnter={() => handleMouseEnter("services")}
+              onMouseLeave={(e) => handleMouseLeave("services", e)}
+              aria-expanded={dropdownOpen.services}
+              aria-controls="services-dropdown"
             >
-              <button className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300 flex items-center">
-                Services
-                <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+              <div className="flex items-center">
+                <button className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300">
+                  Services
+                </button>
+                <span className="pointer-events-none">
+                  <ChevronDownIcon
+                    className={`ml-0.5 h-4 w-4 transition-transform duration-300 ${
+                      dropdownOpen.services ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                </span>
+              </div>
               <div
-                className={`absolute bg-white text-gray-800 shadow-lg rounded-md mt-2 w-48 z-10 transition-opacity duration-300 ${
-                  dropdownOpen.services ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                id="services-dropdown"
+                className={`absolute bg-blue-50 text-gray-800 shadow-lg rounded-md mt-2 w-56 z-50 transition-opacity duration-300 ${
+                  dropdownOpen.services
+                    ? "opacity-100"
+                    : "opacity-0 pointer-events-none"
                 }`}
-                style={{ transitionDelay: dropdownOpen.services ? '0ms' : '300ms' }}
               >
-                {['Claims Management', 'Risk Management', 'Wellness'].map((item) => (
-                  <Link
-                    key={item}
-                    to="#"
-                    className="block px-4 py-2 text-sm hover:bg-blue-100 transition duration-200"
-                  >
-                    {item}
-                  </Link>
-                ))}
+                {["Claims Management", "Risk Management", "Wellness"].map(
+                  (item) => (
+                    <NavLink
+                      key={item}
+                      to="#"
+                      onClick={() => closeDropdown("services")}
+                      className="block px-4 py-3 text-sm hover:bg-blue-200 transition duration-200"
+                    >
+                      {item}
+                    </NavLink>
+                  )
+                )}
               </div>
             </div>
 
-            <Link
+            <NavLink
               to="/about"
-              className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300"
+              className={({ isActive }) =>
+                `px-3 py-2 rounded-md text-sm font-medium transition duration-300 ${
+                  isActive ? "bg-blue-700" : "hover:bg-blue-700"
+                }`
+              }
             >
               About Us
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/blog"
-              className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300"
+              className={({ isActive }) =>
+                `px-3 py-2 rounded-md text-sm font-medium transition duration-300 ${
+                  isActive ? "bg-blue-700" : "hover:bg-blue-700"
+                }`
+              }
             >
               Blog
-            </Link>
+            </NavLink>
 
             {/* Login Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => handleMouseEnter('login')}
-              onMouseLeave={() => handleMouseLeave('login')}
+              ref={dropdownRefs.login}
+              onMouseEnter={() => handleMouseEnter("login")}
+              onMouseLeave={(e) => handleMouseLeave("login", e)}
+              aria-expanded={dropdownOpen.login}
+              aria-controls="login-dropdown"
             >
-              <button className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300 flex items-center">
-                Login
-                <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+              <div className="flex items-center">
+                <button className="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition duration-300">
+                  Login
+                </button>
+                <span className="pointer-events-none">
+                  <ChevronDownIcon
+                    className={`ml-0.5 h-4 w-4 transition-transform duration-300 ${
+                      dropdownOpen.login ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                </span>
+              </div>
               <div
-                className={`absolute bg-white text-gray-800 shadow-lg rounded-md mt-2 w-48 z-10 transition-opacity duration-300 ${
-                  dropdownOpen.login ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                id="login-dropdown"
+                className={`absolute bg-blue-50 text-gray-800 shadow-lg rounded-md mt-2 w-56 z-50 transition-opacity duration-300 ${
+                  dropdownOpen.login
+                    ? "opacity-100"
+                    : "opacity-0 pointer-events-none"
                 }`}
-                style={{ transitionDelay: dropdownOpen.login ? '0ms' : '300ms' }}
               >
-                {['Individual Customer Login', 'Corporate Customer Login', 'EB Portal Login'].map((item) => (
-                  <Link
+                {[
+                  "Individual Customer Login",
+                  "Corporate Customer Login",
+                  "EB Portal Login",
+                ].map((item) => (
+                  <NavLink
                     key={item}
                     to="#"
-                    className="block px-4 py-2 text-sm hover:bg-blue-100 transition duration-200"
+                    onClick={() => closeDropdown("login")}
+                    className="block px-4 py-3 text-sm hover:bg-blue-200 transition duration-200"
                   >
                     {item}
-                  </Link>
+                  </NavLink>
                 ))}
               </div>
             </div>
@@ -230,7 +356,11 @@ const Navbar = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+                  d={
+                    isOpen
+                      ? "M6 18L18 6M6 6l12 12"
+                      : "M4 6h16M4 12h16M4 18h16"
+                  }
                 />
               </svg>
             </button>
@@ -241,52 +371,74 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
-          isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+          isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1 bg-blue-700">
-          <Link
+          <NavLink
             to="/"
-            className="block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600 transition duration-200"
+            className={({ isActive }) =>
+              `block px-3 py-2 rounded-md text-base font-medium transition duration-200 ${
+                isActive ? "bg-blue-600" : "hover:bg-blue-600"
+              }`
+            }
             onClick={toggleMenu}
           >
             Home
-          </Link>
+          </NavLink>
 
           {/* Personal Insurance Mobile */}
           <div>
             <button
               className="w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600 transition duration-200 flex justify-between items-center"
-              onClick={() => toggleMobileDropdown('personal')}
+              onClick={() => toggleMobileDropdown("personal")}
             >
               Personal Insurance
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
+              <ChevronDownIcon
+                className={`h-4 w-4 transition-transform duration-300 ${
+                  mobileDropdownOpen.personal ? "rotate-180" : "rotate-0"
+                }`}
+              />
             </button>
-            <div className={`pl-4 ${mobileDropdownOpen.personal ? 'block' : 'hidden'}`}>
+            <div
+              className={`pl-4 ${
+                mobileDropdownOpen.personal ? "block" : "hidden"
+              }`}
+            >
               {[
-                'Health Insurance',
-                'Car Insurance',
-                'Two Wheelers Insurance',
-                'Home Insurance',
-                'Term Life Insurance',
-                'Critical Illness Insurance',
-                'Corona Kavach Insurance',
-                'Personal Accident Insurance',
-                'Top Up Health Insurance',
-                'Mobile Insurance',
-                'Cyber Security Insurance',
-                'Travel Insurance',
+                {
+                  label: "Health Insurance",
+                  path: "/insurance/personal/health",
+                },
+                { label: "Car Insurance", path: "/insurance/personal/car" },
+                {
+                  label: "Two Wheelers Insurance",
+                  path: "/insurance/personal/two-wheelers",
+                },
+                {
+                  label: "Commercial Vehicle Insurance",
+                  path: "/insurance/personal/commercial-vehicle",
+                },
+                {
+                  label: "Mobile Insurance",
+                  path: "/insurance/personal/mobile",
+                },
               ].map((item) => (
-                <Link
-                  key={item}
-                  to="#"
-                  className="block px-3 py-2 text-sm hover:bg-blue-600 transition duration-200"
-                  onClick={toggleMenu}
+                <NavLink
+                  key={item.label}
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `block px-3 py-2 text-sm transition duration-200 ${
+                      isActive ? "bg-blue-600 text-white" : "hover:bg-blue-600"
+                    }`
+                  }
+                  onClick={() => {
+                    toggleMenu();
+                    toggleMobileDropdown("personal");
+                  }}
                 >
-                  {item}
-                </Link>
+                  {item.label}
+                </NavLink>
               ))}
             </div>
           </div>
@@ -295,31 +447,40 @@ const Navbar = () => {
           <div>
             <button
               className="w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600 transition duration-200 flex justify-between items-center"
-              onClick={() => toggleMobileDropdown('business')}
+              onClick={() => toggleMobileDropdown("business")}
             >
               Business & Group Insurance
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
+              <ChevronDownIcon
+                className={`h-4 w-4 transition-transform duration-300 ${
+                  mobileDropdownOpen.business ? "rotate-180" : "rotate-0"
+                }`}
+              />
             </button>
-            <div className={`pl-4 ${mobileDropdownOpen.business ? 'block' : 'hidden'}`}>
+            <div
+              className={`pl-4 ${
+                mobileDropdownOpen.business ? "block" : "hidden"
+              }`}
+            >
               {[
-                'Group Insurance',
-                'Liability Insurance',
-                'Property Insurance',
-                'Marine Insurance',
-                'Engineering and Specialty Business',
-                'Affinity & MSME',
-                'PoSP',
+                "Group Insurance",
+                "Liability Insurance",
+                "Property Insurance",
+                "Marine Insurance",
+                "Engineering and Specialty Business",
+                "Affinity & MSME",
+                "PoSP",
               ].map((item) => (
-                <Link
+                <NavLink
                   key={item}
                   to="#"
                   className="block px-3 py-2 text-sm hover:bg-blue-600 transition duration-200"
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    toggleMenu();
+                    toggleMobileDropdown("business");
+                  }}
                 >
                   {item}
-                </Link>
+                </NavLink>
               ))}
             </div>
           </div>
@@ -328,63 +489,95 @@ const Navbar = () => {
           <div>
             <button
               className="w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600 transition duration-200 flex justify-between items-center"
-              onClick={() => toggleMobileDropdown('services')}
+              onClick={() => toggleMobileDropdown("services")}
             >
               Services
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
+              <ChevronDownIcon
+                className={`h-4 w-4 transition-transform duration-300 ${
+                  mobileDropdownOpen.services ? "rotate-180" : "rotate-0"
+                }`}
+              />
             </button>
-            <div className={`pl-4 ${mobileDropdownOpen.services ? 'block' : 'hidden'}`}>
-              {['Claims Management', 'Risk Management', 'Wellness'].map((item) => (
-                <Link
-                  key={item}
-                  to="#"
-                  className="block px-3 py-2 text-sm hover:bg-blue-600 transition duration-200"
-                  onClick={toggleMenu}
-                >
-                  {item}
-                </Link>
-              ))}
+            <div
+              className={`pl-4 ${
+                mobileDropdownOpen.services ? "block" : "hidden"
+              }`}
+            >
+              {["Claims Management", "Risk Management", "Wellness"].map(
+                (item) => (
+                  <NavLink
+                    key={item}
+                    to="#"
+                    className="block px-3 py-2 text-sm hover:bg-blue-600 transition duration-200"
+                    onClick={() => {
+                      toggleMenu();
+                      toggleMobileDropdown("services");
+                    }}
+                  >
+                    {item}
+                  </NavLink>
+                )
+              )}
             </div>
           </div>
 
-          <Link
+          <NavLink
             to="/about"
-            className="block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600 transition duration-200"
+            className={({ isActive }) =>
+              `block px-3 py-2 rounded-md text-base font-medium transition duration-200 ${
+                isActive ? "bg-blue-600" : "hover:bg-blue-600"
+              }`
+            }
             onClick={toggleMenu}
           >
             About Us
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/blog"
-            className="block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600 transition duration-200"
+            className={({ isActive }) =>
+              `block px-3 py-2 rounded-md text-base font-medium transition duration-200 ${
+                isActive ? "bg-blue-600" : "hover:bg-blue-600"
+              }`
+            }
             onClick={toggleMenu}
           >
             Blog
-          </Link>
+          </NavLink>
 
           {/* Login Mobile */}
           <div>
             <button
               className="w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600 transition duration-200 flex justify-between items-center"
-              onClick={() => toggleMobileDropdown('login')}
+              onClick={() => toggleMobileDropdown("login")}
             >
               Login
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
+              <ChevronDownIcon
+                className={`h-4 w-4 transition-transform duration-300 ${
+                  mobileDropdownOpen.login ? "rotate-180" : "rotate-0"
+                }`}
+              />
             </button>
-            <div className={`pl-4 ${mobileDropdownOpen.login ? 'block' : 'hidden'}`}>
-              {['Individual Customer Login', 'Corporate Customer Login', 'EB Portal Login'].map((item) => (
-                <Link
+            <div
+              className={`pl-4 ${
+                mobileDropdownOpen.login ? "block" : "hidden"
+              }`}
+            >
+              {[
+                "Individual Customer Login",
+                "Corporate Customer Login",
+                "EB Portal Login",
+              ].map((item) => (
+                <NavLink
                   key={item}
                   to="#"
                   className="block px-3 py-2 text-sm hover:bg-blue-600 transition duration-200"
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    toggleMenu();
+                    toggleMobileDropdown("login");
+                  }}
                 >
                   {item}
-                </Link>
+                </NavLink>
               ))}
             </div>
           </div>
