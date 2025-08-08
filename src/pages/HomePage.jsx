@@ -1,0 +1,535 @@
+import React, { useState } from 'react';
+import Slider from 'react-slick';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
+import { Pie, Bar } from 'react-chartjs-2';
+import { 
+  ShieldCheckIcon, 
+  HeartIcon, 
+  UsersIcon, 
+  StarIcon, 
+  ArrowRightIcon,
+  ChevronDownIcon,
+  UserGroupIcon,
+  QuestionMarkCircleIcon
+} from '@heroicons/react/24/outline';
+
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import assets from '../assets/assets';
+
+// Register Chart.js components
+ChartJS.register(ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
+
+const HomePage = () => {
+  const [faqOpen, setFaqOpen] = useState({});
+
+  // Slider settings
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    arrows: true,
+    dotsClass: 'slick-dots custom-dots',
+    customPaging: () => (
+      <button className="custom-dot"></button>
+    ),
+    responsive: [
+      {
+        breakpoint: 640,
+        settings: {
+          arrows: true,
+          dots: true,
+        },
+      },
+    ],
+  };
+
+  // Data for Pie Chart (Claims Processed)
+  const pieData = {
+    labels: ['Approved Claims', 'Pending Claims', 'Rejected Claims'],
+    datasets: [
+      {
+        data: [70, 20, 10],
+        backgroundColor: ['#3B82F6', '#FBBF24', '#EF4444'],
+        hoverBackgroundColor: ['#2563EB', '#F59E0B', '#DC2626'],
+        borderColor: '#ffffff',
+        borderWidth: 2,
+      },
+    ],
+  };
+
+  // Pie Chart Options
+  const pieOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: {
+          font: { size: 14 },
+          color: '#1F2937',
+        },
+      },
+      tooltip: {
+        backgroundColor: '#1F2937',
+        titleFont: { size: 14 },
+        bodyFont: { size: 12 },
+      },
+    },
+  };
+
+  // Data for Bar Chart (Policy Growth)
+  const barData = {
+    labels: ['2020', '2021', '2022', '2023', '2024'],
+    datasets: [
+      {
+        label: 'Policies Issued',
+        data: [5000, 8000, 12000, 18000, 25000],
+        backgroundColor: '#3B82F6',
+        borderColor: '#2563EB',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  // Bar Chart Options
+  const barOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Year',
+          color: '#1F2937',
+          font: { size: 14 },
+        },
+        grid: { display: false },
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'Number of Policies',
+          color: '#1F2937',
+          font: { size: 14 },
+        },
+        beginAtZero: true,
+      },
+    },
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: {
+          font: { size: 14 },
+          color: '#1F2937',
+        },
+      },
+      tooltip: {
+        backgroundColor: '#1F2937',
+        titleFont: { size: 14 },
+        bodyFont: { size: 12 },
+      },
+    },
+  };
+
+  // FAQ Toggle Handler
+  const toggleFaq = (index) => {
+    setFaqOpen((prev) => ({ ...prev, [index]: !prev[index] }));
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      
+      <section className="relative">
+        <Slider {...sliderSettings} className="w-full h-screen sm:h-[80vh] overflow-hidden">
+          <div className="relative h-full">
+            <img
+              src={assets.banner4}
+              alt="Health Insurance Hero 1"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="relative h-full">
+            <img
+              src={assets.banner3}
+              alt="Health Insurance Hero 2"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </Slider>
+      </section>
+
+      
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Insurance Plans</h2>
+            <p className="mt-4 text-lg text-gray-600">Choose the plan that best suits your needs</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: HeartIcon,
+                title: 'Individual Health Plan',
+                desc: 'Comprehensive coverage for individuals with flexible options.',
+                price: 'Starting at ₹499/month',
+              },
+              {
+                icon: UserGroupIcon,
+                title: 'Family Floater Plan',
+                desc: 'Protect your entire family with a single, affordable plan.',
+                price: 'Starting at ₹999/month',
+              },
+              {
+                icon: ShieldCheckIcon,
+                title: 'Senior Citizen Plan',
+                desc: 'Specialized coverage for seniors with extensive benefits.',
+                price: 'Starting at ₹799/month',
+              },
+            ].map((plan, index) => (
+              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
+                <plan.icon className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-900">{plan.title}</h3>
+                <p className="mt-2 text-gray-600">{plan.desc}</p>
+                <p className="mt-4 text-lg font-bold text-blue-600">{plan.price}</p>
+                <a
+                  href="#"
+                  className="mt-4 inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-semibold transition duration-300"
+                >
+                  View Details <ArrowRightIcon className="ml-2 h-5 w-5" />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+     
+      <section className="py-16 bg-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">About Us</h2>
+            <p className="mt-4 text-lg text-gray-600">Empowering lives with trusted health insurance solutions</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <img
+                src="https://images.unsplash.com/photo-1532938911079-1b8924b316d7"
+                alt="About Us"
+                className="w-full h-96 object-cover rounded-lg shadow-md"
+              />
+            </div>
+            <div className="flex flex-col justify-center">
+              <p className="text-gray-600 leading-relaxed">
+                We are a leading health insurance provider dedicated to offering comprehensive and affordable plans to protect you and your loved ones. With a focus on innovation, customer care, and a robust network of healthcare providers, we ensure peace of mind through tailored insurance solutions. Our mission is to make healthcare accessible and stress-free for everyone.
+              </p>
+              <div className="mt-6 flex space-x-4">
+                <ShieldCheckIcon className="h-8 w-8 text-blue-600" />
+                <HeartIcon className="h-8 w-8 text-blue-600" />
+                <UsersIcon className="h-8 w-8 text-blue-600" />
+              </div>
+              <a
+                href="#"
+                className="mt-6 inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-semibold transition duration-300"
+              >
+                Learn More <ArrowRightIcon className="ml-2 h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Why Choose Us</h2>
+            <p className="mt-4 text-lg text-gray-600">Discover the benefits of partnering with us</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { icon: ShieldCheckIcon, title: 'Trusted Coverage', desc: 'Comprehensive plans with extensive coverage' },
+              { icon: HeartIcon, title: 'Customer Care', desc: '24/7 support for all your needs' },
+              { icon: UsersIcon, title: 'Wide Network', desc: 'Access to top hospitals nationwide' },
+              { icon: StarIcon, title: 'Fast Claims', desc: 'Quick and hassle-free claim processing' },
+            ].map((item, index) => (
+              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
+                <item.icon className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-900">{item.title}</h3>
+                <p className="mt-2 text-gray-600">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      
+      <section className="py-16 bg-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Milestones & Achievements</h2>
+            <p className="mt-4 text-lg text-gray-600">Our journey in numbers</p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="bg-white p-6 rounded-lg shadow-md h-96">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Claims Processed</h3>
+              <div className="h-80">
+                <Pie data={pieData} options={pieOptions} />
+              </div>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md h-96">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Policy Growth Over Years</h3>
+              <div className="h-80">
+                <Bar data={barData} options={barOptions} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Success Story</h2>
+            <p className="mt-4 text-lg text-gray-600">Real stories from our satisfied customers</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+              <p className="text-gray-600 italic">"When I needed urgent medical care, their quick claim processing saved me from financial stress. Truly a lifesaver!"</p>
+              <div className="mt-4 flex items-center">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
+                  alt="Customer"
+                  className="h-12 w-12 rounded-full object-cover"
+                />
+                <div className="ml-4">
+                  <p className="font-semibold text-gray-900">Priya Sharma</p>
+                  <p className="text-gray-600">Policyholder since 2022</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+              <p className="text-gray-600 italic">"The wide hospital network made it easy to find quality care. Their support team was always there for me."</p>
+              <div className="mt-4 flex items-center">
+                <img
+                  src="https://images.unsplash.com/photo-1519085360753-afbcb6ee7714"
+                  alt="Customer"
+                  className="h-12 w-12 rounded-full object-cover"
+                />
+                <div className="ml-4">
+                  <p className="font-semibold text-gray-900">Rahul Verma</p>
+                  <p className="text-gray-600">Policyholder since 2021</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      <section className="py-16 bg-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>
+            <p className="mt-4 text-lg text-gray-600">Find answers to common questions about our health insurance plans</p>
+          </div>
+          <div className="space-y-4">
+            {[
+              {
+                question: 'What is covered under your health insurance plans?',
+                answer: 'Our plans cover hospitalization, doctor consultations, diagnostic tests, and more, depending on the plan you choose.',
+              },
+              {
+                question: 'How do I file a claim?',
+                answer: 'You can file a claim online through our portal or contact our 24/7 support team for assistance.',
+              },
+              {
+                question: 'Can I customize my insurance plan?',
+                answer: 'Yes, we offer flexible options to tailor your plan to your specific needs and budget.',
+              },
+              {
+                question: 'What is the hospital network coverage?',
+                answer: 'We have a wide network of over 5000 hospitals across India for cashless treatment.',
+              },
+            ].map((faq, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-md">
+                <button
+                  className="w-full text-left px-6 py-4 flex justify-between items-center"
+                  onClick={() => toggleFaq(index)}
+                >
+                  <span className="text-lg font-semibold text-gray-900">{faq.question}</span>
+                  <ChevronDownIcon
+                    className={`h-6 w-6 text-blue-600 transform transition-transform duration-200 ${
+                      faqOpen[index] ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    faqOpen[index] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <p className="px-6 py-4 text-gray-600">{faq.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+     
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Trusted Partners</h2>
+            <p className="mt-4 text-lg text-gray-600">Collaborating with leading healthcare providers</p>
+          </div>
+          <Slider
+            dots={true}
+            infinite={true}
+            speed={500}
+            slidesToShow={5}
+            slidesToScroll={1}
+            autoplay={true}
+            autoplaySpeed={3000}
+            responsive={[
+              {
+                breakpoint: 1024,
+                settings: { slidesToShow: 4 },
+              },
+              {
+                breakpoint: 768,
+                settings: { slidesToShow: 3 },
+              },
+              {
+                breakpoint: 640,
+                settings: { slidesToShow: 2 },
+              },
+            ]}
+            className="w-full"
+          >
+            {[
+              'https://via.placeholder.com/150x50?text=Partner1',
+              'https://via.placeholder.com/150x50?text=Partner2',
+              'https://via.placeholder.com/150x50?text=Partner3',
+              'https://via.placeholder.com/150x50?text=Partner4',
+              'https://via.placeholder.com/150x50?text=Partner5',
+            ].map((logo, index) => (
+              <div key={index} className="px-2">
+                <img src={logo} alt={`Partner ${index + 1}`} className="h-12 mx-auto" />
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </section>
+
+      
+      <section className="py-16 bg-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Testimonials</h2>
+            <p className="mt-4 text-lg text-gray-600">What our customers say about us</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                quote: "Their plans are affordable and comprehensive. Highly recommend!",
+                name: "Anita Desai",
+                image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
+              },
+              {
+                quote: "Exceptional service and quick response during emergencies.",
+                name: "Vikram Singh",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+              },
+              {
+                quote: "The online portal is user-friendly and made my experience seamless.",
+                name: "Meera Patel",
+                image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+              },
+            ].map((testimonial, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center">
+                <StarIcon className="h-8 w-8 text-yellow-400 mx-auto mb-4" />
+                <p className="text-gray-600 italic">{testimonial.quote}</p>
+                <div className="mt-4 flex items-center justify-center">
+                  <img src={testimonial.image} alt={testimonial.name} className="h-12 w-12 rounded-full object-cover" />
+                  <p className="ml-4 font-semibold text-gray-900">{testimonial.name}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      
+      <section className="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Ready to Secure Your Health?</h2>
+          <p className="text-base sm:text-lg mb-4 sm:mb-6">Get a personalized quote or speak with our experts today!</p>
+          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <a
+              href="#"
+              className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-white text-blue-600 hover:bg-gray-100 rounded-full font-semibold transition duration-300"
+            >
+              Get a Quote <ArrowRightIcon className="ml-2 h-5 w-5" />
+            </a>
+            <a
+              href="#"
+              className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-transparent border border-white hover:bg-white hover:text-blue-600 rounded-full font-semibold transition duration-300"
+            >
+              Contact Support <ArrowRightIcon className="ml-2 h-5 w-5" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Latest from Our Blog</h2>
+            <p className="mt-4 text-lg text-gray-600">Stay informed with our health and insurance insights</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Understanding Your Health Insurance Options',
+                excerpt: 'Learn about the different types of health insurance plans and how to choose the right one.',
+                image: 'https://images.unsplash.com/photo-1450101490226-6d72e8a737b7',
+              },
+              {
+                title: 'Tips for a Stress-Free Claims Process',
+                excerpt: 'Discover how to navigate the claims process with ease and efficiency.',
+                image: 'https://images.unsplash.com/photo-1516321310767-75f7200c9998',
+              },
+              {
+                title: 'The Importance of Preventive Care',
+                excerpt: 'Explore why preventive care is key to maintaining your health and reducing costs.',
+                image: 'https://images.unsplash.com/photo-1576091160397-1f3c879a2076',
+              },
+            ].map((post, index) => (
+              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <img src={post.image} alt={post.title} className="w-full h-48 object-cover rounded-md mb-4" />
+                <h3 className="text-xl font-semibold text-gray-900">{post.title}</h3>
+                <p className="mt-2 text-gray-600">{post.excerpt}</p>
+                <a
+                  href="#"
+                  className="mt-4 inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-semibold transition duration-300"
+                >
+                  Read More <ArrowRightIcon className="ml-2 h-5 w-5" />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default HomePage;
