@@ -5,6 +5,7 @@ import {
   UsersIcon, 
   ArrowRightIcon 
 } from '@heroicons/react/24/outline';
+import assets from '../assets/assets';
 
 const AboutUs = () => {
   return (
@@ -13,7 +14,7 @@ const AboutUs = () => {
       <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1532938911079-1b8924b316d7"
+            src={assets.about}
             alt="About Us Hero"
             className="w-full h-full object-cover opacity-30"
           />
@@ -38,7 +39,7 @@ const AboutUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             <div>
               <img
-                src="https://images.unsplash.com/photo-1516321310767-75f7200c9998"
+                src={assets.about}
                 alt="Our Story"
                 className="w-full h-64 sm:h-80 object-cover rounded-lg shadow-md"
               />
