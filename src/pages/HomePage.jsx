@@ -143,12 +143,33 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      
+      {/* Custom CSS to enforce slider height */}
+      <style jsx>{`
+        .slick-slider,
+        .slick-list,
+        .slick-track,
+        .slick-slide,
+        .slick-slide > div,
+        .slick-slide img {
+          height: 60vh !important;
+        }
+        @media (min-width: 640px) {
+          .slick-slider,
+          .slick-list,
+          .slick-track,
+          .slick-slide,
+          .slick-slide > div,
+          .slick-slide img {
+            height: 91vh !important;
+          }
+        }
+      `}</style>
+
       <section className="relative">
-        <Slider {...sliderSettings} className="w-full h-screen sm:h-[80vh] overflow-hidden">
+        <Slider {...sliderSettings} className="w-full h-[60vh] sm:h-[48vh] overflow-hidden !important">
           <div className="relative h-full">
             <img
-              src={assets.banner4}
+              src={assets.banner2}
               alt="Health Insurance Hero 1"
               className="w-full h-full object-cover"
             />
@@ -177,7 +198,6 @@ const HomePage = () => {
         </Slider>
       </section>
 
-      
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -222,7 +242,6 @@ const HomePage = () => {
         </div>
       </section>
 
-     
       <section className="py-16 bg-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -232,7 +251,7 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <img
-                src="https://images.unsplash.com/photo-1532938911079-1b8924b316d7"
+                src={assets.about}
                 alt="About Us"
                 className="w-full h-96 object-cover rounded-lg shadow-md"
               />
@@ -257,7 +276,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -281,7 +299,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      
       <section className="py-16 bg-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -305,7 +322,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -345,7 +361,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      
       <section className="py-16 bg-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -396,7 +411,6 @@ const HomePage = () => {
         </div>
       </section>
 
-     
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -428,21 +442,20 @@ const HomePage = () => {
             className="w-full"
           >
             {[
-              'https://via.placeholder.com/150x50?text=Partner1',
-              'https://via.placeholder.com/150x50?text=Partner2',
-              'https://via.placeholder.com/150x50?text=Partner3',
-              'https://via.placeholder.com/150x50?text=Partner4',
-              'https://via.placeholder.com/150x50?text=Partner5',
+              { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Cigna_logo.svg/1200px-Cigna_logo.svg.png', alt: 'Cigna' },
+              { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/UnitedHealthcare_logo.svg/1200px-UnitedHealthcare_logo.svg.png', alt: 'UnitedHealthcare' },
+              { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Aetna_logo.svg/1200px-Aetna_logo.svg.png', alt: 'Aetna' },
+              { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Blue_Cross_Blue_Shield_Association_logo.svg/1200px-Blue_Cross_Blue_Shield_Association_logo.svg.png', alt: 'Blue Cross Blue Shield' },
+              { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Kaiser_Permanente_logo.svg/1200px-Kaiser_Permanente_logo.svg.png', alt: 'Kaiser Permanente' },
             ].map((logo, index) => (
               <div key={index} className="px-2">
-                <img src={logo} alt={`Partner ${index + 1}`} className="h-12 mx-auto" />
+                <img src={logo.src} alt={logo.alt} className="h-12 mx-auto object-contain" />
               </div>
             ))}
           </Slider>
         </div>
       </section>
 
-      
       <section className="py-16 bg-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -480,7 +493,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      
       <section className="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Ready to Secure Your Health?</h2>
@@ -502,7 +514,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">

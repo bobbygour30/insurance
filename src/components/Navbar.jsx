@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import assets from "../assets/assets";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,8 +84,8 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <NavLink to="/">
               <img
-                className="h-8 w-auto"
-                src="https://via.placeholder.com/150x50?text=Logo"
+                className="h-20 w-auto"
+                src={assets.logo}
                 alt="Insurance Logo"
               />
             </NavLink>
