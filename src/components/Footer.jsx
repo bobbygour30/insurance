@@ -1,5 +1,6 @@
 import React from 'react';
 import { EnvelopeIcon, PhoneIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa'; // Importing social media icons
 
 const Footer = () => {
   return (
@@ -14,12 +15,31 @@ const Footer = () => {
             </p>
             <div className="mt-4 flex space-x-4">
               {[
-                { icon: 'https://via.placeholder.com/24?text=FB', label: 'Facebook' },
-                { icon: 'https://via.placeholder.com/24?text=TW', label: 'Twitter' },
-                { icon: 'https://via.placeholder.com/24?text=LI', label: 'LinkedIn' },
+                { 
+                  icon: FaFacebook, 
+                  label: 'Facebook', 
+                  href: 'https://www.facebook.com/yourcompany' 
+                },
+                { 
+                  icon: FaTwitter, 
+                  label: 'Twitter', 
+                  href: 'https://www.twitter.com/yourcompany' 
+                },
+                { 
+                  icon: FaLinkedin, 
+                  label: 'LinkedIn', 
+                  href: 'https://www.linkedin.com/company/yourcompany' 
+                },
               ].map((social, index) => (
-                <a key={index} href="#" className="hover:text-white transition duration-200">
-                  <img src={social.icon} alt={social.label} className="h-6 w-6" />
+                <a 
+                  key={index} 
+                  href={social.href} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-white transition duration-200"
+                  aria-label={social.label}
+                >
+                  <social.icon className="h-6 w-6" />
                 </a>
               ))}
             </div>
