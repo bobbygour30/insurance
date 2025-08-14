@@ -23,8 +23,8 @@ ChartJS.register(ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearS
 const HomePage = () => {
   const [faqOpen, setFaqOpen] = useState({});
 
-  // Slider settings
-  const sliderSettings = {
+  // Hero Slider settings
+  const heroSliderSettings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -44,6 +44,31 @@ const HomePage = () => {
           arrows: true,
           dots: true,
         },
+      },
+    ],
+  };
+
+  // Partners Slider settings
+  const partnersSliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: { slidesToShow: 4 },
+      },
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 3 },
+      },
+      {
+        breakpoint: 640,
+        settings: { slidesToShow: 2 },
       },
     ],
   };
@@ -143,30 +168,29 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Custom CSS to enforce slider height */}
-      <style jsx>{`
-        .slick-slider,
-        .slick-list,
-        .slick-track,
-        .slick-slide,
-        .slick-slide > div,
-        .slick-slide img {
-          height: 60vh !important;
-        }
-        @media (min-width: 640px) {
-          .slick-slider,
-          .slick-list,
-          .slick-track,
-          .slick-slide,
-          .slick-slide > div,
-          .slick-slide img {
-            height: 91vh !important;
-          }
-        }
-      `}</style>
-
+      {/* Hero Slider */}
       <section className="relative">
-        <Slider {...sliderSettings} className="w-full h-[60vh] sm:h-[48vh] overflow-hidden !important">
+        <style jsx>{`
+          .hero-slider,
+          .hero-slider .slick-list,
+          .hero-slider .slick-track,
+          .hero-slider .slick-slide,
+          .hero-slider .slick-slide > div,
+          .hero-slider .slick-slide img {
+            height: 60vh !important;
+          }
+          @media (min-width: 640px) {
+            .hero-slider,
+            .hero-slider .slick-list,
+            .hero-slider .slick-track,
+            .hero-slider .slick-slide,
+            .hero-slider .slick-slide > div,
+            .hero-slider .slick-slide img {
+              height: 91vh !important;
+            }
+          }
+        `}</style>
+        <Slider {...heroSliderSettings} className="hero-slider w-full h-[60vh] sm:h-[48vh] overflow-hidden">
           <div className="relative h-full">
             <img
               src={assets.banner2}
@@ -184,14 +208,14 @@ const HomePage = () => {
           <div className="relative h-full">
             <img
               src={assets.banner1}
-              alt="Health Insurance Hero 2"
+              alt="Health Insurance Hero 3"
               className="w-full h-full object-cover"
             />
           </div>
           <div className="relative h-full">
             <img
               src={assets.banner2}
-              alt="Health Insurance Hero 2"
+              alt="Health Insurance Hero 4"
               className="w-full h-full object-cover"
             />
           </div>
@@ -417,39 +441,29 @@ const HomePage = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Trusted Partners</h2>
             <p className="mt-4 text-lg text-gray-600">Collaborating with leading healthcare providers</p>
           </div>
-          <Slider
-            dots={true}
-            infinite={true}
-            speed={500}
-            slidesToShow={5}
-            slidesToScroll={1}
-            autoplay={true}
-            autoplaySpeed={3000}
-            responsive={[
-              {
-                breakpoint: 1024,
-                settings: { slidesToShow: 4 },
-              },
-              {
-                breakpoint: 768,
-                settings: { slidesToShow: 3 },
-              },
-              {
-                breakpoint: 640,
-                settings: { slidesToShow: 2 },
-              },
-            ]}
-            className="w-full"
-          >
+          <style jsx>{`
+            .partners-slider,
+            .partners-slider .slick-list,
+            .partners-slider .slick-track,
+            .partners-slider .slick-slide,
+            .partners-slider .slick-slide > div {
+              height: auto !important;
+            }
+            .partners-slider .slick-slide img {
+              height: 4rem !important;
+              width: auto !important;
+            }
+          `}</style>
+          <Slider {...partnersSliderSettings} className="partners-slider w-full">
             {[
-              { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Cigna_logo.svg/1200px-Cigna_logo.svg.png', alt: 'Cigna' },
-              { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/UnitedHealthcare_logo.svg/1200px-UnitedHealthcare_logo.svg.png', alt: 'UnitedHealthcare' },
-              { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Aetna_logo.svg/1200px-Aetna_logo.svg.png', alt: 'Aetna' },
-              { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Blue_Cross_Blue_Shield_Association_logo.svg/1200px-Blue_Cross_Blue_Shield_Association_logo.svg.png', alt: 'Blue Cross Blue Shield' },
-              { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Kaiser_Permanente_logo.svg/1200px-Kaiser_Permanente_logo.svg.png', alt: 'Kaiser Permanente' },
+              { src: assets.logo2, alt: 'Cigna' },
+              { src: assets.logo3, alt: 'UnitedHealthcare' },
+              { src: assets.logo4, alt: 'Humana' },
+              { src: assets.logo5, alt: 'Blue Cross Blue Shield' },
+              { src: assets.logo6, alt: 'Kaiser Permanente' },
             ].map((logo, index) => (
               <div key={index} className="px-2">
-                <img src={logo.src} alt={logo.alt} className="h-12 mx-auto object-contain" />
+                <img src={logo.src} alt={logo.alt} className="mx-auto object-contain h-16" />
               </div>
             ))}
           </Slider>

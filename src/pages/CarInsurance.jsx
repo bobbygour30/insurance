@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { TruckIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
+import assets from '../assets/assets';
 
 const CarInsurance = () => {
   return (
@@ -15,7 +16,7 @@ const CarInsurance = () => {
           className="text-center mb-12"
         >
           <img
-            src="https://via.placeholder.com/1200x400?text=Car+Insurance+Banner"
+            src={assets.car}
             alt="Car Insurance Banner"
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />

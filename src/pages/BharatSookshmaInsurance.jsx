@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FireIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
+import assets from '../assets/assets';
 
 const BharatSookshmaInsurance = () => {
   return (
@@ -15,7 +16,7 @@ const BharatSookshmaInsurance = () => {
           className="text-center mb-12"
         >
           <img
-            src="https://via.placeholder.com/1200x400?text=Bharat+Sookshma+Udyam+Suraksha+Banner"
+            src={assets.fire}
             alt="Bharat Sookshma Udyam Suraksha Banner"
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />
