@@ -84,7 +84,7 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <NavLink to="/">
               <img
-                className="h-20 w-auto"
+                className="w-[62%]"
                 src={assets.logo}
                 alt="Insurance Logo"
               />
