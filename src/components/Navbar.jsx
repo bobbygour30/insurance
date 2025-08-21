@@ -574,6 +574,17 @@ const Navbar = () => {
           >
             Contact Us
           </NavLink>
+          <NavLink
+            to="/get-quote"
+            className={({ isActive }) =>
+              `block px-3 py-2 rounded-md text-lg font-medium transition duration-200 ${
+                isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+              }`
+            }
+            onClick={toggleMenu}
+          >
+            Get a Quote
+          </NavLink>
 
           {/* Legal Mobile */}
           <div>
