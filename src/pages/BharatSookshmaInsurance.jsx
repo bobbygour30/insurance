@@ -65,46 +65,70 @@ const BharatSookshmaInsurance = () => {
           </div>
         </motion.section>
 
-        {/* Coverage Table */}
+        {/* Coverage Details */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-white rounded-lg shadow-md p-8 mb-12"
+          className="bg-white rounded-lg shadow-md p-4 sm:p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
             Coverage Details
           </h2>
-          <table className="w-full text-base text-gray-600">
-            <thead>
-              <tr className="bg-blue-100">
-                <th className="p-4 text-left">Coverage Type</th>
-                <th className="p-4 text-left">Details</th>
-                <th className="p-4 text-left">Limit</th>
-              </tr>
-            </thead>
-            <tbody>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm sm:text-base text-gray-600 hidden sm:table">
+              <thead>
+                <tr className="bg-blue-100">
+                  <th className="p-2 sm:p-4 text-left">Coverage Type</th>
+                  <th className="p-2 sm:p-4 text-left">Details</th>
+                  <th className="p-2 sm:p-4 text-left">Limit</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { type: 'Fire Damage', details: 'Fire and smoke losses', limit: 'Up to $50,000' },
+                  { type: 'Natural Disasters', details: 'Floods, earthquakes', limit: 'Up to $30,000' },
+                  { type: 'Business Interruption', details: 'Lost income', limit: 'Up to $10,000' },
+                  { type: 'Allied Perils', details: 'Riots, strikes', limit: 'Up to $20,000' },
+                ].map((row) => (
+                  <motion.tr
+                    key={row.type}
+                    className="border-b"
+                    whileHover={{ backgroundColor: '#f0f9ff' }}
+                  >
+                    <td className="p-2 sm:p-4 flex items-center">
+                      <FireIcon className="h-5 sm:h-6 w-5 sm:w-6 text-blue-600 mr-2" />
+                      {row.type}
+                    </td>
+                    <td className="p-2 sm:p-4">{row.details}</td>
+                    <td className="p-2 sm:p-4">{row.limit}</td>
+                  </motion.tr>
+                ))}
+              </tbody>
+            </table>
+            {/* Mobile view */}
+            <div className="sm:hidden space-y-4">
               {[
                 { type: 'Fire Damage', details: 'Fire and smoke losses', limit: 'Up to $50,000' },
                 { type: 'Natural Disasters', details: 'Floods, earthquakes', limit: 'Up to $30,000' },
                 { type: 'Business Interruption', details: 'Lost income', limit: 'Up to $10,000' },
                 { type: 'Allied Perils', details: 'Riots, strikes', limit: 'Up to $20,000' },
               ].map((row) => (
-                <motion.tr
+                <motion.div
                   key={row.type}
-                  className="border-b"
+                  className="border rounded-lg p-4 bg-blue-50"
                   whileHover={{ backgroundColor: '#f0f9ff' }}
                 >
-                  <td className="p-4 flex items-center">
-                    <FireIcon className="h-6 w-6 text-blue-600 mr-2" />
-                    {row.type}
-                  </td>
-                  <td className="p-4">{row.details}</td>
-                  <td className="p-4">{row.limit}</td>
-                </motion.tr>
+                  <div className="flex items-center mb-2">
+                    <FireIcon className="h-5 w-5 text-blue-600 mr-2" />
+                    <h3 className="text-lg font-semibold text-gray-800">{row.type}</h3>
+                  </div>
+                  <p className="text-sm text-gray-600"><span className="font-semibold">Details:</span> {row.details}</p>
+                  <p className="text-sm text-gray-600"><span className="font-semibold">Limit:</span> {row.limit}</p>
+                </motion.div>
               ))}
-            </tbody>
-          </table>
+            </div>
+          </div>
         </motion.section>
 
         {/* Fire Safety Tips */}

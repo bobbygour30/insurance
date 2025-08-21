@@ -10,7 +10,6 @@ import {
   ArrowRightIcon,
   ChevronDownIcon,
   UserGroupIcon,
-  QuestionMarkCircleIcon
 } from '@heroicons/react/24/outline';
 
 import 'slick-carousel/slick/slick.css';
@@ -166,6 +165,30 @@ const HomePage = () => {
     setFaqOpen((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
+  // Banner text data
+  const bannerText = [
+    {
+      title: "Protect Your Future",
+      subtitle: "Secure your health with our trusted insurance plans.",
+      cta: "Get Covered Now",
+    },
+    {
+      title: "Peace of Mind",
+      subtitle: "Comprehensive coverage for you and your loved ones.",
+      cta: "Explore Plans",
+    },
+    {
+      title: "Your Health, Our Priority",
+      subtitle: "Affordable plans tailored to your needs.",
+      cta: "Learn More",
+    },
+    {
+      title: "Stay Worry-Free",
+      subtitle: "Fast claims and wide hospital network.",
+      cta: "Get a Quote",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Slider */}
@@ -190,35 +213,39 @@ const HomePage = () => {
             }
           }
         `}</style>
-        <Slider {...heroSliderSettings} className="hero-slider w-full h-[60vh] sm:h-[48vh] overflow-hidden">
-          <div className="relative h-full">
-            <img
-              src={assets.banner2}
-              alt="Health Insurance Hero 1"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="relative h-full">
-            <img
-              src={assets.banner3}
-              alt="Health Insurance Hero 2"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="relative h-full">
-            <img
-              src={assets.banner1}
-              alt="Health Insurance Hero 3"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="relative h-full">
-            <img
-              src={assets.banner2}
-              alt="Health Insurance Hero 4"
-              className="w-full h-full object-cover"
-            />
-          </div>
+        <Slider {...heroSliderSettings} className="hero-slider w-full h-[60vh] sm:h-[91vh] overflow-hidden">
+          {[
+            { src: assets.banner2, alt: "Health Insurance Hero 1" },
+            { src: assets.banner3, alt: "Health Insurance Hero 2" },
+            { src: assets.banner1, alt: "Health Insurance Hero 3" },
+            { src: assets.banner2, alt: "Health Insurance Hero 4" },
+          ].map((slide, index) => (
+            <div key={index} className="relative h-full">
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 flex items-center  bg-opacity-40">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                  <div className="text-left max-w-md sm:max-w-lg">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+                      {bannerText[index].title}
+                    </h2>
+                    <p className="text-lg sm:text-xl text-gray-200 mb-6">
+                      {bannerText[index].subtitle}
+                    </p>
+                    <a
+                      href="#"
+                      className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-semibold transition duration-300"
+                    >
+                      {bannerText[index].cta} <ArrowRightIcon className="ml-2 h-5 w-5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </Slider>
       </section>
 
@@ -479,18 +506,18 @@ const HomePage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                quote: "Their plans are affordable and comprehensive. Highly recommend!",
-                name: "Anita Desai",
+                quote: "“Arshyan Insurance provided me with a comprehensive life insurance plan that fits my budget perfectly. Their advisors took the time to understand my needs and offered a tailored solution. I feel secure knowing my family is protected.”",
+                name: "Priya",
                 image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
               },
               {
-                quote: "Exceptional service and quick response during emergencies.",
-                name: "Vikram Singh",
+                quote: "“As a frequent traveler, I always choose Arshyan’s travel insurance. Their policies cover everything from medical emergencies to trip cancellations. I had to use their services once during a trip, and the support team was incredibly helpful!”",
+                name: "Amit",
                 image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
               },
               {
-                quote: "The online portal is user-friendly and made my experience seamless.",
-                name: "Meera Patel",
+                quote: "“I switched to Arshyan Insurance for my health coverage, and I couldn’t be happier. Their customer service was exceptional, guiding me through the process and answering all my questions. When I needed to file a claim, it was settled within days! Highly recommend!”",
+                name: "Rajesh Kumar",
                 image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
               },
             ].map((testimonial, index) => (

@@ -53,12 +53,18 @@ const ContactUs = () => {
               <ul className="text-base text-gray-600 space-y-2">
                 <li>
                   <strong>Email:</strong>{' '}
-                  <a href="mailto:support@[yourcompany].com" className="text-blue-600 hover:underline">
-                    support@[yourcompany].com
+                  <a href="mailto:sales.support@arshyaninsurance.com" className="text-blue-600 hover:underline">
+                    sales.support@arshyaninsurance.com
                   </a>
                 </li>
-                <li><strong>Phone:</strong> [Your Phone Number]</li>
-                <li><strong>Address:</strong> [Your Company Address, City, State, ZIP]</li>
+                <li>
+                  <strong>Phone:</strong>{' '}
+                  <a href="tel:+919870277495" className="text-blue-600 hover:underline">+91-9870277495</a>,{' '}
+                  <a href="tel:+911143592951" className="text-blue-600 hover:underline">+9111-43592951</a>
+                </li>
+                <li>
+                  <strong>Address:</strong> Office No. 212, 1st Floor, Block-G3, Opposite DDA Market, Sector 16, Rohini, New Delhi - 110089
+                </li>
                 <li><strong>Hours:</strong> Monday–Friday, 9:00 AM–6:00 PM IST</li>
               </ul>
             </div>
@@ -106,7 +112,7 @@ const ContactUs = () => {
                 </div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <a
-                    href="mailto:support@[yourcompany].com?subject=Contact%20Us%20Inquiry"
+                    href="mailto:sales.support@arshyaninsurance.com?subject=Contact%20Us%20Inquiry"
                     className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   >
                     Send Message

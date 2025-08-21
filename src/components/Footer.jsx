@@ -71,25 +71,31 @@ const Footer = () => {
             <ul className="space-y-3 text-base sm:text-lg">
               <li className="flex items-center">
                 <EnvelopeIcon className="h-6 w-6 mr-2" />
-                <a href="mailto:support@example.com" className="hover:text-white transition duration-200">
-                  support@example.com
+                <a href="mailto:sales.support@arshyaninsurance.com" className="hover:text-white transition duration-200">
+                  sales.support@arshyaninsurance.com
                 </a>
               </li>
               <li className="flex items-center">
                 <PhoneIcon className="h-6 w-6 mr-2" />
-                <a href="tel:+1234567890" className="hover:text-white transition duration-200">
-                  +1 (234) 567-890
+                <a href="tel:+919870277495" className="hover:text-white transition duration-200">
+                  +91-9870277495
+                </a>
+              </li>
+              <li className="flex items-center">
+                <PhoneIcon className="h-6 w-6 mr-2" />
+                <a href="tel:+911143592951" className="hover:text-white transition duration-200">
+                  +9111-43592951
                 </a>
               </li>
               <li className="flex items-center">
                 <MapPinIcon className="h-6 w-6 mr-2" />
-                <span>123 Health St, Wellness City, HC 12345</span>
+                <span>Office No. 212, 1st Floor, Block-G3, Opposite DDA Market, Sector 16, Rohini, New Delhi - 110089</span>
               </li>
             </ul>
           </div>
         </div>
         <div className="mt-8 sm:mt-12 border-t border-blue-700 pt-4 text-center">
-          <p className="text-base sm:text-lg">&copy; {new Date().getFullYear()} Health Insurance Co. All rights reserved.</p>
+          <p className="text-base sm:text-lg">&copy; {new Date().getFullYear()} Arshyan Insurance Co. All rights reserved.</p>
         </div>
       </div>
     </footer>
