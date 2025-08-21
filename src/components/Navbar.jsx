@@ -78,7 +78,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white text-gray-800 shadow-lg fixed w-full z-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -278,6 +278,16 @@ const Navbar = () => {
               }
             >
               Contact Us
+            </NavLink>
+            <NavLink
+              to="/get-quote"
+              className={({ isActive }) =>
+                `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
+                  isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+                }`
+              }
+            >
+              Get a Quote
             </NavLink>
 
             {/* Legal Dropdown */}

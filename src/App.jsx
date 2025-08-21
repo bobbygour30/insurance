@@ -25,6 +25,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
 import RefundPolicy from './pages/RefundPolicy';
 import Login from './pages/Login';
+import GetQuote from './pages/GetQuote';
 
 const App = () => {
   return (
@@ -56,6 +57,8 @@ const App = () => {
             <Route path="/contact/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/contact/refund-policy" element={<RefundPolicy />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/get-quote" element={<GetQuote />} />
+
 
 
           </Routes>
