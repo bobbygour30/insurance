@@ -1,101 +1,206 @@
 import React from 'react';
-import { EnvelopeIcon, PhoneIcon, MapPinIcon } from '@heroicons/react/24/outline';
-import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa'; // Importing social media icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faPhone, faMapMarkerAlt, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-600 text-gray-100">
+    <footer className="bg-[#00001a] text-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
-          {/* Company Info */}
-          <div>
-            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6">About Us</h3>
-            <p className="text-base sm:text-lg">
-              We are a leading health insurance provider dedicated to offering affordable and comprehensive plans to protect you and your loved ones.
-            </p>
-            <div className="mt-4 flex space-x-4">
-              {[
-                { 
-                  icon: FaFacebook, 
-                  label: 'Facebook', 
-                  href: 'https://www.facebook.com/yourcompany' 
-                },
-                { 
-                  icon: FaTwitter, 
-                  label: 'Twitter', 
-                  href: 'https://www.twitter.com/yourcompany' 
-                },
-                { 
-                  icon: FaLinkedin, 
-                  label: 'LinkedIn', 
-                  href: 'https://www.linkedin.com/company/yourcompany' 
-                },
-              ].map((social, index) => (
-                <a 
-                  key={index} 
-                  href={social.href} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition duration-200"
-                  aria-label={social.label}
-                >
-                  <social.icon className="h-6 w-6" />
-                </a>
-              ))}
-            </div>
-          </div>
-
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Quick Links */}
-          <div>
-            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6">Quick Links</h3>
-            <ul className="space-y-3 text-base sm:text-lg">
+          <div className="flex flex-col">
+            <h3 className="text-xl font-semibold text-white mb-4">Quick Links</h3>
+            <ul className="space-y-2 text-base text-gray-300">
               {[
                 { to: '/', label: 'Home' },
                 { to: '/about', label: 'About Us' },
                 { to: '/blog', label: 'Blog' },
-                { to: '#', label: 'Health Insurance' },
-                { to: '#', label: 'Claims Management' },
+                { to: '/contact', label: 'Contact Us' },
+                { to: '/get-quote', label: 'Get a Quote' },
               ].map((link, index) => (
-                <li key={index}>
-                  <a href={link.to} className="hover:text-white transition duration-200">
+                <li key={index} className="flex items-center">
+                  <FontAwesomeIcon icon={faChevronRight} className="h-5 w-5 mr-2 text-white" />
+                  <NavLink 
+                    to={link.to} 
+                    className={({ isActive }) => 
+                      `block hover:text-white transition duration-200 transform hover:translate-x-2 ${
+                        isActive ? 'text-white font-semibold' : ''
+                      }`
+                    }
+                  >
                     {link.label}
-                  </a>
+                  </NavLink>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6">Contact Us</h3>
-            <ul className="space-y-3 text-base sm:text-lg">
+          {/* Personal Insurance */}
+          <div className="flex flex-col">
+            <h3 className="text-xl font-semibold text-white mb-4">Personal Insurance</h3>
+            <ul className="space-y-2 text-base text-gray-300">
+              {[
+                { label: "Health Insurance", path: "/insurance/personal/health" },
+                { label: "Car Insurance", path: "/insurance/personal/car" },
+                { label: "Two Wheelers Insurance", path: "/insurance/personal/two-wheelers" },
+                { label: "Commercial Vehicle Insurance", path: "/insurance/personal/commercial-vehicle" },
+                { label: "Mobile Insurance", path: "/insurance/personal/mobile" },
+              ].map((item, index) => (
+                <li key={index} className="flex items-center">
+                  <FontAwesomeIcon icon={faChevronRight} className="h-5 w-5 mr-2 text-white" />
+                  <NavLink
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `block transition duration-200 transform hover:translate-x-2 ${
+                        isActive ? 'text-white font-semibold' : 'hover:text-white'
+                      }`
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Business & Group Insurance */}
+          <div className="flex flex-col">
+            <h3 className="text-xl font-semibold text-white mb-4">Business & Group Insurance</h3>
+            <ul className="space-y-2 text-base text-gray-300">
+              {[
+                { label: "Marine Insurance", path: "/insurance/business/marine" },
+                { label: "Bharat Sookshma Udyam Suraksha (Standard Fire Policy)", path: "/insurance/business/bharat-sookshma" },
+                { label: "Burglary Insurance Policy", path: "/insurance/business/burglary" },
+                { label: "Employee Compensation Insurance Policy", path: "/insurance/business/employee-compensation" },
+                { label: "Group Mediclaim Insurance Policy", path: "/insurance/business/group-mediclaim" },
+                { label: "MBD Insurance Policy (Machinery Breakdown)", path: "/insurance/business/mbd" },
+                { label: "All Risk/Group Affinity Insurance Policy", path: "/insurance/business/all-risk" },
+                { label: "Bharat Griha Raksha/Home Insurance Policy", path: "/insurance/business/bharat-griha-raksha" },
+                { label: "Shop Insurance Policy", path: "/insurance/business/shop" },
+              ].map((item, index) => (
+                <li key={index} className="flex items-center">
+                  <FontAwesomeIcon icon={faChevronRight} className="h-5 w-5 mr-2 text-white" />
+                  <NavLink
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `block transition duration-200 transform hover:translate-x-2 ${
+                        isActive ? 'text-white font-semibold' : 'hover:text-white'
+                      }`
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div className="flex flex-col">
+            <h3 className="text-xl font-semibold text-white mb-4">Legal</h3>
+            <ul className="space-y-2 text-base text-gray-300">
+              {[
+                { label: "Privacy Policy", path: "/contact/privacy-policy" },
+                { label: "Terms & Conditions", path: "/contact/terms-and-conditions" },
+                { label: "Refund Policy", path: "/contact/refund-policy" },
+              ].map((item, index) => (
+                <li key={index} className="flex items-center">
+                  <FontAwesomeIcon icon={faChevronRight} className="h-5 w-5 mr-2 text-white" />
+                  <NavLink
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `block transition duration-200 transform hover:translate-x-2 ${
+                        isActive ? 'text-white font-semibold' : 'hover:text-white'
+                      }`
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Us */}
+          <div className="flex flex-col">
+            <h3 className="text-xl font-semibold text-white mb-4">Contact Us</h3>
+            <ul className="space-y-2 text-base text-gray-300">
               <li className="flex items-center">
-                <EnvelopeIcon className="h-6 w-6 mr-2" />
-                <a href="mailto:sales.support@arshyaninsurance.com" className="hover:text-white transition duration-200">
+                <FontAwesomeIcon icon={faEnvelope} className="h-5 w-5 mr-2 text-white" />
+                <a 
+                  href="mailto:sales.support@arshyaninsurance.com" 
+                  className="block hover:text-white transition duration-200 transform hover:translate-x-2"
+                >
                   sales.support@arshyaninsurance.com
                 </a>
               </li>
               <li className="flex items-center">
-                <PhoneIcon className="h-6 w-6 mr-2" />
-                <a href="tel:+919870277495" className="hover:text-white transition duration-200">
+                <FontAwesomeIcon icon={faPhone} className="h-5 w-5 mr-2 text-white" />
+                <a 
+                  href="tel:+919870277495" 
+                  className="block hover:text-white transition duration-200 transform hover:translate-x-2"
+                >
                   +91-9870277495
                 </a>
               </li>
               <li className="flex items-center">
-                <PhoneIcon className="h-6 w-6 mr-2" />
-                <a href="tel:+911143592951" className="hover:text-white transition duration-200">
+                <FontAwesomeIcon icon={faPhone} className="h-5 w-5 mr-2 text-white" />
+                <a 
+                  href="tel:+911143592951" 
+                  className="block hover:text-white transition duration-200 transform hover:translate-x-2"
+                >
                   +9111-43592951
                 </a>
               </li>
-              <li className="flex items-center">
-                <MapPinIcon className="h-6 w-6 mr-2" />
-                <span>Office No. 212, 1st Floor, Block-G3, Opposite DDA Market, Sector 16, Rohini, New Delhi - 110089</span>
+              <li className="flex items-start">
+                <FontAwesomeIcon icon={faMapMarkerAlt} className="h-12 w-12 mr-2 text-white mt-1" />
+                <span className="block text-gray-300">
+                  Office No. 212, 1st Floor, Block-G3, Opposite DDA Market, Sector 16, Rohini, New Delhi - 110089
+                </span>
               </li>
             </ul>
           </div>
         </div>
-        <div className="mt-8 sm:mt-12 border-t border-blue-700 pt-4 text-center">
-          <p className="text-base sm:text-lg">&copy; {new Date().getFullYear()} Arshyan Insurance Co. All rights reserved.</p>
+
+        {/* Social Media */}
+        <div className="mt-12 border-t border-gray-700 pt-6">
+          <div className="flex justify-center space-x-4">
+            {[
+              { 
+                icon: FaFacebook, 
+                label: 'Facebook', 
+                href: 'https://www.facebook.com/yourcompany' 
+              },
+              { 
+                icon: FaTwitter, 
+                label: 'Twitter', 
+                href: 'https://www.twitter.com/yourcompany' 
+              },
+              { 
+                icon: FaLinkedin, 
+                label: 'LinkedIn', 
+                href: 'https://www.linkedin.com/company/yourcompany' 
+              },
+            ].map((social, index) => (
+              <a 
+                key={index} 
+                href={social.href} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-300 hover:text-white transition duration-200 transform hover:scale-110"
+                aria-label={social.label}
+              >
+                <social.icon className="h-6 w-6" />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-6 border-t border-gray-700 pt-6 text-center">
+          <p className="text-base text-gray-400">&copy; {new Date().getFullYear()} Arshyan Insurance Co. All rights reserved.</p>
         </div>
       </div>
     </footer>
