@@ -20,9 +20,9 @@ const GroupMediclaimInsurance = () => {
             alt="Group Mediclaim Insurance Banner"
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Group Mediclaim Insurance</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Arshyan Group Mediclaim Insurance</h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Provide comprehensive health coverage for your employees and their families.
+            Ensure the health and well-being of your employees and their families with Arshyan’s comprehensive Group Mediclaim Insurance.
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
@@ -34,7 +34,7 @@ const GroupMediclaimInsurance = () => {
           </motion.div>
         </motion.section>
 
-        {/* Basics Section */}
+        {/* Key Features Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -42,17 +42,18 @@ const GroupMediclaimInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Understanding Group Mediclaim
+            Key Features
           </h2>
-          <p className="text-base text-gray-600 mb-4">
-            Group mediclaim insurance offers health coverage for employees, enhancing morale and ensuring medical support for workplace wellness.
+          <p className="text-base text-gray-600 mb-4 text-center">
+            Our Group Mediclaim Insurance Policy provides extensive health coverage to support your workforce and their families.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { title: 'Hospitalization', desc: 'Covers inpatient care and surgeries.' },
-              { title: 'Outpatient Care', desc: 'Includes doctor visits and diagnostics.' },
-              { title: 'Maternity Benefits', desc: 'Covers prenatal and delivery costs.' },
-              { title: 'Preventive Care', desc: 'Includes check-ups and vaccinations.' },
+              { title: 'Hospitalization Coverage', desc: 'Covers inpatient hospitalization expenses, including room charges, doctor fees, and medical tests.' },
+              { title: 'Pre and Post-Hospitalization', desc: 'Covers medical expenses 30 days before and 60 days after hospitalization.' },
+              { title: 'Day-care Procedures', desc: 'Covers treatments like cataract surgeries, chemotherapy, and dialysis without a 24-hour hospital stay.' },
+              { title: 'Cashless Treatment', desc: 'Access a network of hospitals for cashless treatment, eliminating upfront payments.' },
+              { title: 'Family Coverage', desc: 'Option to extend coverage to employees’ spouses, children, and dependent parents.' },
             ].map((item) => (
               <div key={item.title} className="flex items-start">
                 <HeartIcon className="h-8 w-8 text-blue-600 mr-4" />
@@ -65,99 +66,62 @@ const GroupMediclaimInsurance = () => {
           </div>
         </motion.section>
 
-        {/* Coverage Details */}
+        {/* Policy Benefits Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-white rounded-lg shadow-md p-4 sm:p-8 mb-12"
+          className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Coverage Details
+            Policy Benefits
           </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm sm:text-base text-gray-600 hidden sm:table">
-              <thead>
-                <tr className="bg-blue-100">
-                  <th className="p-2 sm:p-4 text-left">Coverage Type</th>
-                  <th className="p-2 sm:p-4 text-left">Details</th>
-                  <th className="p-2 sm:p-4 text-left">Limit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { type: 'Hospitalization', details: 'Inpatient care and surgeries', limit: 'Up to $50,000' },
-                  { type: 'Outpatient Care', details: 'Doctor visits, diagnostics', limit: 'Up to $5,000' },
-                  { type: 'Maternity', details: 'Prenatal, delivery, newborn care', limit: 'Up to $10,000' },
-                  { type: 'Preventive Care', details: 'Check-ups, vaccinations', limit: 'Unlimited' },
-                ].map((row) => (
-                  <motion.tr
-                    key={row.type}
-                    className="border-b"
-                    whileHover={{ backgroundColor: '#f0f9ff' }}
-                  >
-                    <td className="p-2 sm:p-4 flex items-center">
-                      <HeartIcon className="h-5 sm:h-6 w-5 sm:w-6 text-blue-600 mr-2" />
-                      {row.type}
-                    </td>
-                    <td className="p-2 sm:p-4">{row.details}</td>
-                    <td className="p-2 sm:p-4">{row.limit}</td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
-            {/* Mobile view */}
-            <div className="sm:hidden space-y-4">
-              {[
-                { type: 'Hospitalization', details: 'Inpatient care and surgeries', limit: 'Up to $50,000' },
-                { type: 'Outpatient Care', details: 'Doctor visits, diagnostics', limit: 'Up to $5,000' },
-                { type: 'Maternity', details: 'Prenatal, delivery, newborn care', limit: 'Up to $10,000' },
-                { type: 'Preventive Care', details: 'Check-ups, vaccinations', limit: 'Unlimited' },
-              ].map((row) => (
-                <motion.div
-                  key={row.type}
-                  className="border rounded-lg p-4 bg-blue-50"
-                  whileHover={{ backgroundColor: '#f0f9ff' }}
-                >
-                  <div className="flex items-center mb-2">
-                    <HeartIcon className="h-5 w-5 text-blue-600 mr-2" />
-                    <h3 className="text-lg font-semibold text-gray-800">{row.type}</h3>
-                  </div>
-                  <p className="text-sm text-gray-600"><span className="font-semibold">Details:</span> {row.details}</p>
-                  <p className="text-sm text-gray-600"><span className="font-semibold">Limit:</span> {row.limit}</p>
-                </motion.div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              { title: 'Comprehensive Health Benefits', desc: 'Covers a wide range of medical treatments to protect against rising healthcare costs.' },
+              { title: 'Maternity Benefits', desc: 'Includes coverage for childbirth and prenatal care expenses.' },
+              { title: 'Flexible Sum Insured', desc: 'Choose coverage amounts tailored to your business size and employee needs.' },
+              { title: 'Ambulance Expenses', desc: 'Reimbursement for emergency ambulance charges to the nearest hospital.' },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start">
+                <HeartIcon className="h-8 w-8 text-blue-600 mr-4" />
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+                  <p className="text-base text-gray-600">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.section>
 
-        {/* Wellness Tips */}
+        {/* Additional Features Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="bg-blue-50 p-8 rounded-lg mb-12"
+          className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Employee Wellness Tips
+            Additional Features
           </h2>
-          <ul className="text-base text-gray-600 space-y-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              'Offer regular health check-ups.',
-              'Promote stress management programs.',
-              'Provide gym or wellness subsidies.',
-              'Encourage healthy eating at work.',
-              'Organize mental health workshops.',
-            ].map((tip) => (
-              <li key={tip} className="flex items-center">
-                <HeartIcon className="h-6 w-6 text-blue-600 mr-2" />
-                {tip}
-              </li>
+              { title: 'No Claim Bonus', desc: 'Enjoy premium discounts or enhanced coverage for claim-free years.' },
+              { title: 'Wellness Programs', desc: 'Optional programs to promote preventive healthcare and reduce medical risks.' },
+              { title: 'OPD Coverage', desc: 'Optional coverage for outpatient treatments like consultations and diagnostics.' },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start">
+                <HeartIcon className="h-8 w-8 text-blue-600 mr-4" />
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+                  <p className="text-base text-gray-600">{item.desc}</p>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </motion.section>
 
-        {/* Case Study */}
+        {/* Why Choose Arshyan Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -165,44 +129,47 @@ const GroupMediclaimInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Real-World Example
+            Why Choose Arshyan Insurance?
           </h2>
-          <p className="text-base text-gray-600">
-            A company covered $15,000 for an employee’s surgery through group mediclaim, boosting employee satisfaction and retention.
-          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: 'Boost Employee Morale', desc: 'Enhance job satisfaction and retention with comprehensive health coverage.' },
+              { title: 'Affordable Premiums', desc: 'Tailored plans for businesses of all sizes at competitive rates.' },
+              { title: 'Customizable Plans', desc: 'Flexible options to include critical illness, personal accident, and more.' },
+              { title: '24/7 Customer Support', desc: 'Dedicated assistance for claims and hospital coordination.' },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start">
+                <HeartIcon className="h-8 w-8 text-blue-600 mr-4" />
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+                  <p className="text-base text-gray-600">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </motion.section>
 
-        {/* FAQs */}
+        {/* Call-to-Action Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.0 }}
-          className="bg-blue-50 p-8 rounded-lg"
+          className="bg-white rounded-lg shadow-md p-8 text-center"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Frequently Asked Questions
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
+            Secure the Health of Your Workforce
           </h2>
-          <div className="space-y-4">
-            {[
-              {
-                question: 'Can families be included?',
-                answer: 'Yes, plans can cover employees’ spouses and children.',
-              },
-              {
-                question: 'How are premiums paid?',
-                answer: 'Employers typically pay, with optional employee contributions.',
-              },
-              {
-                question: 'What’s the claim process?',
-                answer: 'Submit claims via our portal or contact our 24/7 support.',
-              },
-            ].map((faq) => (
-              <div key={faq.question} className="border-b border-gray-200 pb-4">
-                <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
-                <p className="text-base text-gray-600">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
+          <p className="text-base text-gray-600 mb-6">
+            With Arshyan Group Mediclaim Insurance, provide your employees with the best healthcare, fostering a healthier and more productive workplace. Get started today!
+          </p>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to="/quote"
+              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
+            >
+              Get a Quote
+            </Link>
+          </motion.div>
         </motion.section>
       </div>
     </div>

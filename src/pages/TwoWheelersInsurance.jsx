@@ -20,9 +20,9 @@ const TwoWheelersInsurance = () => {
             alt="Two Wheelers Insurance Banner"
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Two Wheeler Insurance</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Arshyan Bike Insurance</h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Ride with confidence knowing your bike or scooter is protected against accidents and theft.
+            Owning a bike brings freedom, convenience, and joy. Ride worry-free with Arshyan Bike Insurance, protecting you from accidents, theft, and liabilities.
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
@@ -34,7 +34,7 @@ const TwoWheelersInsurance = () => {
           </motion.div>
         </motion.section>
 
-        {/* Two-Wheeler Insurance Benefits */}
+        {/* Key Benefits Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -42,17 +42,15 @@ const TwoWheelersInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Benefits of Two-Wheeler Insurance
+            Key Benefits of Arshyan Bike Insurance
           </h2>
-          <p className="text-base text-gray-600 mb-4">
-            Two-wheeler insurance is mandatory and protects riders from financial losses due to accidents, theft, or third-party damages. It also offers personal accident coverage for added security.
-          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { title: 'Accident Coverage', desc: 'Covers damages from collisions.' },
-              { title: 'Theft Protection', desc: 'Compensation for stolen vehicles.' },
-              { title: 'Third-Party Liability', desc: 'Covers damages to others.’ property.' },
-              { title: 'Personal Accident', desc: 'Support for rider injuries.' },
+              { title: 'Comprehensive Coverage', desc: 'Protection against damage due to accidents, theft, fire, or natural disasters like floods and earthquakes.' },
+              { title: 'Third-Party Liability', desc: 'Coverage for legal liabilities from injuries or damages caused to third parties.' },
+              { title: 'Personal Accident Cover', desc: 'Financial protection for the rider in case of accidental injury, disability, or death.' },
+              { title: 'Easy Claim Process', desc: 'Hassle-free and quick claim settlement to minimize inconvenience.' },
+              { title: 'Add-Ons', desc: 'Customize with options like zero depreciation cover, roadside assistance, and engine protection.' },
             ].map((item) => (
               <div key={item.title} className="flex items-start">
                 <BoltIcon className="h-8 w-8 text-blue-600 mr-4" />
@@ -65,7 +63,7 @@ const TwoWheelersInsurance = () => {
           </div>
         </motion.section>
 
-        {/* Image Gallery */}
+        {/* Why Choose Arshyan Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -73,83 +71,46 @@ const TwoWheelersInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Covered Vehicles
+            Why Choose Arshyan Bike Insurance?
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { name: 'Motorcycles', img: 'https://via.placeholder.com/300x200?text=Motorcycle' },
-              { name: 'Scooters', img: 'https://via.placeholder.com/300x200?text=Scooter' },
-              { name: 'E-Bikes', img: 'https://via.placeholder.com/300x200?text=E-Bike' },
-            ].map((vehicle) => (
-              <motion.div
-                key={vehicle.name}
-                whileHover={{ scale: 1.05 }}
-                className="rounded-lg overflow-hidden shadow-md"
-              >
-                <img src={vehicle.img} alt={vehicle.name} className="w-full h-48 object-cover" />
-                <p className="text-base text-gray-800 font-semibold p-4">{vehicle.name}</p>
-              </motion.div>
+              { title: 'Affordable Premiums', desc: 'Flexible and cost-effective premium options to suit your budget.' },
+              { title: 'Nationwide Network', desc: 'Access to a vast network of partner garages for cashless repairs.' },
+              { title: 'Customer Support', desc: '24/7 assistance for claims, renewals, and insurance-related queries.' },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start">
+                <BoltIcon className="h-8 w-8 text-blue-600 mr-4" />
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+                  <p className="text-base text-gray-600">{item.desc}</p>
+                </div>
+              </div>
             ))}
           </div>
         </motion.section>
 
-        {/* Maintenance Tips */}
+        {/* Call-to-Action Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="bg-blue-50 p-8 rounded-lg mb-12"
+          className="bg-white rounded-lg shadow-md p-8 text-center"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Bike Maintenance Tips
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
+            Ride Worry-Free
           </h2>
-          <ul className="text-base text-gray-600 space-y-2">
-            {[
-              'Check tire pressure monthly.',
-              'Service brakes regularly.',
-              'Clean and lubricate the chain.',
-              'Inspect lights and signals before rides.',
-              'Use a secure lock to prevent theft.',
-            ].map((tip) => (
-              <li key={tip} className="flex items-center">
-                <BoltIcon className="h-6 w-6 text-blue-600 mr-2" />
-                {tip}
-              </li>
-            ))}
-          </ul>
-        </motion.section>
-
-        {/* Rider FAQ */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="bg-white rounded-lg shadow-md p-8"
-        >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Rider FAQs
-          </h2>
-          <div className="space-y-4">
-            {[
-              {
-                question: 'Is two-wheeler insurance mandatory?',
-                answer: 'Yes, third-party insurance is legally required in most regions.',
-              },
-              {
-                question: 'What if my bike is damaged in an accident?',
-                answer: 'Comprehensive plans cover repair costs, subject to your policy’s terms.',
-              },
-              {
-                question: 'Does insurance cover theft?',
-                answer: 'Yes, comprehensive plans include theft coverage.',
-              },
-            ].map((faq) => (
-              <div key={faq.question} className="border-b border-gray-200 pb-4">
-                <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
-                <p className="text-base text-gray-600">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
+          <p className="text-base text-gray-600 mb-6">
+            Stay protected and focus on enjoying the road ahead with Arshyan Bike Insurance.
+          </p>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to="/quote"
+              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
+            >
+              Get a Quote
+            </Link>
+          </motion.div>
         </motion.section>
       </div>
     </div>

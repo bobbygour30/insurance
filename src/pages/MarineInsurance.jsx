@@ -1,10 +1,96 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TruckIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import assets from '../assets/assets';
 
 const MarineInsurance = () => {
+  const [activeClause, setActiveClause] = useState('A');
+
+  const clauses = {
+    A: {
+      title: 'Institute Cargo Clause - ICC (A)',
+      coverage: [
+        'Fire or explosion',
+        'Derailment of shipping vehicle on road',
+        'Vessel being stranded, grounded, capsized or sunk',
+        'Overturning or derailment of land conveyance',
+        'Collision or contact of vessel craft with external object (other than water)',
+        'Discharge of cargo at the distress port',
+        'Earthquake, volcanic eruption or lightning',
+        'Theft, piracy',
+        'Pilferage',
+        'Non-delivery',
+        'Rough handling',
+        'General average',
+        'Jettison – intentional throwing overboard of cargo or ship parts to save the ship or cargo',
+        'Entry of sea, river, or lake water into the vessel',
+        'Total loss of package lost overboard or dropped whilst loading or unloading from vessel',
+      ],
+      exclusions: [
+        'Loss caused by willful misconduct of the insured',
+        'Ordinary leakage, wear and tear',
+        'Loss caused by inherent vice or nature of the subject matter (e.g., perishable commodities like fruits, vegetables)',
+        'Loss caused by delay, even if caused by an insured risk',
+        'Loss arising from insolvency or financial default of vessel owners, operators, etc.',
+        'Loss or damage due to inadequate packing',
+        'War peril (can be covered with extra premium)',
+        'Strikes, riots, lock-out, civil commotions, and terrorism (SRCC) (can be covered with extra premium)',
+        'Deliberate damage by wrongful act (malicious damage) is automatically covered under ICC (A)',
+      ],
+    },
+    B: {
+      title: 'Institute Cargo Clause - ICC (B)',
+      coverage: [
+        'Fire or explosion',
+        'Derailment of shipping vehicle on road',
+        'Vessel being stranded, grounded, capsized or sunk',
+        'Overturning or derailment of land conveyance',
+        'Collision or contact of vessel craft with external object (other than water)',
+        'Discharge of cargo at the distress port',
+        'General average',
+        'Jettison – intentional throwing overboard of cargo or ship parts to save the ship or cargo',
+        'Entry of sea, river, or lake water into the vessel',
+        'Total loss of package lost overboard or dropped whilst loading or unloading from vessel',
+      ],
+      exclusions: [
+        'Loss caused by willful misconduct of the insured',
+        'Ordinary leakage, wear and tear',
+        'Loss caused by inherent vice or nature of the subject matter (e.g., perishable commodities like fruits, vegetables)',
+        'Loss caused by delay, even if caused by an insured risk',
+        'Deliberate damage by wrongful act (malicious damage) (can be covered with extra premium)',
+        'Loss arising from insolvency or financial default of vessel owners, operators, etc.',
+        'Loss or damage due to inadequate packing',
+        'War peril (can be covered with extra premium)',
+        'Strikes, riots, lock-out, civil commotions, and terrorism (SRCC) (can be covered with extra premium)',
+      ],
+    },
+    C: {
+      title: 'Institute Cargo Clause - ICC (C)',
+      coverage: [
+        'Fire or explosion',
+        'Derailment of shipping vehicle on road',
+        'Vessel being stranded, grounded, capsized or sunk',
+        'Overturning or derailment of land conveyance',
+        'Collision or contact of vessel craft with external object (other than water)',
+        'Discharge of cargo at the distress port',
+        'General average',
+        'Jettison – intentional throwing overboard of cargo or ship parts to save the ship or cargo',
+      ],
+      exclusions: [
+        'Loss caused by willful misconduct of the insured',
+        'Ordinary leakage, wear and tear',
+        'Loss caused by inherent vice or nature of the subject matter (e.g., perishable commodities like fruits, vegetables)',
+        'Loss caused by delay, even if caused by an insured risk',
+        'Deliberate damage by wrongful act (malicious damage) (can be covered with extra premium)',
+        'Loss arising from insolvency or financial default of vessel owners, operators, etc.',
+        'Loss or damage due to inadequate packing',
+        'War peril (can be covered with extra premium)',
+        'Strikes, riots, lock-out, civil commotions, and terrorism (SRCC) (can be covered with extra premium)',
+      ],
+    },
+  };
+
   return (
     <div className="bg-blue-50 min-h-screen pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -20,9 +106,9 @@ const MarineInsurance = () => {
             alt="Marine Insurance Banner"
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Marine Insurance</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Arshyan Marine Insurance</h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Protect your cargo, vessels, and logistics operations during transit by sea, air, or land.
+            Protect your cargo, vessels, and logistics operations with Arshyan Marine Insurance, covering transit by sea, air, or land.
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
@@ -34,7 +120,7 @@ const MarineInsurance = () => {
           </motion.div>
         </motion.section>
 
-        {/* Marine Insurance Basics */}
+        {/* Marine Insurance Overview */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -44,15 +130,13 @@ const MarineInsurance = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
             Understanding Marine Insurance
           </h2>
-          <p className="text-base text-gray-600 mb-4">
-            Marine insurance covers losses or damages to cargo, vessels, and terminals during transit. It’s essential for businesses involved in shipping, import/export, or logistics.
+          <p className="text-base text-gray-600 mb-4 text-center">
+            Marine insurance, offered by Arshyan Insurance Services, includes Marine Hull Insurance for vessels and Marine Cargo Insurance for goods in transit. It covers risks during sea, air, or land transport, ensuring protection for your business.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { title: 'Cargo Coverage', desc: 'Protects goods against loss or damage.' },
-              { title: 'Vessel Protection', desc: 'Covers ships and boats during transit.' },
-              { title: 'Freight Liability', desc: 'Compensates for lost freight revenue.' },
-              { title: 'Third-Party Risks', desc: 'Covers damages to other parties.' },
+              { title: 'Marine Hull Insurance', desc: 'Covers vessels and ships against damage or loss.' },
+              { title: 'Marine Cargo Insurance', desc: 'Protects goods during transit by sea, air, or land.' },
             ].map((item) => (
               <div key={item.title} className="flex items-start">
                 <TruckIcon className="h-8 w-8 text-blue-600 mr-4" />
@@ -65,99 +149,87 @@ const MarineInsurance = () => {
           </div>
         </motion.section>
 
-        {/* Coverage Details */}
+        {/* Institute Cargo Clauses Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-white rounded-lg shadow-md p-4 sm:p-8 mb-12"
+          className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Coverage Details
+            Institute Cargo Clauses
           </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm sm:text-base text-gray-600 hidden sm:table">
-              <thead>
-                <tr className="bg-blue-100">
-                  <th className="p-2 sm:p-4 text-left">Coverage Type</th>
-                  <th className="p-2 sm:p-4 text-left">Details</th>
-                  <th className="p-2 sm:p-4 text-left">Limit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { type: 'Cargo Loss', details: 'Damage or loss of goods', limit: 'Up to $100,000' },
-                  { type: 'Vessel Damage', details: 'Repairs for ships or boats', limit: 'Up to $50,000' },
-                  { type: 'Freight Loss', details: 'Lost revenue from freight', limit: 'Up to $20,000' },
-                  { type: 'Liability', details: 'Third-party damages', limit: 'Up to $1M' },
-                ].map((row) => (
-                  <motion.tr
-                    key={row.type}
-                    className="border-b"
-                    whileHover={{ backgroundColor: '#f0f9ff' }}
-                  >
-                    <td className="p-2 sm:p-4 flex items-center">
-                      <TruckIcon className="h-5 sm:h-6 w-5 sm:w-6 text-blue-600 mr-2" />
-                      {row.type}
-                    </td>
-                    <td className="p-2 sm:p-4">{row.details}</td>
-                    <td className="p-2 sm:p-4">{row.limit}</td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
-            {/* Mobile view */}
-            <div className="sm:hidden space-y-4">
-              {[
-                { type: 'Cargo Loss', details: 'Damage or loss of goods', limit: 'Up to $100,000' },
-                { type: 'Vessel Damage', details: 'Repairs for ships or boats', limit: 'Up to $50,000' },
-                { type: 'Freight Loss', details: 'Lost revenue from freight', limit: 'Up to $20,000' },
-                { type: 'Liability', details: 'Third-party damages', limit: 'Up to $1M' },
-              ].map((row) => (
-                <motion.div
-                  key={row.type}
-                  className="border rounded-lg p-4 bg-blue-50"
-                  whileHover={{ backgroundColor: '#f0f9ff' }}
-                >
-                  <div className="flex items-center mb-2">
-                    <TruckIcon className="h-5 w-5 text-blue-600 mr-2" />
-                    <h3 className="text-lg font-semibold text-gray-800">{row.type}</h3>
-                  </div>
-                  <p className="text-sm text-gray-600"><span className="font-semibold">Details:</span> {row.details}</p>
-                  <p className="text-sm text-gray-600"><span className="font-semibold">Limit:</span> {row.limit}</p>
-                </motion.div>
-              ))}
+          <div className="flex justify-center space-x-4 mb-6">
+            {['A', 'B', 'C'].map((clause) => (
+              <button
+                key={clause}
+                onClick={() => setActiveClause(clause)}
+                className={`px-4 py-2 rounded-md text-base font-semibold transition duration-300 ${
+                  activeClause === clause ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+                }`}
+              >
+                ICC ({clause})
+              </button>
+            ))}
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">{clauses[activeClause].title}</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="text-base font-semibold text-gray-800 mb-2">Covered Risks</h4>
+                <ul className="text-base text-gray-600 space-y-2">
+                  {clauses[activeClause].coverage.map((item) => (
+                    <li key={item} className="flex items-center">
+                      <TruckIcon className="h-6 w-6 text-blue-600 mr-2" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-base font-semibold text-gray-800 mb-2">General Exclusions</h4>
+                <ul className="text-base text-gray-600 space-y-2">
+                  {clauses[activeClause].exclusions.map((item) => (
+                    <li key={item} className="flex items-center">
+                      <TruckIcon className="h-6 w-6 text-blue-600 mr-2" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </motion.section>
 
-        {/* Shipping Tips */}
+        {/* Types of Marine Insurance Policies */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="bg-blue-50 p-8 rounded-lg mb-12"
+          className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Shipping Safety Tips
+            Types of Marine Insurance Policies
           </h2>
-          <ul className="text-base text-gray-600 space-y-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              'Secure cargo with proper packaging.',
-              'Use tracking systems for shipments.',
-              'Verify carrier insurance coverage.',
-              'Plan routes to avoid high-risk areas.',
-              'Conduct regular vessel maintenance.',
-            ].map((tip) => (
-              <li key={tip} className="flex items-center">
-                <TruckIcon className="h-6 w-6 text-blue-600 mr-2" />
-                {tip}
-              </li>
+              { title: 'Open Cover', desc: 'Covers all marine transits for export or import during a 12-month period.' },
+              { title: 'Specific Voyage Policy', desc: 'Customized coverage for specific voyages based on duration and route.' },
+              { title: 'Open Policy (Floating Policy)', desc: 'Covers all shipments within its scope for a set period, with declarations reducing the sum insured.' },
+              { title: 'Sales Turn Over Policy (STOP)', desc: 'Seamless coverage for raw materials, semi-finished, and finished products from purchase to final destination, charged based on sales turnover.' },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start">
+                <TruckIcon className="h-8 w-8 text-blue-600 mr-4" />
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+                  <p className="text-base text-gray-600">{item.desc}</p>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </motion.section>
 
-        {/* Case Study */}
+        {/* Claim Process Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -165,44 +237,52 @@ const MarineInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Real-World Example
+            Document Checklist for Claim Settlement
           </h2>
-          <p className="text-base text-gray-600">
-            A logistics firm lost $50,000 in cargo due to a storm. Their marine insurance covered the loss, ensuring no financial impact and continued operations.
+          <p className="text-base text-gray-600 mb-4 text-center">
+            To process a marine insurance claim, please provide the following documents:
           </p>
+          <ul className="text-base text-gray-600 space-y-2">
+            {[
+              'Intimation to the Insurance company',
+              'The original policy or certificate of insurance',
+              'Bill of Lading: Evidence that goods were shipped, including cargo particulars',
+              'Invoice: Evidences the terms of sale',
+              'Survey Report',
+              'Copy of Protest: Required if loss or damage is caused by a sea peril',
+              'Letter of Subrogation: Transfers claimant rights against a third party to insurers',
+              'Ship survey report, lost overboard certificate, or short landing certificate for cargo lost during loading/unloading',
+              'Bill of entry',
+            ].map((item) => (
+              <li key={item} className="flex items-center">
+                <TruckIcon className="h-6 w-6 text-blue-600 mr-2" />
+                {item}
+              </li>
+            ))}
+          </ul>
         </motion.section>
 
-        {/* FAQs */}
+        {/* Call-to-Action Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.0 }}
-          className="bg-blue-50 p-8 rounded-lg"
+          className="bg-white rounded-lg shadow-md p-8 text-center"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Frequently Asked Questions
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
+            Protect Your Shipments
           </h2>
-          <div className="space-y-4">
-            {[
-              {
-                question: 'What does marine insurance cover?',
-                answer: 'Covers cargo, vessels, and freight losses during transit by sea, air, or land.',
-              },
-              {
-                question: 'How do I file a marine claim?',
-                answer: 'Submit claims online or contact our 24/7 support team with shipment details.',
-              },
-              {
-                question: 'Does it cover international shipping?',
-                answer: 'Yes, coverage extends to global transit routes.',
-              },
-            ].map((faq) => (
-              <div key={faq.question} className="border-b border-gray-200 pb-4">
-                <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
-                <p className="text-base text-gray-600">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
+          <p className="text-base text-gray-600 mb-6">
+            With Arshyan Marine Insurance, ensure the safety of your cargo and vessels during transit. Get covered today!
+          </p>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to="/quote"
+              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
+            >
+              Get a Quote
+            </Link>
+          </motion.div>
         </motion.section>
       </div>
     </div>

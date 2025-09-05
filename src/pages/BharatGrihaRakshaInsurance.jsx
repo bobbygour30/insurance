@@ -22,7 +22,7 @@ const BharatGrihaRakshaInsurance = () => {
           />
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Bharat Griha Raksha Insurance</h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Protect your business properties and homes from damage and loss.
+            Your home is more than a structure—it’s a sanctuary. Arshyan Insurance’s Bharat Griha Raksha policy protects your home and its contents from unexpected events.
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
@@ -34,7 +34,7 @@ const BharatGrihaRakshaInsurance = () => {
           </motion.div>
         </motion.section>
 
-        {/* Basics Section */}
+        {/* Coverage Highlights */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -42,17 +42,17 @@ const BharatGrihaRakshaInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Understanding Bharat Griha Raksha
+            Coverage Highlights
           </h2>
           <p className="text-base text-gray-600 mb-4">
-            Bharat Griha Raksha protects business properties and homes from fire, natural disasters, and other damages, ensuring structural and content safety.
+            Our Bharat Griha Raksha policy offers comprehensive protection for your home and its contents against a wide range of risks.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { title: 'Structure Protection', desc: 'Covers building damage.' },
-              { title: 'Contents Coverage', desc: 'Protects furniture and equipment.' },
-              { title: 'Natural Disasters', desc: 'Includes floods and earthquakes.' },
-              { title: 'Add-Ons', desc: 'Covers temporary relocation costs.' },
+              { title: 'Fire and Allied Perils', desc: 'Covers damages from fire, lightning, explosion, and related perils.' },
+              { title: 'Natural Calamities', desc: 'Protection against floods, earthquakes, storms, cyclones, and landslides.' },
+              { title: 'Burglary and Theft', desc: 'Safeguards against loss of furniture, electronics, and valuables.' },
+              { title: 'Accidental Damage', desc: 'Covers accidental damage to home fixtures and contents.' },
             ].map((item) => (
               <div key={item.title} className="flex items-start">
                 <HomeIcon className="h-8 w-8 text-blue-600 mr-4" />
@@ -65,144 +65,102 @@ const BharatGrihaRakshaInsurance = () => {
           </div>
         </motion.section>
 
-        {/* Coverage Details */}
+        {/* Policy Benefits */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-white rounded-lg shadow-md p-4 sm:p-8 mb-12"
-        >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Coverage Details
-          </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm sm:text-base text-gray-600 hidden sm:table">
-              <thead>
-                <tr className="bg-blue-100">
-                  <th className="p-2 sm:p-4 text-left">Coverage Type</th>
-                  <th className="p-2 sm:p-4 text-left">Details</th>
-                  <th className="p-2 sm:p-4 text-left">Limit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { type: 'Structure Damage', details: 'Building repairs', limit: 'Up to $100,000' },
-                  { type: 'Contents Loss', details: 'Furniture, equipment', limit: 'Up to $50,000' },
-                  { type: 'Natural Disasters', details: 'Floods, earthquakes', limit: 'Up to $30,000' },
-                  { type: 'Relocation Costs', details: 'Temporary accommodation', limit: 'Up to $10,000' },
-                ].map((row) => (
-                  <motion.tr
-                    key={row.type}
-                    className="border-b"
-                    whileHover={{ backgroundColor: '#f0f9ff' }}
-                  >
-                    <td className="p-2 sm:p-4 flex items-center">
-                      <HomeIcon className="h-5 sm:h-6 w-5 sm:w-6 text-blue-600 mr-2" />
-                      {row.type}
-                    </td>
-                    <td className="p-2 sm:p-4">{row.details}</td>
-                    <td className="p-2 sm:p-4">{row.limit}</td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
-            {/* Mobile view */}
-            <div className="sm:hidden space-y-4">
-              {[
-                { type: 'Structure Damage', details: 'Building repairs', limit: 'Up to $100,000' },
-                { type: 'Contents Loss', details: 'Furniture, equipment', limit: 'Up to $50,000' },
-                { type: 'Natural Disasters', details: 'Floods, earthquakes', limit: 'Up to $30,000' },
-                { type: 'Relocation Costs', details: 'Temporary accommodation', limit: 'Up to $10,000' },
-              ].map((row) => (
-                <motion.div
-                  key={row.type}
-                  className="border rounded-lg p-4 bg-blue-50"
-                  whileHover={{ backgroundColor: '#f0f9ff' }}
-                >
-                  <div className="flex items-center mb-2">
-                    <HomeIcon className="h-5 w-5 text-blue-600 mr-2" />
-                    <h3 className="text-lg font-semibold text-gray-800">{row.type}</h3>
-                  </div>
-                  <p className="text-sm text-gray-600"><span className="font-semibold">Details:</span> {row.details}</p>
-                  <p className="text-sm text-gray-600"><span className="font-semibold">Limit:</span> {row.limit}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Property Safety Tips */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
           className="bg-blue-50 p-8 rounded-lg mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Property Safety Tips
+            Policy Benefits
           </h2>
           <ul className="text-base text-gray-600 space-y-2">
             {[
-              'Install fire and smoke alarms.',
-              'Elevate equipment in flood-prone areas.',
-              'Conduct structural inspections regularly.',
-              'Secure windows and doors.',
-              'Maintain backup power systems.',
-            ].map((tip) => (
-              <li key={tip} className="flex items-center">
+              'Affordable premiums for extensive home protection.',
+              'Alternate accommodation expenses if your home is uninhabitable.',
+              'Customizable add-ons for valuable items, appliances, and jewelry.',
+              'Liability coverage for third-party accidents in your home.',
+            ].map((benefit) => (
+              <li key={benefit} className="flex items-center">
                 <HomeIcon className="h-6 w-6 text-blue-600 mr-2" />
-                {tip}
+                {benefit}
               </li>
             ))}
           </ul>
         </motion.section>
 
-        {/* Case Study */}
+        {/* Why Choose Arshyan Insurance */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="bg-white rounded-lg shadow-md p-8 mb-12"
+        >
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
+            Why Choose Arshyan Insurance?
+          </h2>
+          <ul className="text-base text-gray-600 space-y-2">
+            {[
+              'Comprehensive protection for your home and contents.',
+              'Hassle-free claims with quick and transparent settlements.',
+              'Flexible coverage options tailored to your needs.',
+              'Expert support for policy selection and claims assistance.',
+            ].map((reason) => (
+              <li key={reason} className="flex items-center">
+                <HomeIcon className="h-6 w-6 text-blue-600 mr-2" />
+                {reason}
+              </li>
+            ))}
+          </ul>
+        </motion.section>
+
+        {/* Additional Features */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="bg-white rounded-lg shadow-md p-8 mb-12"
+          className="bg-blue-50 p-8 rounded-lg mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Real-World Example
+            Additional Features
           </h2>
-          <p className="text-base text-gray-600">
-            An office recovered $60,000 after flood damage to its building and contents, thanks to Bharat Griha Raksha insurance.
-          </p>
+          <ul className="text-base text-gray-600 space-y-2">
+            {[
+              'Protection for both home structure and contents under one policy.',
+              'Coverage for firefighting costs during fire emergencies.',
+              'Lost rent reimbursement if your property becomes uninhabitable.',
+              'Home repair coverage for damages from insured events.',
+            ].map((feature) => (
+              <li key={feature} className="flex items-center">
+                <HomeIcon className="h-6 w-6 text-blue-600 mr-2" />
+                {feature}
+              </li>
+            ))}
+          </ul>
         </motion.section>
 
-        {/* FAQs */}
+        {/* Conclusion */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.0 }}
-          className="bg-blue-50 p-8 rounded-lg"
+          className="text-center bg-white rounded-lg shadow-md p-8"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Frequently Asked Questions
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
+            Secure Your Dream Home
           </h2>
-          <div className="space-y-4">
-            {[
-              {
-                question: 'Does it cover business and residential properties?',
-                answer: 'Yes, both are covered under this policy.',
-              },
-              {
-                question: 'What disasters are included?',
-                answer: 'Fire, floods, earthquakes, and other natural calamities.',
-              },
-              {
-                question: 'How do I file a claim?',
-                answer: 'Submit damage details via our portal or 24/7 support.',
-              },
-            ].map((faq) => (
-              <div key={faq.question} className="border-b border-gray-200 pb-4">
-                <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
-                <p className="text-base text-gray-600">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
+          <p className="text-base text-gray-600 max-w-3xl mx-auto">
+            With Arshyan Insurance’s Bharat Griha Raksha policy, protect your home and its contents from life’s uncertainties. Invest in peace of mind with comprehensive coverage tailored to your needs.
+          </p>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to="/quote"
+              className="mt-6 inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
+            >
+              Get Started Today
+            </Link>
+          </motion.div>
         </motion.section>
       </div>
     </div>

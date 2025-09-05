@@ -20,9 +20,9 @@ const MobileInsurance = () => {
             alt="Mobile Insurance Banner"
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Mobile Device Insurance</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Arshyan Mobile Insurance</h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Protect your smartphones and tablets from damage, theft, and technical failures.
+            Protect your smartphones and tablets with Arshyan Mobile Insurance, ensuring coverage for damage, theft, and technical failures.
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
@@ -34,7 +34,7 @@ const MobileInsurance = () => {
           </motion.div>
         </motion.section>
 
-        {/* Device Insurance Explained */}
+        {/* Key Features Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -42,17 +42,19 @@ const MobileInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Device Insurance Explained
+            Key Features of Arshyan Mobile Insurance
           </h2>
-          <p className="text-base text-gray-600 mb-4">
-            Mobile insurance covers repair or replacement costs for damaged, lost, or stolen devices. It’s essential for protecting expensive smartphones and tablets from everyday risks.
+          <p className="text-base text-gray-600 mb-4 text-center">
+            Our Electronic Equipment Insurance Policy offers comprehensive protection for your mobile devices, ensuring peace of mind.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { title: 'Accidental Damage', desc: 'Covers screen cracks and drops.' },
-              { title: 'Theft Protection', desc: 'Replaces stolen devices.' },
-              { title: 'Technical Failures', desc: 'Covers hardware or software issues.' },
-              { title: 'Fast Claims', desc: 'Quick repair or replacement process.' },
+              { title: 'Flexible Policy Terms', desc: 'Options for short-term (1 day) to long-term (3 years) coverage.' },
+              { title: 'New for Old Basis', desc: 'Sum insured options for replacing contents on a new-for-old basis.' },
+              { title: 'Smooth Claim Processing', desc: 'Fast and efficient claim processing for minimal disruption.' },
+              { title: 'Unlimited Partial Loss Claims', desc: 'Guaranteed unlimited claims for partial losses.' },
+              { title: 'No Depreciation Deduction', desc: 'No deduction for depreciation on partial or total loss claims.' },
+              { title: 'Coverage for Older Devices', desc: 'Insure mobile devices less than 3 years old.' },
             ].map((item) => (
               <div key={item.title} className="flex items-start">
                 <DevicePhoneMobileIcon className="h-8 w-8 text-blue-600 mr-4" />
@@ -63,72 +65,86 @@ const MobileInsurance = () => {
               </div>
             ))}
           </div>
+          <p className="text-base text-gray-600 mt-4 text-center">
+            <strong>Note:</strong> A deductible of INR 2,500 applies for each claim on portable equipment. Insurance policy wording shall apply.
+          </p>
         </motion.section>
 
-        {/* Protection Stats */}
+        {/* Claim Process Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-blue-50 p-8 rounded-lg mb-12"
+          className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Device Protection Stats
+            Claim Process
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-            {[
-              { stat: '60%', label: 'Phones damaged annually' },
-              { stat: '1 in 4', label: 'Devices lost or stolen' },
-              { stat: '48 hrs', label: 'Average claim processing time' },
-            ].map((item) => (
-              <div key={item.label}>
-                <h3 className="text-3xl font-bold text-blue-600">{item.stat}</h3>
-                <p className="text-base text-gray-600">{item.label}</p>
-              </div>
-            ))}
+          <p className="text-base text-gray-600 mb-4 text-center">
+            Contact us at +91-11-43592951 for claims-related services. Below are the required documents for filing a claim:
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">For Damage Claims</h3>
+              <ul className="text-base text-gray-600 space-y-2">
+                {[
+                  'Claim Form',
+                  'Purchase invoice for damaged item',
+                  'Repair estimate/quotation from Authorized Service Centre',
+                  'Photograph of damaged equipment',
+                  'Service engineer report from Authorized Service Centre',
+                  'Final Repair Bill',
+                  'Address proof & PAN card of Insured',
+                  'Cancelled Cheque copy/Passbook',
+                ].map((item) => (
+                  <li key={item} className="flex items-center">
+                    <DevicePhoneMobileIcon className="h-6 w-6 text-blue-600 mr-2" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">For Theft Claims</h3>
+              <ul className="text-base text-gray-600 space-y-2">
+                {[
+                  'Claim Form',
+                  'Purchase invoice for stolen item',
+                  'Copy of FIR under relevant section',
+                  'Address proof & PAN card of Insured',
+                  'Cancelled Cheque copy/Passbook',
+                ].map((item) => (
+                  <li key={item} className="flex items-center">
+                    <DevicePhoneMobileIcon className="h-6 w-6 text-blue-600 mr-2" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </motion.section>
 
-        {/* Repair vs Replace Guide */}
+        {/* Call-to-Action Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="bg-white rounded-lg shadow-md p-8 mb-12"
+          className="bg-white rounded-lg shadow-md p-8 text-center"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Repair vs. Replace
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
+            Protect Your Mobile Devices
           </h2>
-          <p className="text-base text-gray-600 mb-4">
-            When your device is damaged, should you repair or replace it? Our insurance helps you decide:
+          <p className="text-base text-gray-600 mb-6">
+            With Arshyan Mobile Insurance, safeguard your smartphones and tablets from unexpected damages and theft. Get covered today!
           </p>
-          <ul className="text-base text-gray-600 space-y-2">
-            {[
-              'Minor damage (e.g., cracked screen): Repair covered up to $200.',
-              'Major damage (e.g., water damage): Replacement if repair costs exceed value.',
-              'Theft or loss: Full replacement with same or similar model.',
-            ].map((item) => (
-              <li key={item} className="flex items-center">
-                <DevicePhoneMobileIcon className="h-6 w-6 text-blue-600 mr-2" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </motion.section>
-
-        {/* Customer Story */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="bg-blue-50 p-8 rounded-lg"
-        >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Customer Story
-          </h2>
-          <p className="text-base text-gray-600 text-center">
-            Riya dropped her phone, shattering the screen. Her mobile insurance covered a same-day repair, saving her $150 and keeping her connected.
-          </p>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to="/quote"
+              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
+            >
+              Purchase Now
+            </Link>
+          </motion.div>
         </motion.section>
       </div>
     </div>

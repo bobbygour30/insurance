@@ -123,38 +123,7 @@ const ContactUs = () => {
           </div>
         </motion.section>
 
-        {/* FAQ Section */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-blue-50 rounded-lg shadow-md p-8"
-        >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-4">
-            {[
-              {
-                question: 'How can I get a quote?',
-                answer: 'Visit our quote page or contact us directly for a personalized quote.',
-              },
-              {
-                question: 'What is the response time for inquiries?',
-                answer: 'We aim to respond within 24 hours during business days.',
-              },
-              {
-                question: 'Where can I find policy details?',
-                answer: 'Check our Legal section for Privacy Policy and Terms & Conditions.',
-              },
-            ].map((faq) => (
-              <div key={faq.question} className="border-b border-gray-200 pb-4">
-                <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
-                <p className="text-base text-gray-600">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </motion.section>
+        
       </div>
     </div>
   );

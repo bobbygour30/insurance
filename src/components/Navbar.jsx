@@ -186,7 +186,7 @@ const Navbar = () => {
                       path: "/insurance/personal/commercial-vehicle",
                     },
                     {
-                      label: "Mobile Insurance",
+                      label: "Mobile & Electronics Equipment's",
                       path: "/insurance/personal/mobile",
                     },
                   ].map((item) => (
@@ -434,7 +434,7 @@ const Navbar = () => {
                     path: "/insurance/personal/commercial-vehicle",
                   },
                   {
-                    label: "Mobile Insurance",
+                    label: "Mobile & Electronics Equipment's",
                     path: "/insurance/personal/mobile",
                   },
                 ].map((item) => (

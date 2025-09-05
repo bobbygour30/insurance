@@ -20,9 +20,9 @@ const AboutUs = () => {
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">About Us</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">About Arshyan Insurance</h1>
           <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-200">
-            Empowering lives with trusted health insurance solutions
+            Safeguarding your financial future with trusted insurance solutions
           </p>
         </div>
       </section>
@@ -31,22 +31,22 @@ const AboutUs = () => {
       <section className="py-12 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Our Story</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Our Journey</h2>
             <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600">
-              A journey to make healthcare accessible for all
+              Simplifying insurance for a secure future
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             <div>
               <img
                 src={assets.about}
-                alt="Our Story"
+                alt="Our Journey"
                 className="w-full h-64 sm:h-80 object-cover rounded-lg shadow-md"
               />
             </div>
             <div className="flex flex-col justify-center">
               <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                Founded in 2015, our company set out with a mission to simplify health insurance and make it accessible to everyone. Over the years, we’ve grown into a trusted provider, serving millions with innovative plans and a commitment to customer care. Our partnerships with top hospitals and dedication to transparency have made us a leader in the industry.
+                Founded with a mission to simplify the insurance buying process, Arshyan Insurance Services Private Limited has grown into a recognized name in the industry. Our founders brought together years of experience in financial planning and risk management to create an organization that puts the customer first. Over the years, we have built a reputation for transparency, trust, and reliability in our offerings, always staying true to our core values.
               </p>
               <a
                 href="#"
@@ -65,7 +65,7 @@ const AboutUs = () => {
           <div className="text-center mb-10 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Mission & Vision</h2>
             <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600">
-              Our commitment to your well-being
+              Empowering lives with accessible insurance
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
@@ -73,78 +73,53 @@ const AboutUs = () => {
               <HeartIcon className="h-10 w-10 text-blue-600 mx-auto mb-4" />
               <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 text-center">Our Mission</h3>
               <p className="mt-2 text-gray-600 text-sm sm:text-base text-center">
-                To provide affordable, comprehensive health insurance plans that ensure peace of mind and access to quality healthcare for all.
+                To provide clear, comprehensive, and easy-to-understand insurance solutions that offer peace of mind and financial security for all.
               </p>
             </div>
             <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
               <UsersIcon className="h-10 w-10 text-blue-600 mx-auto mb-4" />
               <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 text-center">Our Vision</h3>
               <p className="mt-2 text-gray-600 text-sm sm:text-base text-center">
-                To revolutionize health insurance by leveraging innovation and partnerships to create a healthier future for everyone.
+                To be a leading insurance provider in India, delivering innovative, affordable, and reliable solutions that empower individuals and businesses.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Our Team Section */}
+      {/* Why Choose Us Section */}
       <section className="py-12 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Meet Our Team</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Why Choose Arshyan?</h2>
             <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600">
-              Dedicated professionals driving our mission
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {[
-              {
-                name: 'Dr. Anita Sharma',
-                role: 'Chief Medical Officer',
-                image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330',
-              },
-              {
-                name: 'Rahul Kapoor',
-                role: 'CEO & Founder',
-                image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d',
-              },
-              {
-                name: 'Priya Mehra',
-                role: 'Head of Customer Success',
-                image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb',
-              },
-            ].map((member, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="h-24 w-24 sm:h-32 sm:w-32 rounded-full object-cover mx-auto mb-4"
-                />
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900">{member.name}</h3>
-                <p className="text-gray-600 text-sm sm:text-base">{member.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Values Section */}
-      <section className="py-12 sm:py-16 bg-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Our Values</h2>
-            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600">
-              The principles that guide us
+              Trusted insurance solutions tailored to your needs
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
-              { icon: ShieldCheckIcon, title: 'Integrity', desc: 'We uphold the highest standards of transparency.' },
-              { icon: HeartIcon, title: 'Care', desc: 'Your health and well-being are our priority.' },
-              { icon: UsersIcon, title: 'Community', desc: 'We build strong partnerships for better care.' },
-              { icon: ArrowRightIcon, title: 'Innovation', desc: 'Pioneering solutions for modern healthcare.' },
+              { 
+                icon: HeartIcon, 
+                title: 'Customer-Centric', 
+                desc: 'We place our clients at the heart of everything, ensuring a seamless experience from policy selection to claim settlement.' 
+              },
+              { 
+                icon: ShieldCheckIcon, 
+                title: 'Tailored Solutions', 
+                desc: 'Customized insurance plans designed to fit your unique lifestyle and financial goals.' 
+              },
+              { 
+                icon: ArrowRightIcon, 
+                title: 'Fast Claims', 
+                desc: 'Our efficient claim settlement process ensures quick payouts with minimal delays.' 
+              },
+              { 
+                icon: UsersIcon, 
+                title: 'Expert Team', 
+                desc: 'Our experienced advisors are always ready to guide you in selecting the best policies.' 
+              },
             ].map((value, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
+              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
                 <value.icon className="h-10 w-10 text-blue-600 mx-auto mb-4" />
                 <h3 className="text-lg sm:text-xl font-semibold text-gray-900">{value.title}</h3>
                 <p className="mt-2 text-gray-600 text-sm sm:text-base">{value.desc}</p>
@@ -154,11 +129,29 @@ const AboutUs = () => {
         </div>
       </section>
 
+      {/* Our Commitment to You Section */}
+      <section className="py-12 sm:py-16 bg-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Our Commitment to You</h2>
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600">
+              Ensuring your peace of mind and financial security
+            </p>
+          </div>
+          <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+            <ShieldCheckIcon className="h-10 w-10 text-blue-600 mx-auto mb-4" />
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed text-center">
+              At Arshyan Insurance Services Private Limited, our primary commitment is to ensure that our clients are well-protected and financially secure. We are constantly working towards improving our services, expanding our product offerings, and leveraging technology to provide better, faster, and more transparent services.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Call-to-Action Banner */}
       <section className="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Ready to Secure Your Health?</h2>
-          <p className="text-base sm:text-lg mb-4 sm:mb-6">Get a personalized quote or speak with our experts today!</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Ready to Secure Your Future?</h2>
+          <p className="text-base sm:text-lg mb-4 sm:mb-6">Get a personalized insurance quote or speak with our experts today!</p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <a
               href="#"

@@ -20,9 +20,9 @@ const BurglaryInsurance = () => {
             alt="Burglary Insurance Banner"
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Burglary Insurance</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Arshyan Burglary Insurance</h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Safeguard your business assets from theft and burglary with comprehensive coverage.
+            Protect your business from the financial impact of theft and burglary with Arshyan Insurance’s comprehensive coverage.
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
@@ -34,7 +34,7 @@ const BurglaryInsurance = () => {
           </motion.div>
         </motion.section>
 
-        {/* Basics Section */}
+        {/* Key Features Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -42,17 +42,17 @@ const BurglaryInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Understanding Burglary Insurance
+            Key Features
           </h2>
-          <p className="text-base text-gray-600 mb-4">
-            Burglary insurance covers losses from theft, break-ins, and damage caused during such incidents, protecting your inventory and equipment.
+          <p className="text-base text-gray-600 mb-4 text-center">
+            Our Burglary Insurance Policy safeguards your business assets, ensuring quick recovery from theft-related losses.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { title: 'Inventory Protection', desc: 'Covers stolen goods and stock.' },
-              { title: 'Equipment Coverage', desc: 'Replaces stolen or damaged equipment.' },
-              { title: 'Property Damage', desc: 'Covers damage from forced entry.' },
-              { title: 'Cash Protection', desc: 'Covers stolen cash on premises.' },
+              { title: 'Comprehensive Coverage', desc: 'Safeguards against losses from burglary, theft, or attempted theft of stock, valuables, and contents.' },
+              { title: 'Damage Repair', desc: 'Covers costs to repair damages to property caused during a break-in.' },
+              { title: 'Flexible Sum Insured', desc: 'Choose a sum insured tailored to your business needs for goods, cash, or equipment.' },
+              { title: 'Worldwide Employee Cover', desc: 'Extends protection to cover losses caused by employees during business travel.' },
             ].map((item) => (
               <div key={item.title} className="flex items-start">
                 <LockClosedIcon className="h-8 w-8 text-blue-600 mr-4" />
@@ -65,7 +65,7 @@ const BurglaryInsurance = () => {
           </div>
         </motion.section>
 
-        {/* Coverage Details */}
+        {/* Coverage Details Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -73,7 +73,7 @@ const BurglaryInsurance = () => {
           className="bg-white rounded-lg shadow-md p-4 sm:p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Coverage Details
+            What’s Covered
           </h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm sm:text-base text-gray-600 hidden sm:table">
@@ -81,15 +81,14 @@ const BurglaryInsurance = () => {
                 <tr className="bg-blue-100">
                   <th className="p-2 sm:p-4 text-left">Coverage Type</th>
                   <th className="p-2 sm:p-4 text-left">Details</th>
-                  <th className="p-2 sm:p-4 text-left">Limit</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  { type: 'Inventory Theft', details: 'Stolen goods and stock', limit: 'Up to $20,000' },
-                  { type: 'Equipment Theft', details: 'Stolen or damaged equipment', limit: 'Up to $15,000' },
-                  { type: 'Forced Entry Damage', details: 'Repairs for break-in damage', limit: 'Up to $5,000' },
-                  { type: 'Cash Loss', details: 'Stolen cash on premises', limit: 'Up to $10,000' },
+                  { type: 'Theft and Burglary', details: 'Loss or damage to insured items from burglary or break-ins.' },
+                  { type: 'Attempted Theft', details: 'Repairs for damages caused during an attempted burglary, including locks, doors, and windows.' },
+                  { type: 'Robbery and Hold-ups', details: 'Loss due to robbery or hold-ups within business premises.' },
+                  { type: 'Third-party Liability', details: 'Optional coverage for damages caused to neighboring businesses during a theft.' },
                 ].map((row) => (
                   <motion.tr
                     key={row.type}
@@ -101,7 +100,6 @@ const BurglaryInsurance = () => {
                       {row.type}
                     </td>
                     <td className="p-2 sm:p-4">{row.details}</td>
-                    <td className="p-2 sm:p-4">{row.limit}</td>
                   </motion.tr>
                 ))}
               </tbody>
@@ -109,10 +107,10 @@ const BurglaryInsurance = () => {
             {/* Mobile view */}
             <div className="sm:hidden space-y-4">
               {[
-                { type: 'Inventory Theft', details: 'Stolen goods and stock', limit: 'Up to $20,000' },
-                { type: 'Equipment Theft', details: 'Stolen or damaged equipment', limit: 'Up to $15,000' },
-                { type: 'Forced Entry Damage', details: 'Repairs for break-in damage', limit: 'Up to $5,000' },
-                { type: 'Cash Loss', details: 'Stolen cash on premises', limit: 'Up to $10,000' },
+                { type: 'Theft and Burglary', details: 'Loss or damage to insured items from burglary or break-ins.' },
+                { type: 'Attempted Theft', details: 'Repairs for damages caused during an attempted burglary, including locks, doors, and windows.' },
+                { type: 'Robbery and Hold-ups', details: 'Loss due to robbery or hold-ups within business premises.' },
+                { type: 'Third-party Liability', details: 'Optional coverage for damages caused to neighboring businesses during a theft.' },
               ].map((row) => (
                 <motion.div
                   key={row.type}
@@ -124,40 +122,40 @@ const BurglaryInsurance = () => {
                     <h3 className="text-lg font-semibold text-gray-800">{row.type}</h3>
                   </div>
                   <p className="text-sm text-gray-600"><span className="font-semibold">Details:</span> {row.details}</p>
-                  <p className="text-sm text-gray-600"><span className="font-semibold">Limit:</span> {row.limit}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </motion.section>
 
-        {/* Security Tips */}
+        {/* Policy Benefits Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="bg-blue-50 p-8 rounded-lg mb-12"
+          className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Security Tips
+            Policy Benefits
           </h2>
-          <ul className="text-base text-gray-600 space-y-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              'Install CCTV cameras at entry points.',
-              'Use high-quality locks and alarms.',
-              'Secure inventory in locked storage.',
-              'Conduct regular security audits.',
-              'Train staff on theft prevention.',
-            ].map((tip) => (
-              <li key={tip} className="flex items-center">
-                <LockClosedIcon className="h-6 w-6 text-blue-600 mr-2" />
-                {tip}
-              </li>
+              { title: 'Affordable Premiums', desc: 'Tailored premiums to suit businesses of all sizes.' },
+              { title: 'Quick Claims Process', desc: 'Hassle-free claims with swift assessments and settlements.' },
+              { title: 'Customizable Add-ons', desc: 'Enhance your policy with options like cash in transit or employee dishonesty coverage.' },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start">
+                <LockClosedIcon className="h-8 w-8 text-blue-600 mr-4" />
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+                  <p className="text-base text-gray-600">{item.desc}</p>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </motion.section>
 
-        {/* Case Study */}
+        {/* Why Choose Arshyan Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -165,44 +163,46 @@ const BurglaryInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Real-World Example
+            Why Choose Arshyan Insurance?
           </h2>
-          <p className="text-base text-gray-600">
-            A retail store lost $10,000 in inventory due to a break-in. Burglary insurance covered the loss and door repairs, minimizing financial impact.
-          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: 'Complete Protection', desc: 'Comprehensive coverage against burglary risks for peace of mind.' },
+              { title: 'Expert Assistance', desc: 'Professional guidance to choose the right policy and ensure a smooth claims process.' },
+              { title: 'Transparent Policies', desc: 'Clear and straightforward terms with no hidden clauses.' },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start">
+                <LockClosedIcon className="h-8 w-8 text-blue-600 mr-4" />
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+                  <p className="text-base text-gray-600">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </motion.section>
 
-        {/* FAQs */}
+        {/* Call-to-Action Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.0 }}
-          className="bg-blue-50 p-8 rounded-lg"
+          className="bg-white rounded-lg shadow-md p-8 text-center"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Frequently Asked Questions
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
+            Secure Your Business Assets
           </h2>
-          <div className="space-y-4">
-            {[
-              {
-                question: 'What qualifies as a burglary?',
-                answer: 'Theft involving forced entry into your premises.',
-              },
-              {
-                question: 'Does it cover employee theft?',
-                answer: 'No, employee theft requires a separate fidelity policy.',
-              },
-              {
-                question: 'How do I file a claim?',
-                answer: 'Submit a police report and claim details via our portal.',
-              },
-            ].map((faq) => (
-              <div key={faq.question} className="border-b border-gray-200 pb-4">
-                <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
-                <p className="text-base text-gray-600">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
+          <p className="text-base text-gray-600 mb-6">
+            With Arshyan Burglary Insurance, protect your inventory and equipment from theft and break-ins. Get started today!
+          </p>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to="/quote"
+              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
+            >
+              Get a Quote
+            </Link>
+          </motion.div>
         </motion.section>
       </div>
     </div>

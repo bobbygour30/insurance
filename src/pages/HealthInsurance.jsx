@@ -26,9 +26,9 @@ const HealthInsurance = () => {
             alt="Health Insurance Banner"
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Health Insurance</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Arshyan Health Insurance</h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Secure your family’s well-being with comprehensive medical coverage for emergencies, routine care, and more.
+            Health is wealth, and protecting it is essential. Secure your family’s future with comprehensive health insurance plans designed for peace of mind.
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
@@ -40,7 +40,7 @@ const HealthInsurance = () => {
           </motion.div>
         </motion.section>
 
-        {/* Health Insurance Basics */}
+        {/* Key Benefits Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -48,17 +48,19 @@ const HealthInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Understanding Health Insurance
+            Key Benefits of Arshyan Health Insurance
           </h2>
-          <p className="text-base text-gray-600 mb-4">
-            Health insurance covers medical expenses, from doctor visits to surgeries, ensuring you’re financially protected during health challenges. It includes preventive care to maintain wellness and emergency services for unexpected events.
+          <p className="text-base text-gray-600 mb-4 text-center">
+            Our policies provide financial protection against rising healthcare costs, offering access to quality treatment when you need it most.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { title: 'Hospitalization', desc: 'Covers inpatient care and surgeries.' },
-              { title: 'Outpatient Care', desc: 'Includes doctor visits and diagnostics.' },
-              { title: 'Preventive Care', desc: 'Free check-ups and vaccinations.' },
-              { title: 'Emergency Services', desc: 'Support for critical medical needs.' },
+              { title: 'Comprehensive Medical Coverage', desc: 'Covers hospitalization, pre- and post-hospitalization treatments, surgeries, and more.' },
+              { title: 'Cashless Treatment', desc: 'Access cashless treatment at our wide network of partner hospitals.' },
+              { title: 'Critical Illness Cover', desc: 'Lump-sum payout on diagnosis of life-threatening diseases like cancer or heart disease.' },
+              { title: 'Daycare Procedures', desc: 'Covers treatments like cataract surgery, chemotherapy, and dialysis.' },
+              { title: 'Maternity & Newborn Benefits', desc: 'Coverage for maternity expenses and newborn care.' },
+              { title: 'No Claim Bonus', desc: 'Increased coverage for every claim-free year at no extra cost.' },
             ].map((item) => (
               <div key={item.title} className="flex items-start">
                 <HeartIcon className="h-8 w-8 text-blue-600 mr-4" />
@@ -71,7 +73,7 @@ const HealthInsurance = () => {
           </div>
         </motion.section>
 
-        {/* Coverage Details */}
+        {/* Why Choose Arshyan Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -79,65 +81,28 @@ const HealthInsurance = () => {
           className="bg-white rounded-lg shadow-md p-4 sm:p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Coverage Details
+            Why Choose Arshyan Health Insurance?
           </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm sm:text-base text-gray-600 hidden sm:table">
-              <thead>
-                <tr className="bg-blue-100">
-                  <th className="p-2 sm:p-4 text-left">Coverage Type</th>
-                  <th className="p-2 sm:p-4 text-left">Details</th>
-                  <th className="p-2 sm:p-4 text-left">Limit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { type: 'Hospitalization', details: 'Inpatient care, surgeries', limit: 'Up to $50,000/year' },
-                  { type: 'Maternity', details: 'Prenatal, delivery, newborn care', limit: 'Up to $10,000' },
-                  { type: 'Outpatient', details: 'Doctor visits, diagnostics', limit: 'Up to $5,000/year' },
-                  { type: 'Emergency', details: 'Ambulance, ER services', limit: 'Unlimited' },
-                ].map((row) => (
-                  <motion.tr
-                    key={row.type}
-                    className="border-b"
-                    whileHover={{ backgroundColor: '#f0f9ff' }}
-                  >
-                    <td className="p-2 sm:p-4 flex items-center">
-                      <HeartIcon className="h-5 sm:h-6 w-5 sm:w-6 text-blue-600 mr-2" />
-                      {row.type}
-                    </td>
-                    <td className="p-2 sm:p-4">{row.details}</td>
-                    <td className="p-2 sm:p-4">{row.limit}</td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
-            {/* Mobile view */}
-            <div className="sm:hidden space-y-4">
-              {[
-                { type: 'Hospitalization', details: 'Inpatient care, surgeries', limit: 'Up to $50,000/year' },
-                { type: 'Maternity', details: 'Prenatal, delivery, newborn care', limit: 'Up to $10,000' },
-                { type: 'Outpatient', details: 'Doctor visits, diagnostics', limit: 'Up to $5,000/year' },
-                { type: 'Emergency', details: 'Ambulance, ER services', limit: 'Unlimited' },
-              ].map((row) => (
-                <motion.div
-                  key={row.type}
-                  className="border rounded-lg p-4 bg-blue-50"
-                  whileHover={{ backgroundColor: '#f0f9ff' }}
-                >
-                  <div className="flex items-center mb-2">
-                    <HeartIcon className="h-5 w-5 text-blue-600 mr-2" />
-                    <h3 className="text-lg font-semibold text-gray-800">{row.type}</h3>
-                  </div>
-                  <p className="text-sm text-gray-600"><span className="font-semibold">Details:</span> {row.details}</p>
-                  <p className="text-sm text-gray-600"><span className="font-semibold">Limit:</span> {row.limit}</p>
-                </motion.div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: 'Affordable Premiums', desc: 'Flexible, cost-effective plans to suit every budget.' },
+              { title: 'Wide Network', desc: 'Access to a vast network of hospitals for cashless treatment.' },
+              { title: 'Preventive Health Checkups', desc: 'Regular checkups for early detection and wellness.' },
+              { title: '24/7 Customer Support', desc: 'Round-the-clock assistance for claims and queries.' },
+              { title: 'Quick and Easy Claims', desc: 'Seamless claim process with minimal paperwork.' },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start">
+                <HeartIcon className="h-8 w-8 text-blue-600 mr-4" />
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+                  <p className="text-base text-gray-600">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.section>
 
-        {/* Myths Section */}
+        {/* OPD Benefit Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -145,44 +110,51 @@ const HealthInsurance = () => {
           className="bg-blue-50 p-8 rounded-lg mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Common Health Insurance Myths
+            OPD Benefit with Arshyan Health Insurance
           </h2>
-          <div className="space-y-4">
+          <p className="text-base text-gray-600 mb-4 text-center">
+            Manage everyday healthcare expenses with ease through our OPD coverage.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              {
-                myth: 'Health insurance is too expensive.',
-                truth: 'Plans are customizable to fit budgets, with options for low premiums.',
-              },
-              {
-                myth: 'I’m healthy, I don’t need insurance.',
-                truth: 'Unexpected illnesses or injuries can happen to anyone, and insurance covers preventive care.',
-              },
-              {
-                myth: 'Pre-existing conditions aren’t covered.',
-                truth: 'Most plans cover pre-existing conditions after a waiting period.',
-              },
+              { title: 'Consultations Covered', desc: 'Routine check-ups and specialist consultations without out-of-pocket expenses.' },
+              { title: 'Diagnostic Tests', desc: 'Coverage for lab tests, X-rays, and other diagnostics.' },
+              { title: 'Prescription Medicines', desc: 'Covers costs of medicines prescribed during outpatient visits.' },
+              { title: 'Flexibility in Usage', desc: 'Access a wide network of doctors and clinics at your convenience.' },
+              { title: 'No Waiting Period', desc: 'Start utilizing OPD coverage immediately.' },
             ].map((item) => (
-              <div key={item.myth} className="border-b border-gray-200 pb-4">
-                <h3 className="text-lg font-semibold text-gray-800">Myth: {item.myth}</h3>
-                <p className="text-base text-gray-600">Truth: {item.truth}</p>
+              <div key={item.title} className="flex items-start">
+                <HeartIcon className="h-8 w-8 text-blue-600 mr-4" />
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+                  <p className="text-base text-gray-600">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </motion.section>
 
-        {/* Case Study */}
+        {/* Call-to-Action Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="bg-white rounded-lg shadow-md p-8"
+          className="bg-white rounded-lg shadow-md p-8 text-center"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Real-World Example
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
+            Secure Your Family’s Future
           </h2>
-          <p className="text-base text-gray-600">
-            Priya, a 35-year-old mother, faced a sudden surgery costing $20,000. Her health insurance covered 90% of the expenses, saving her family from financial strain. With our 24/7 support, she navigated the claims process effortlessly.
+          <p className="text-base text-gray-600 mb-6">
+            With Arshyan Health Insurance, you are investing in peace of mind and financial security. Get the protection you need today!
           </p>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to="/quote"
+              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
+            >
+              Get a Quote
+            </Link>
+          </motion.div>
         </motion.section>
 
         {/* FAQ Accordion */}
@@ -197,20 +169,20 @@ const HealthInsurance = () => {
           </h2>
           {[
             {
-              question: 'What does health insurance cover?',
-              answer: 'Covers hospitalization, outpatient care, maternity, preventive check-ups, and emergencies.',
+              question: 'What does Arshyan Health Insurance cover?',
+              answer: 'Covers hospitalization, pre- and post-hospitalization, surgeries, critical illnesses, maternity, daycare procedures, and OPD expenses.',
             },
             {
-              question: 'How do I file a claim?',
-              answer: 'Submit claims online via our portal or call our 24/7 support team.',
+              question: 'How do I access cashless treatment?',
+              answer: 'Visit any of our network hospitals, present your policy details, and avail treatment without upfront payments.',
             },
             {
-              question: 'Are pre-existing conditions covered?',
-              answer: 'Yes, after a waiting period (typically 1-2 years), depending on the plan.',
+              question: 'Is there a waiting period for OPD benefits?',
+              answer: 'No, OPD benefits can be utilized immediately upon policy activation.',
             },
             {
-              question: 'Can I include my family?',
-              answer: 'Yes, family plans cover spouses, children, and sometimes parents.',
+              question: 'How can I file a claim?',
+              answer: 'File claims online through our portal or contact our 24/7 support team for assistance.',
             },
           ].map((faq, index) => (
             <motion.div

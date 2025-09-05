@@ -47,7 +47,7 @@ const Footer = () => {
                 { label: "Car Insurance", path: "/insurance/personal/car" },
                 { label: "Two Wheelers Insurance", path: "/insurance/personal/two-wheelers" },
                 { label: "Commercial Vehicle Insurance", path: "/insurance/personal/commercial-vehicle" },
-                { label: "Mobile Insurance", path: "/insurance/personal/mobile" },
+                { label: "Mobile & Electronics Equipment's", path: "/insurance/personal/mobile" },
               ].map((item, index) => (
                 <li key={index} className="flex items-center">
                   <FontAwesomeIcon icon={faChevronRight} className="h-5 w-5 mr-2 text-white" />
