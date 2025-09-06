@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { TruckIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import assets from '../assets/assets';
 
@@ -20,9 +19,11 @@ const CommercialVehicleInsurance = () => {
             alt="Commercial Vehicle Insurance Banner"
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Arshyan Commercial Vehicle Insurance</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
+            Arshyan Commercial Vehicle Insurance
+          </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Keep your business moving with robust insurance for your fleet of trucks, buses, and vans, ensuring protection and continuity.
+            Running a business that relies on vehicles requires not only keeping them in good condition but also ensuring they are adequately protected. Arshyan Insurance Services offers tailored commercial vehicle insurance to safeguard your business assets, reduce financial risks, and ensure smooth operations in the event of an accident or damage.
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
@@ -44,26 +45,13 @@ const CommercialVehicleInsurance = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
             Key Benefits of Arshyan Commercial Vehicle Insurance
           </h2>
-          <p className="text-base text-gray-600 mb-4 text-center">
-            Arshyan Insurance Services offers tailored commercial vehicle insurance to safeguard your business assets and ensure smooth operations.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { title: 'Comprehensive Coverage', desc: 'Protects vehicles like trucks, buses, and vans from accidents, theft, fire, and natural disasters.' },
-              { title: 'Third-Party Liability', desc: 'Covers legal liabilities for damages or injuries caused to third parties.' },
-              { title: 'Driver and Passenger Cover', desc: 'Personal accident coverage for drivers and passengers in case of injury or death.' },
-              { title: 'Hassle-Free Claims', desc: 'Fast and smooth claim settlement to minimize business disruptions.' },
-              { title: 'Add-On Covers', desc: 'Customize with zero depreciation, engine protection, and roadside assistance.' },
-            ].map((item) => (
-              <div key={item.title} className="flex items-start">
-                <TruckIcon className="h-8 w-8 text-blue-600 mr-4" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                  <p className="text-base text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ul className="list-disc list-inside space-y-3 text-gray-700 text-base">
+            <li><strong>Comprehensive Coverage:</strong> Protects your commercial vehicles, such as trucks, buses, taxis, and delivery vans, from accidents, theft, fire, natural disasters, and more.</li>
+            <li><strong>Third-Party Liability:</strong> Covers legal liabilities arising from damages or injuries caused to third parties, ensuring your business complies with legal requirements.</li>
+            <li><strong>Driver and Passenger Cover:</strong> Personal accident coverage for the driver and passengers in case of injury, disability, or death due to an accident.</li>
+            <li><strong>Hassle-Free Claims:</strong> Smooth and fast claims process to keep your business running with minimal disruptions.</li>
+            <li><strong>Add-On Covers:</strong> Options like zero depreciation, engine & gearbox protection, and roadside assistance.</li>
+          </ul>
         </motion.section>
 
         {/* Why Choose Arshyan Section */}
@@ -76,22 +64,12 @@ const CommercialVehicleInsurance = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
             Why Choose Arshyan Commercial Vehicle Insurance?
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { title: 'Flexible Premiums', desc: 'Competitive premiums tailored to your business needs.' },
-              { title: 'Cashless Repairs', desc: 'Access a wide network of authorized service centers for cashless repairs.' },
-              { title: '24/7 Support', desc: 'Round-the-clock assistance for claims, renewals, and queries.' },
-              { title: 'Business Continuity', desc: 'Minimize interruptions with comprehensive protection against financial losses.' },
-            ].map((item) => (
-              <div key={item.title} className="flex items-start">
-                <TruckIcon className="h-8 w-8 text-blue-600 mr-4" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                  <p className="text-base text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ul className="list-disc list-inside space-y-3 text-gray-700 text-base">
+            <li><strong>Flexible Premiums:</strong> Competitive options designed for your business needs.</li>
+            <li><strong>Cashless Repairs:</strong> Wide network of authorized service centers.</li>
+            <li><strong>24/7 Support:</strong> Assistance for claims, renewals, and queries anytime.</li>
+            <li><strong>Business Continuity:</strong> Minimize interruptions and stay protected against financial losses.</li>
+          </ul>
         </motion.section>
 
         {/* Call-to-Action Section */}
@@ -99,13 +77,13 @@ const CommercialVehicleInsurance = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="bg-white rounded-lg shadow-md p-8 mb-12 text-center"
+          className="bg-white rounded-lg shadow-md p-8 text-center"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
             Safeguard Your Fleet
           </h2>
           <p className="text-base text-gray-600 mb-6">
-            With Arshyan Commercial Vehicle Insurance, protect your business on the road and stay ahead. Get covered today!
+            With Arshyan Commercial Vehicle Insurance, safeguard your business on the road and ensure the security of your commercial fleet. Stay covered, stay ahead!
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <a

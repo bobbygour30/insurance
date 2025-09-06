@@ -1,162 +1,190 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { HomeIcon } from '@heroicons/react/24/outline';
-import { motion } from 'framer-motion';
-import assets from '../assets/assets';
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import assets from "../assets/assets";
 
 const BharatGrihaRakshaInsurance = () => {
   return (
     <div className="bg-blue-50 min-h-screen pt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
         {/* Hero Section */}
         <motion.section
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <img
             src={assets.home}
-            alt="Bharat Griha Raksha Insurance Banner"
-            className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
+            alt="Bharat Griha Raksha Insurance"
+            className="w-full h-72 object-cover rounded-2xl shadow-md mb-6"
           />
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Bharat Griha Raksha Insurance</h1>
-          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Your home is more than a structure—it’s a sanctuary. Arshyan Insurance’s Bharat Griha Raksha policy protects your home and its contents from unexpected events.
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-4">
+            Bharat Griha Raksha (Home Insurance Policy)
+          </h1>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Your home is more than just a structure; it’s a place filled with
+            memories, comfort, and security. At Arshyan Insurance, our Bharat
+            Griha Raksha (Home Insurance Policy) offers comprehensive protection
+            for your home and its contents against unexpected events, ensuring
+            peace of mind.
           </p>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link
-              to="/quote"
-              className="mt-6 inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
-            >
-              Get a Quote
-            </Link>
-          </motion.div>
         </motion.section>
 
         {/* Coverage Highlights */}
         <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-white rounded-lg shadow-md p-8 mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">
             Coverage Highlights
           </h2>
-          <p className="text-base text-gray-600 mb-4">
-            Our Bharat Griha Raksha policy offers comprehensive protection for your home and its contents against a wide range of risks.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { title: 'Fire and Allied Perils', desc: 'Covers damages from fire, lightning, explosion, and related perils.' },
-              { title: 'Natural Calamities', desc: 'Protection against floods, earthquakes, storms, cyclones, and landslides.' },
-              { title: 'Burglary and Theft', desc: 'Safeguards against loss of furniture, electronics, and valuables.' },
-              { title: 'Accidental Damage', desc: 'Covers accidental damage to home fixtures and contents.' },
-            ].map((item) => (
-              <div key={item.title} className="flex items-start">
-                <HomeIcon className="h-8 w-8 text-blue-600 mr-4" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                  <p className="text-base text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li>
+              <strong>Fire and Allied Perils:</strong> Protection against damages
+              caused by fire, lightning, explosion, and other fire-related perils.
+            </li>
+            <li>
+              <strong>Natural Calamities:</strong> Coverage for loss or damage
+              due to natural disasters like floods, earthquakes, storms,
+              cyclones, and landslides.
+            </li>
+            <li>
+              <strong>Burglary and Theft:</strong> Safeguard your home against
+              losses due to burglary or theft of valuable contents, including
+              furniture, electronics, and personal belongings.
+            </li>
+            <li>
+              <strong>Damage to Contents:</strong> Covers loss or damage to
+              household items, furniture, and appliances due to fire, burglary,
+              or other insured perils.
+            </li>
+            <li>
+              <strong>Accidental Damage:</strong> Provides coverage for
+              accidental damage to your home and its contents, such as damage to
+              fixtures and fittings.
+            </li>
+          </ul>
         </motion.section>
 
         {/* Policy Benefits */}
         <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-blue-50 p-8 rounded-lg mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">
             Policy Benefits
           </h2>
-          <ul className="text-base text-gray-600 space-y-2">
-            {[
-              'Affordable premiums for extensive home protection.',
-              'Alternate accommodation expenses if your home is uninhabitable.',
-              'Customizable add-ons for valuable items, appliances, and jewelry.',
-              'Liability coverage for third-party accidents in your home.',
-            ].map((benefit) => (
-              <li key={benefit} className="flex items-center">
-                <HomeIcon className="h-6 w-6 text-blue-600 mr-2" />
-                {benefit}
-              </li>
-            ))}
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li>
+              <strong>Affordable Premiums:</strong> Extensive protection at
+              budget-friendly premiums.
+            </li>
+            <li>
+              <strong>Alternate Accommodation Expenses:</strong> If your home
+              becomes uninhabitable, the policy covers temporary accommodation.
+            </li>
+            <li>
+              <strong>Customizable Add-ons:</strong> Tailor your policy with
+              add-ons for valuable items, appliances, and jewelry.
+            </li>
+            <li>
+              <strong>Liability Coverage:</strong> Protection against
+              third-party liabilities arising from accidents at home.
+            </li>
           </ul>
         </motion.section>
 
-        {/* Why Choose Arshyan Insurance */}
+        {/* Why Choose Us */}
         <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="bg-white rounded-lg shadow-md p-8 mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">
             Why Choose Arshyan Insurance?
           </h2>
-          <ul className="text-base text-gray-600 space-y-2">
-            {[
-              'Comprehensive protection for your home and contents.',
-              'Hassle-free claims with quick and transparent settlements.',
-              'Flexible coverage options tailored to your needs.',
-              'Expert support for policy selection and claims assistance.',
-            ].map((reason) => (
-              <li key={reason} className="flex items-center">
-                <HomeIcon className="h-6 w-6 text-blue-600 mr-2" />
-                {reason}
-              </li>
-            ))}
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li>
+              <strong>Comprehensive Protection:</strong> Wide coverage for both
+              home and contents.
+            </li>
+            <li>
+              <strong>Hassle-free Claims:</strong> Smooth, transparent, and
+              quick settlements.
+            </li>
+            <li>
+              <strong>Flexible Coverage:</strong> Customize the policy to match
+              your needs.
+            </li>
+            <li>
+              <strong>Expert Support:</strong> Assistance from our experienced
+              team at every step.
+            </li>
           </ul>
         </motion.section>
 
         {/* Additional Features */}
         <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="bg-blue-50 p-8 rounded-lg mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">
             Additional Features
           </h2>
-          <ul className="text-base text-gray-600 space-y-2">
-            {[
-              'Protection for both home structure and contents under one policy.',
-              'Coverage for firefighting costs during fire emergencies.',
-              'Lost rent reimbursement if your property becomes uninhabitable.',
-              'Home repair coverage for damages from insured events.',
-            ].map((feature) => (
-              <li key={feature} className="flex items-center">
-                <HomeIcon className="h-6 w-6 text-blue-600 mr-2" />
-                {feature}
-              </li>
-            ))}
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li>
+              <strong>Protection for Structure and Contents:</strong> Both under
+              one policy.
+            </li>
+            <li>
+              <strong>Firefighting Expenses:</strong> Coverage for costs
+              incurred while controlling a fire.
+            </li>
+            <li>
+              <strong>Lost Rent Coverage:</strong> Reimbursement for rental
+              income lost due to an insured peril.
+            </li>
+            <li>
+              <strong>Home Repairs:</strong> Coverage for repairs after damages
+              from insured events like fire, flood, or theft.
+            </li>
           </ul>
         </motion.section>
 
         {/* Conclusion */}
         <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.0 }}
-          className="text-center bg-white rounded-lg shadow-md p-8"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="text-center"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">
             Secure Your Dream Home
           </h2>
-          <p className="text-base text-gray-600 max-w-3xl mx-auto">
-            With Arshyan Insurance’s Bharat Griha Raksha policy, protect your home and its contents from life’s uncertainties. Invest in peace of mind with comprehensive coverage tailored to your needs.
+          <p className="text-gray-600 max-w-3xl mx-auto mb-6">
+            With the Bharat Griha Raksha (Home Insurance Policy) from Arshyan
+            Insurance, you can ensure your home and everything inside it is
+            well-protected from life’s uncertainties. Invest in peace of mind
+            today with a policy that truly covers what matters most to you.
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               to="/quote"
-              className="mt-6 inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
+              className="inline-block bg-blue-600 text-white px-10 py-3 rounded-xl text-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-md"
             >
               Get Started Today
             </Link>

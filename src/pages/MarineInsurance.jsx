@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { TruckIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import assets from '../assets/assets';
 
@@ -133,23 +132,13 @@ const MarineInsurance = () => {
           <p className="text-base text-gray-600 mb-4 text-center">
             Marine insurance, offered by Arshyan Insurance Services, includes Marine Hull Insurance for vessels and Marine Cargo Insurance for goods in transit. It covers risks during sea, air, or land transport, ensuring protection for your business.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { title: 'Marine Hull Insurance', desc: 'Covers vessels and ships against damage or loss.' },
-              { title: 'Marine Cargo Insurance', desc: 'Protects goods during transit by sea, air, or land.' },
-            ].map((item) => (
-              <div key={item.title} className="flex items-start">
-                <TruckIcon className="h-8 w-8 text-blue-600 mr-4" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                  <p className="text-base text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li><strong>Marine Hull Insurance:</strong> Covers vessels and ships against damage or loss.</li>
+            <li><strong>Marine Cargo Insurance:</strong> Protects goods during transit by sea, air, or land.</li>
+          </ul>
         </motion.section>
 
-        {/* Institute Cargo Clauses Section */}
+        {/* Institute Cargo Clauses */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -172,31 +161,23 @@ const MarineInsurance = () => {
               </button>
             ))}
           </div>
-          <div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">{clauses[activeClause].title}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-base font-semibold text-gray-800 mb-2">Covered Risks</h4>
-                <ul className="text-base text-gray-600 space-y-2">
-                  {clauses[activeClause].coverage.map((item) => (
-                    <li key={item} className="flex items-center">
-                      <TruckIcon className="h-6 w-6 text-blue-600 mr-2" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-base font-semibold text-gray-800 mb-2">General Exclusions</h4>
-                <ul className="text-base text-gray-600 space-y-2">
-                  {clauses[activeClause].exclusions.map((item) => (
-                    <li key={item} className="flex items-center">
-                      <TruckIcon className="h-6 w-6 text-blue-600 mr-2" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <h3 className="text-lg font-semibold text-gray-800 mb-4">{clauses[activeClause].title}</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4 className="text-base font-semibold text-gray-800 mb-2">Covered Risks</h4>
+              <ul className="list-disc list-inside text-gray-700 space-y-2">
+                {clauses[activeClause].coverage.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-base font-semibold text-gray-800 mb-2">General Exclusions</h4>
+              <ul className="list-disc list-inside text-gray-700 space-y-2">
+                {clauses[activeClause].exclusions.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </motion.section>
@@ -211,22 +192,12 @@ const MarineInsurance = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
             Types of Marine Insurance Policies
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { title: 'Open Cover', desc: 'Covers all marine transits for export or import during a 12-month period.' },
-              { title: 'Specific Voyage Policy', desc: 'Customized coverage for specific voyages based on duration and route.' },
-              { title: 'Open Policy (Floating Policy)', desc: 'Covers all shipments within its scope for a set period, with declarations reducing the sum insured.' },
-              { title: 'Sales Turn Over Policy (STOP)', desc: 'Seamless coverage for raw materials, semi-finished, and finished products from purchase to final destination, charged based on sales turnover.' },
-            ].map((item) => (
-              <div key={item.title} className="flex items-start">
-                <TruckIcon className="h-8 w-8 text-blue-600 mr-4" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                  <p className="text-base text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li><strong>Open Cover:</strong> Covers all marine transits for export or import during a 12-month period.</li>
+            <li><strong>Specific Voyage Policy:</strong> Customized coverage for specific voyages based on duration and route.</li>
+            <li><strong>Open Policy (Floating Policy):</strong> Covers all shipments within its scope for a set period, with declarations reducing the sum insured.</li>
+            <li><strong>Sales Turn Over Policy (STOP):</strong> Seamless coverage for raw materials, semi-finished, and finished products from purchase to final destination, charged based on sales turnover.</li>
+          </ul>
         </motion.section>
 
         {/* Claim Process Section */}
@@ -242,23 +213,16 @@ const MarineInsurance = () => {
           <p className="text-base text-gray-600 mb-4 text-center">
             To process a marine insurance claim, please provide the following documents:
           </p>
-          <ul className="text-base text-gray-600 space-y-2">
-            {[
-              'Intimation to the Insurance company',
-              'The original policy or certificate of insurance',
-              'Bill of Lading: Evidence that goods were shipped, including cargo particulars',
-              'Invoice: Evidences the terms of sale',
-              'Survey Report',
-              'Copy of Protest: Required if loss or damage is caused by a sea peril',
-              'Letter of Subrogation: Transfers claimant rights against a third party to insurers',
-              'Ship survey report, lost overboard certificate, or short landing certificate for cargo lost during loading/unloading',
-              'Bill of entry',
-            ].map((item) => (
-              <li key={item} className="flex items-center">
-                <TruckIcon className="h-6 w-6 text-blue-600 mr-2" />
-                {item}
-              </li>
-            ))}
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li>Intimation to the Insurance company</li>
+            <li>The original policy or certificate of insurance</li>
+            <li>Bill of Lading: Evidence that goods were shipped, including cargo particulars</li>
+            <li>Invoice: Evidences the terms of sale</li>
+            <li>Survey Report</li>
+            <li>Copy of Protest: Required if loss or damage is caused by a sea peril</li>
+            <li>Letter of Subrogation: Transfers claimant rights against a third party to insurers</li>
+            <li>Ship survey report, lost overboard certificate, or short landing certificate for cargo lost during loading/unloading</li>
+            <li>Bill of entry</li>
           </ul>
         </motion.section>
 

@@ -24,7 +24,7 @@ import ContactUs from './pages/ContactUs';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
 import RefundPolicy from './pages/RefundPolicy';
-import Login from './pages/Login';
+
 import GetQuote from './pages/GetQuote';
 
 const App = () => {
@@ -56,7 +56,6 @@ const App = () => {
             <Route path="/contact/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/contact/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/contact/refund-policy" element={<RefundPolicy />} />
-            <Route path="/login" element={<Login />} />
             <Route path="/get-quote" element={<GetQuote />} />
 
 

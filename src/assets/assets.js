@@ -10,7 +10,8 @@ import logo6 from "./logo6.png"
 import about from "./about.jpg"
 import car from "./car.jpg"
 import bike from "./bike.jpg"
-import mobile from "./mobile.jpg"
+import mobile1 from "./mobile1.jpg"
+import mobile2 from "./mobile2.jpg"
 import marine from "./marine.jpg"
 import fire from "./fire.jpg"
 import Burglary from "./Burglary.jpg"
@@ -29,6 +30,24 @@ import icon1 from "./icon1.png"
 import icon2 from "./icon2.png"
 import icon3 from "./icon3.png"
 import icon4 from "./icon4.png"
+import partner1 from "./partner1.jpg"
+import partner2 from "./partner2.jpg"
+import partner3 from "./partner3.avif"
+import partner4 from "./partner4.png"
+import partner5 from "./partner5.webp"
+import partner6 from "./partner6.png"
+import partner7 from "./partner7.avif"
+import partner8 from "./partner8.avif"
+import partner9 from "./partner9.webp"
+import partner10 from "./partner10.png"
+import partner11 from "./partner11.jpg"
+
+
+
+
+
+
+
 const assets = {
     banner1,
     banner2,
@@ -42,7 +61,8 @@ const assets = {
     logo6,
     car,
     bike,
-    mobile,
+    mobile1,
+    mobile2,
     marine,
     fire,
     Burglary,
@@ -60,7 +80,18 @@ const assets = {
     icon1,
     icon2,
     icon3,
-    icon4
+    icon4,
+    partner1,
+    partner2,
+    partner3,
+    partner4,
+    partner5,
+    partner6,
+    partner7,
+    partner8,
+    partner9,
+    partner10,
+    partner11
 }
 
 export default assets

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { HeartIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import assets from '../assets/assets';
 
@@ -20,7 +19,9 @@ const GroupMediclaimInsurance = () => {
             alt="Group Mediclaim Insurance Banner"
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Arshyan Group Mediclaim Insurance</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
+            Arshyan Group Mediclaim Insurance
+          </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
             Ensure the health and well-being of your employees and their families with Arshyan’s comprehensive Group Mediclaim Insurance.
           </p>
@@ -47,23 +48,13 @@ const GroupMediclaimInsurance = () => {
           <p className="text-base text-gray-600 mb-4 text-center">
             Our Group Mediclaim Insurance Policy provides extensive health coverage to support your workforce and their families.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { title: 'Hospitalization Coverage', desc: 'Covers inpatient hospitalization expenses, including room charges, doctor fees, and medical tests.' },
-              { title: 'Pre and Post-Hospitalization', desc: 'Covers medical expenses 30 days before and 60 days after hospitalization.' },
-              { title: 'Day-care Procedures', desc: 'Covers treatments like cataract surgeries, chemotherapy, and dialysis without a 24-hour hospital stay.' },
-              { title: 'Cashless Treatment', desc: 'Access a network of hospitals for cashless treatment, eliminating upfront payments.' },
-              { title: 'Family Coverage', desc: 'Option to extend coverage to employees’ spouses, children, and dependent parents.' },
-            ].map((item) => (
-              <div key={item.title} className="flex items-start">
-                <HeartIcon className="h-8 w-8 text-blue-600 mr-4" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                  <p className="text-base text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ul className="space-y-4 list-disc list-inside text-gray-700">
+            <li>Hospitalization Coverage – Covers inpatient hospitalization expenses, including room charges, doctor fees, and medical tests.</li>
+            <li>Pre and Post-Hospitalization – Covers medical expenses 30 days before and 60 days after hospitalization.</li>
+            <li>Day-care Procedures – Covers treatments like cataract surgeries, chemotherapy, and dialysis without a 24-hour hospital stay.</li>
+            <li>Cashless Treatment – Access a network of hospitals for cashless treatment, eliminating upfront payments.</li>
+            <li>Family Coverage – Option to extend coverage to employees’ spouses, children, and dependent parents.</li>
+          </ul>
         </motion.section>
 
         {/* Policy Benefits Section */}
@@ -76,22 +67,12 @@ const GroupMediclaimInsurance = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
             Policy Benefits
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { title: 'Comprehensive Health Benefits', desc: 'Covers a wide range of medical treatments to protect against rising healthcare costs.' },
-              { title: 'Maternity Benefits', desc: 'Includes coverage for childbirth and prenatal care expenses.' },
-              { title: 'Flexible Sum Insured', desc: 'Choose coverage amounts tailored to your business size and employee needs.' },
-              { title: 'Ambulance Expenses', desc: 'Reimbursement for emergency ambulance charges to the nearest hospital.' },
-            ].map((item) => (
-              <div key={item.title} className="flex items-start">
-                <HeartIcon className="h-8 w-8 text-blue-600 mr-4" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                  <p className="text-base text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ul className="space-y-4 list-disc list-inside text-gray-700">
+            <li>Comprehensive Health Benefits – Covers a wide range of medical treatments to protect against rising healthcare costs.</li>
+            <li>Maternity Benefits – Includes coverage for childbirth and prenatal care expenses.</li>
+            <li>Flexible Sum Insured – Choose coverage amounts tailored to your business size and employee needs.</li>
+            <li>Ambulance Expenses – Reimbursement for emergency ambulance charges to the nearest hospital.</li>
+          </ul>
         </motion.section>
 
         {/* Additional Features Section */}
@@ -104,21 +85,11 @@ const GroupMediclaimInsurance = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
             Additional Features
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { title: 'No Claim Bonus', desc: 'Enjoy premium discounts or enhanced coverage for claim-free years.' },
-              { title: 'Wellness Programs', desc: 'Optional programs to promote preventive healthcare and reduce medical risks.' },
-              { title: 'OPD Coverage', desc: 'Optional coverage for outpatient treatments like consultations and diagnostics.' },
-            ].map((item) => (
-              <div key={item.title} className="flex items-start">
-                <HeartIcon className="h-8 w-8 text-blue-600 mr-4" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                  <p className="text-base text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ul className="space-y-4 list-disc list-inside text-gray-700">
+            <li>No Claim Bonus – Enjoy premium discounts or enhanced coverage for claim-free years.</li>
+            <li>Wellness Programs – Optional programs to promote preventive healthcare and reduce medical risks.</li>
+            <li>OPD Coverage – Optional coverage for outpatient treatments like consultations and diagnostics.</li>
+          </ul>
         </motion.section>
 
         {/* Why Choose Arshyan Section */}
@@ -131,22 +102,12 @@ const GroupMediclaimInsurance = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
             Why Choose Arshyan Insurance?
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { title: 'Boost Employee Morale', desc: 'Enhance job satisfaction and retention with comprehensive health coverage.' },
-              { title: 'Affordable Premiums', desc: 'Tailored plans for businesses of all sizes at competitive rates.' },
-              { title: 'Customizable Plans', desc: 'Flexible options to include critical illness, personal accident, and more.' },
-              { title: '24/7 Customer Support', desc: 'Dedicated assistance for claims and hospital coordination.' },
-            ].map((item) => (
-              <div key={item.title} className="flex items-start">
-                <HeartIcon className="h-8 w-8 text-blue-600 mr-4" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                  <p className="text-base text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ul className="space-y-4 list-disc list-inside text-gray-700">
+            <li>Boost Employee Morale – Enhance job satisfaction and retention with comprehensive health coverage.</li>
+            <li>Affordable Premiums – Tailored plans for businesses of all sizes at competitive rates.</li>
+            <li>Customizable Plans – Flexible options to include critical illness, personal accident, and more.</li>
+            <li>24/7 Customer Support – Dedicated assistance for claims and hospital coordination.</li>
+          </ul>
         </motion.section>
 
         {/* Call-to-Action Section */}

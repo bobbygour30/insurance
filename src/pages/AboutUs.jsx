@@ -1,172 +1,223 @@
-import React from 'react';
-import { 
-  ShieldCheckIcon, 
-  HeartIcon, 
-  UsersIcon, 
-  ArrowRightIcon 
-} from '@heroicons/react/24/outline';
-import assets from '../assets/assets';
+import React from "react";
+import { motion } from "framer-motion";
+import { CheckCircle, Zap, Users, Target } from "lucide-react";
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="absolute inset-0">
-          <img
-            src={assets.about}
-            alt="About Us Hero"
-            className="w-full h-full object-cover opacity-30"
-          />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">About Arshyan Insurance</h1>
-          <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-200">
-            Safeguarding your financial future with trusted insurance solutions
-          </p>
-        </div>
-      </section>
-
-      {/* Our Story Section */}
-      <section className="py-12 sm:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Our Journey</h2>
-            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600">
-              Simplifying insurance for a secure future
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            <div>
-              <img
-                src={assets.about}
-                alt="Our Journey"
-                className="w-full h-64 sm:h-80 object-cover rounded-lg shadow-md"
-              />
-            </div>
-            <div className="flex flex-col justify-center">
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                Founded with a mission to simplify the insurance buying process, Arshyan Insurance Services Private Limited has grown into a recognized name in the industry. Our founders brought together years of experience in financial planning and risk management to create an organization that puts the customer first. Over the years, we have built a reputation for transparency, trust, and reliability in our offerings, always staying true to our core values.
-              </p>
-              <a
-                href="#"
-                className="mt-4 sm:mt-6 inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-semibold transition duration-300"
-              >
-                Learn More <ArrowRightIcon className="ml-2 h-5 w-5" />
-              </a>
-            </div>
-          </div>
+    <div className="min-h-screen bg-white">
+      {/* Intro Section */}
+      <section className="py-20 bg-[#00001a] text-white">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl sm:text-5xl font-extrabold"
+          >
+            About Arshyan Insurance Services
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mt-6 text-lg sm:text-xl text-gray-200 leading-relaxed"
+          >
+            At <span className="text-blue-400 font-semibold">Arshyan Insurance Services Private Limited</span>, 
+            we are committed to providing <span className="text-blue-400 font-semibold">top-notch insurance services</span> 
+            that safeguard the financial future of individuals, families, and businesses. 
+            With a strong <span className="text-blue-400 font-semibold">customer-centric approach</span> 
+            and a vision for long-term security, we have earned the trust of thousands of policyholders across India.
+          </motion.p>
         </div>
       </section>
 
-      {/* Mission & Vision Section */}
-      <section className="py-12 sm:py-16 bg-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Mission & Vision</h2>
-            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600">
-              Empowering lives with accessible insurance
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-            <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-              <HeartIcon className="h-10 w-10 text-blue-600 mx-auto mb-4" />
-              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 text-center">Our Mission</h3>
-              <p className="mt-2 text-gray-600 text-sm sm:text-base text-center">
-                To provide clear, comprehensive, and easy-to-understand insurance solutions that offer peace of mind and financial security for all.
-              </p>
-            </div>
-            <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-              <UsersIcon className="h-10 w-10 text-blue-600 mx-auto mb-4" />
-              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 text-center">Our Vision</h3>
-              <p className="mt-2 text-gray-600 text-sm sm:text-base text-center">
-                To be a leading insurance provider in India, delivering innovative, affordable, and reliable solutions that empower individuals and businesses.
-              </p>
-            </div>
-          </div>
+      {/* Divider */}
+      <div className="flex items-center my-12">
+        <div className="flex-grow border-t border-gray-300"></div>
+        <span className="px-4 text-gray-400 text-sm">✦</span>
+        <div className="flex-grow border-t border-gray-300"></div>
+      </div>
+
+      {/* Our Journey */}
+      <section className="py-20 bg-gradient-to-r from-gray-50 to-gray-100">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl sm:text-4xl font-bold text-[#00001a]"
+          >
+            Our Journey
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mt-8 text-lg text-gray-700 leading-relaxed text-justify"
+          >
+            Founded with a mission to simplify the insurance buying process,
+            Arshyan Insurance Services has grown into a recognized name in the
+            industry. With years of expertise in financial planning and risk
+            management, we have built a reputation for{" "}
+            <span className="text-blue-600 font-medium">transparency, trust, and reliability</span>, 
+            always staying true to our core values.
+          </motion.p>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="py-12 sm:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Why Choose Arshyan?</h2>
-            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600">
-              Trusted insurance solutions tailored to your needs
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      {/* Our Vision */}
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl sm:text-4xl font-bold text-[#00001a]"
+          >
+            Our Vision
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mt-8 text-lg text-gray-700 leading-relaxed text-justify"
+          >
+            To be a leading insurance provider in India, delivering{" "}
+            <span className="text-blue-600 font-medium">innovative, affordable, and reliable</span> 
+            insurance solutions that empower individuals and businesses, while ensuring 
+            protection from life’s uncertainties.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Our Mission */}
+      <section className="py-20 bg-gradient-to-r from-gray-50 to-gray-100">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl sm:text-4xl font-bold text-[#00001a]"
+          >
+            Our Mission
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mt-8 text-lg text-gray-700 leading-relaxed text-justify"
+          >
+            To make insurance accessible to everyone by providing{" "}
+            <span className="text-blue-600 font-medium">clear, comprehensive, and easy-to-understand solutions</span>. 
+            We aim to foster long-lasting relationships with our clients through 
+            exceptional customer service, rapid claim processing, and tailored policies.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl sm:text-4xl font-bold text-[#00001a] mb-14"
+          >
+            Why Choose Arshyan Insurance Services?
+          </motion.h2>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { 
-                icon: HeartIcon, 
-                title: 'Customer-Centric', 
-                desc: 'We place our clients at the heart of everything, ensuring a seamless experience from policy selection to claim settlement.' 
+              {
+                icon: <CheckCircle className="w-10 h-10 text-blue-600" />,
+                title: "Customer-Centric",
+                desc: "We place our clients at the heart of everything we do for a seamless, stress-free experience."
               },
-              { 
-                icon: ShieldCheckIcon, 
-                title: 'Tailored Solutions', 
-                desc: 'Customized insurance plans designed to fit your unique lifestyle and financial goals.' 
+              {
+                icon: <Target className="w-10 h-10 text-blue-600" />,
+                title: "Tailored Solutions",
+                desc: "Every client is unique. We design customized insurance plans that fit lifestyle & financial goals."
               },
-              { 
-                icon: ArrowRightIcon, 
-                title: 'Fast Claims', 
-                desc: 'Our efficient claim settlement process ensures quick payouts with minimal delays.' 
+              {
+                icon: <Zap className="w-10 h-10 text-blue-600" />,
+                title: "Fast Claims",
+                desc: "Quick & efficient settlement process with a high success rate, avoiding unnecessary delays."
               },
-              { 
-                icon: UsersIcon, 
-                title: 'Expert Team', 
-                desc: 'Our experienced advisors are always ready to guide you in selecting the best policies.' 
-              },
-            ].map((value, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
-                <value.icon className="h-10 w-10 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900">{value.title}</h3>
-                <p className="mt-2 text-gray-600 text-sm sm:text-base">{value.desc}</p>
-              </div>
+              {
+                icon: <Users className="w-10 h-10 text-blue-600" />,
+                title: "Experienced Team",
+                desc: "Our skilled advisors and support staff guide you in selecting the best insurance policies."
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="bg-white shadow-md rounded-2xl p-6 hover:shadow-lg transition"
+              >
+                <div className="flex justify-center mb-4">{item.icon}</div>
+                <h3 className="text-xl font-semibold text-[#00001a] mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-lg leading-relaxed">{item.desc}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Commitment to You Section */}
-      <section className="py-12 sm:py-16 bg-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Our Commitment to You</h2>
-            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600">
-              Ensuring your peace of mind and financial security
-            </p>
-          </div>
-          <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-            <ShieldCheckIcon className="h-10 w-10 text-blue-600 mx-auto mb-4" />
-            <p className="text-gray-600 text-sm sm:text-base leading-relaxed text-center">
-              At Arshyan Insurance Services Private Limited, our primary commitment is to ensure that our clients are well-protected and financially secure. We are constantly working towards improving our services, expanding our product offerings, and leveraging technology to provide better, faster, and more transparent services.
-            </p>
-          </div>
+      {/* Our Commitment */}
+      <section className="py-20 bg-gradient-to-r from-gray-50 to-gray-100">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl sm:text-4xl font-bold text-[#00001a]"
+          >
+            Our Commitment to You
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mt-8 text-lg text-gray-700 leading-relaxed text-justify"
+          >
+            At Arshyan Insurance Services, our commitment is to keep you{" "}
+            <span className="text-blue-600 font-medium">well-protected and financially secure</span>. 
+            We continuously improve our offerings, expand products, and leverage technology 
+            to deliver faster, better, and more transparent services for our valued clients.
+          </motion.p>
         </div>
       </section>
 
-      {/* Call-to-Action Banner */}
-      <section className="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Ready to Secure Your Future?</h2>
-          <p className="text-base sm:text-lg mb-4 sm:mb-6">Get a personalized insurance quote or speak with our experts today!</p>
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <a
-              href="#"
-              className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-white text-blue-600 hover:bg-gray-100 rounded-full font-semibold transition duration-300"
-            >
-              Get a Quote <ArrowRightIcon className="ml-2 h-5 w-5" />
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-transparent border border-white hover:bg-white hover:text-blue-600 rounded-full font-semibold transition duration-300"
-            >
-              Contact Support <ArrowRightIcon className="ml-2 h-5 w-5" />
-            </a>
-          </div>
-        </div>
+      {/* CTA Section */}
+      <section className="py-16 bg-[#00001a] text-white text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl sm:text-4xl font-bold"
+        >
+          Secure Your Future with Arshyan Insurance
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mt-4 text-lg text-gray-300"
+        >
+          Let us help you protect what matters most. Get started today!
+        </motion.p>
+        <motion.button
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="mt-8 px-8 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition"
+        >
+          Get a Free Quote
+        </motion.button>
       </section>
     </div>
   );

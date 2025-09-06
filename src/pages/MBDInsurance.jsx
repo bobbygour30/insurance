@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CogIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import assets from '../assets/assets';
 
@@ -20,7 +19,9 @@ const MBDInsurance = () => {
             alt="MBD Insurance Banner"
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Machinery Breakdown Insurance</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
+            Machinery Breakdown Insurance
+          </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
             Machinery is the backbone of any industrial operation. Arshyan Insurance’s Machinery Breakdown (MBD) Insurance Policy protects your business from costly breakdowns, ensuring smooth operations.
           </p>
@@ -44,25 +45,12 @@ const MBDInsurance = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
             Coverage Highlights
           </h2>
-          <p className="text-base text-gray-600 mb-4">
-            Our MBD Insurance Policy offers comprehensive protection to minimize the impact of machinery breakdowns on your business.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { title: 'Breakdown Coverage', desc: 'Covers sudden and unforeseen physical damage due to mechanical or electrical breakdowns.' },
-              { title: 'Repair and Replacement Costs', desc: 'Covers costs for repairing or replacing damaged machinery parts.' },
-              { title: 'Accidental Damage', desc: 'Protection against damage during operation or maintenance.' },
-              { title: 'Loss Due to Breakdown', desc: 'Coverage for financial losses caused by downtime.' },
-            ].map((item) => (
-              <div key={item.title} className="flex items-start">
-                <CogIcon className="h-8 w-8 text-blue-600 mr-4" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                  <p className="text-base text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ul className="list-disc list-inside text-base text-gray-600 space-y-2">
+            <li>Covers sudden and unforeseen physical damage due to mechanical or electrical breakdowns.</li>
+            <li>Covers costs for repairing or replacing damaged machinery parts.</li>
+            <li>Protection against damage during operation or maintenance.</li>
+            <li>Coverage for financial losses caused by downtime.</li>
+          </ul>
         </motion.section>
 
         {/* What’s Covered */}
@@ -70,62 +58,17 @@ const MBDInsurance = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-white rounded-lg shadow-md p-4 sm:p-8 mb-12"
+          className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
             What’s Covered
           </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm sm:text-base text-gray-600 hidden sm:table">
-              <thead>
-                <tr className="bg-blue-100">
-                  <th className="p-2 sm:p-4 text-left">Coverage Type</th>
-                  <th className="p-2 sm:p-4 text-left">Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { type: 'Mechanical Failure', details: 'Covers internal issues like broken parts, seized motors, or damaged bearings.' },
-                  { type: 'Electrical Malfunctions', details: 'Protection for short circuits, overheating, or voltage fluctuations.' },
-                  { type: 'Pressure Plant Breakdown', details: 'Covers operational failures in boilers or pressure vessels.' },
-                  { type: 'Human Error', details: 'Covers damage from operator mistakes during machinery handling.' },
-                ].map((row) => (
-                  <motion.tr
-                    key={row.type}
-                    className="border-b"
-                    whileHover={{ backgroundColor: '#f0f9ff' }}
-                  >
-                    <td className="p-2 sm:p-4 flex items-center">
-                      <CogIcon className="h-5 sm:h-6 w-5 sm:w-6 text-blue-600 mr-2" />
-                      {row.type}
-                    </td>
-                    <td className="p-2 sm:p-4">{row.details}</td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
-            {/* Mobile view */}
-            <div className="sm:hidden space-y-4">
-              {[
-                { type: 'Mechanical Failure', details: 'Covers internal issues like broken parts, seized motors, or damaged bearings.' },
-                { type: 'Electrical Malfunctions', details: 'Protection for short circuits, overheating, or voltage fluctuations.' },
-                { type: 'Pressure Plant Breakdown', details: 'Covers operational failures in boilers or pressure vessels.' },
-                { type: 'Human Error', details: 'Covers damage from operator mistakes during machinery handling.' },
-              ].map((row) => (
-                <motion.div
-                  key={row.type}
-                  className="border rounded-lg p-4 bg-blue-50"
-                  whileHover={{ backgroundColor: '#f0f9ff' }}
-                >
-                  <div className="flex items-center mb-2">
-                    <CogIcon className="h-5 w-5 text-blue-600 mr-2" />
-                    <h3 className="text-lg font-semibold text-gray-800">{row.type}</h3>
-                  </div>
-                  <p className="text-sm text-gray-600"><span className="font-semibold">Details:</span> {row.details}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+          <ul className="list-disc list-inside text-base text-gray-600 space-y-2">
+            <li>Mechanical Failure – covers broken parts, seized motors, or damaged bearings.</li>
+            <li>Electrical Malfunctions – protection against short circuits, overheating, or voltage fluctuations.</li>
+            <li>Pressure Plant Breakdown – covers failures in boilers or pressure vessels.</li>
+            <li>Human Error – damage caused by operator mistakes during handling.</li>
+          </ul>
         </motion.section>
 
         {/* Policy Benefits */}
@@ -138,18 +81,11 @@ const MBDInsurance = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
             Policy Benefits
           </h2>
-          <ul className="text-base text-gray-600 space-y-2">
-            {[
-              'Customizable coverage tailored to your specific machinery needs.',
-              'Minimize downtime with quick claims settlements and repair coverage.',
-              'Affordable premiums for extensive protection without financial strain.',
-              'Optional add-ons like loss of profit coverage or extended warranties.',
-            ].map((benefit) => (
-              <li key={benefit} className="flex items-center">
-                <CogIcon className="h-6 w-6 text-blue-600 mr-2" />
-                {benefit}
-              </li>
-            ))}
+          <ul className="list-disc list-inside text-base text-gray-600 space-y-2">
+            <li>Customizable coverage tailored to your specific machinery needs.</li>
+            <li>Quick claims settlements and repair coverage to minimize downtime.</li>
+            <li>Affordable premiums with extensive protection.</li>
+            <li>Optional add-ons like loss of profit coverage or extended warranties.</li>
           </ul>
         </motion.section>
 
@@ -163,18 +99,11 @@ const MBDInsurance = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
             Why Choose Arshyan Insurance?
           </h2>
-          <ul className="text-base text-gray-600 space-y-2">
-            {[
-              'Expert support for selecting coverage and hassle-free claims processing.',
-              'All-risk coverage against mechanical, electrical, and human error risks.',
-              'Business continuity with minimal financial losses from breakdowns.',
-              'Prompt claims settlement to quickly repair or replace machinery.',
-            ].map((reason) => (
-              <li key={reason} className="flex items-center">
-                <CogIcon className="h-6 w-6 text-blue-600 mr-2" />
-                {reason}
-              </li>
-            ))}
+          <ul className="list-disc list-inside text-base text-gray-600 space-y-2">
+            <li>Expert support for selecting coverage and hassle-free claims.</li>
+            <li>All-risk coverage against mechanical, electrical, and human errors.</li>
+            <li>Business continuity with minimal financial losses from breakdowns.</li>
+            <li>Prompt claims settlement to repair or replace machinery quickly.</li>
           </ul>
         </motion.section>
 
@@ -188,17 +117,10 @@ const MBDInsurance = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
             Additional Features
           </h2>
-          <ul className="text-base text-gray-600 space-y-2">
-            {[
-              'Optional preventive maintenance cover to reduce breakdown risks.',
-              'Specialized coverage for high-value machinery in industries like manufacturing, energy, and construction.',
-              'Optional liability protection for third-party impacts from breakdowns.',
-            ].map((feature) => (
-              <li key={feature} className="flex items-center">
-                <CogIcon className="h-6 w-6 text-blue-600 mr-2" />
-                {feature}
-              </li>
-            ))}
+          <ul className="list-disc list-inside text-base text-gray-600 space-y-2">
+            <li>Optional preventive maintenance cover to reduce breakdown risks.</li>
+            <li>Specialized coverage for high-value machinery in industries like manufacturing, energy, and construction.</li>
+            <li>Optional liability protection for third-party impacts from breakdowns.</li>
           </ul>
         </motion.section>
 

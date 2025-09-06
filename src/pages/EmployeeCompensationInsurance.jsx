@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { UsersIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import assets from '../assets/assets';
 
@@ -20,7 +19,9 @@ const EmployeeCompensationInsurance = () => {
             alt="Employee Compensation Insurance Banner"
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Arshyan Employee Compensation Insurance</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
+            Arshyan Employee Compensation Insurance
+          </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
             Ensure your employees’ well-being with Arshyan’s Employee Compensation Insurance, covering workplace injuries, illnesses, and legal liabilities.
           </p>
@@ -34,132 +35,94 @@ const EmployeeCompensationInsurance = () => {
           </motion.div>
         </motion.section>
 
-        {/* Policy Highlights Section */}
+        {/* What is Employee Compensation Insurance */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Policy Highlights
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+            What is Employee Compensation Insurance?
           </h2>
-          <p className="text-base text-gray-600 mb-4 text-center">
-            Our Employee Compensation Insurance Policy provides comprehensive protection for your workforce and ensures compliance with labor laws.
+          <p className="text-gray-600 mb-4">
+            Employee Compensation Insurance protects employers by providing financial coverage against employee injuries, occupational diseases, or death occurring during the course of employment. It ensures compliance with labor laws while safeguarding employee welfare.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { title: 'Workplace Injury Compensation', desc: 'Covers medical expenses, rehabilitation, and compensation for work-related injuries or illnesses.' },
-              { title: 'Death and Disability Benefits', desc: 'Provides compensation for families in case of accidental death or permanent disability.' },
-              { title: 'Legal Compliance', desc: 'Ensures compliance with the Employee Compensation Act and other labor laws.' },
-              { title: 'Coverage for All Employees', desc: 'Protects full-time, part-time, and contractual workers under your payroll.' },
-            ].map((item) => (
-              <div key={item.title} className="flex items-start">
-                <UsersIcon className="h-8 w-8 text-blue-600 mr-4" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                  <p className="text-base text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </motion.section>
 
-        {/* Key Benefits Section */}
+        {/* Policy Highlights */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="bg-white rounded-lg shadow-md p-8 mb-12"
+        >
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Policy Highlights</h2>
+          <ul className="list-disc list-inside text-gray-600 space-y-2">
+            <li>Covers medical expenses, rehabilitation, and compensation for work-related injuries or illnesses.</li>
+            <li>Provides death and disability benefits to employees and their families.</li>
+            <li>Ensures compliance with the Employee Compensation Act and other labor regulations.</li>
+            <li>Extends coverage to full-time, part-time, and contractual workers.</li>
+          </ul>
+        </motion.section>
+
+        {/* Key Benefits */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Key Benefits
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { title: 'Comprehensive Coverage', desc: 'Protects against accidents, injuries, occupational diseases, and more.' },
-              { title: 'Medical Expenses', desc: 'Covers hospitalization, surgery, and treatment costs for workplace injuries.' },
-              { title: 'Lost Wages', desc: 'Compensates employees for lost income during recovery.' },
-              { title: 'Legal and Investigation Costs', desc: 'Covers expenses related to legal proceedings or investigations from workplace incidents.' },
-            ].map((item) => (
-              <div key={item.title} className="flex items-start">
-                <UsersIcon className="h-8 w-8 text-blue-600 mr-4" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                  <p className="text-base text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Key Benefits</h2>
+          <ul className="list-disc list-inside text-gray-600 space-y-2">
+            <li>Comprehensive protection against accidents, occupational diseases, and workplace risks.</li>
+            <li>Covers hospitalization, surgeries, and medical treatments related to workplace injuries.</li>
+            <li>Compensates employees for lost wages during recovery.</li>
+            <li>Includes legal and investigation costs arising from workplace incidents.</li>
+          </ul>
         </motion.section>
 
-        {/* Additional Features Section */}
+        {/* Additional Features */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="bg-white rounded-lg shadow-md p-8 mb-12"
+        >
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Additional Features</h2>
+          <ul className="list-disc list-inside text-gray-600 space-y-2">
+            <li>Compensation for temporary disability due to work-related injuries.</li>
+            <li>Funeral expense coverage in case of work-related death.</li>
+            <li>Tailored policy solutions based on business needs and risk profiles.</li>
+          </ul>
+        </motion.section>
+
+        {/* Why Choose Us */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Additional Features
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { title: 'Temporary Disability Coverage', desc: 'Compensation for employees temporarily unable to work due to injury.' },
-              { title: 'Funeral Expenses', desc: 'Financial assistance for funeral costs in case of work-related death.' },
-              { title: 'Tailored Solutions', desc: 'Customized policy terms based on your business and risk profile.' },
-            ].map((item) => (
-              <div key={item.title} className="flex items-start">
-                <UsersIcon className="h-8 w-8 text-blue-600 mr-4" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                  <p className="text-base text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Why Choose Arshyan Insurance?</h2>
+          <ul className="list-disc list-inside text-gray-600 space-y-2">
+            <li>Prioritizes employee safety and well-being.</li>
+            <li>Flexible and customizable insurance plans.</li>
+            <li>Quick and hassle-free claims process.</li>
+            <li>Helps businesses reduce financial burdens of workplace risks.</li>
+          </ul>
         </motion.section>
 
-        {/* Why Choose Arshyan Section */}
+        {/* Call-to-Action */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="bg-white rounded-lg shadow-md p-8 mb-12"
-        >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Why Choose Arshyan Insurance?
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { title: 'Employee Safety First', desc: 'Ensure your employees feel valued and protected.' },
-              { title: 'Customizable Plans', desc: 'Flexible coverage options tailored to your workforce needs.' },
-              { title: 'Hassle-free Claims', desc: 'Quick and straightforward claims process for employee recovery.' },
-              { title: 'Business Protection', desc: 'Reduce financial burdens with comprehensive coverage.' },
-            ].map((item) => (
-              <div key={item.title} className="flex items-start">
-                <UsersIcon className="h-8 w-8 text-blue-600 mr-4" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
-                  <p className="text-base text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* Call-to-Action Section */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.0 }}
           className="bg-white rounded-lg shadow-md p-8 text-center"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
-            Protect Your Workforce
-          </h2>
-          <p className="text-base text-gray-600 mb-6">
-            With Arshyan Employee Compensation Insurance, ensure your employees’ safety and your business’s compliance. Get started today!
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Protect Your Workforce</h2>
+          <p className="text-gray-600 mb-6">
+            With Arshyan Employee Compensation Insurance, safeguard your employees’ well-being and keep your business legally compliant. Get started today!
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link

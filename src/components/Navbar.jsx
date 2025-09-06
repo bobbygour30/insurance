@@ -1,29 +1,29 @@
-import React, { useState, useRef, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useRef, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import assets from '../assets/assets';
 import { ChevronDownIcon, EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
-import assets from "../assets/assets";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState({
     personal: false,
     business: false,
-    login: false,
+    
   });
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState({
     personal: false,
     business: false,
-    login: false,
+    
   });
   const dropdownRefs = {
     personal: useRef(null),
     business: useRef(null),
-    login: useRef(null),
+    
   };
   const timeoutRefs = {
     personal: useRef(null),
     business: useRef(null),
-    login: useRef(null),
+    
   };
 
   const toggleMenu = () => {
@@ -75,30 +75,28 @@ const Navbar = () => {
   return (
     <div>
       {/* Top Bar with Welcome Text and Contact Info */}
-      <div className="bg-blue-600 text-white py-2 px-4 sm:px-6 lg:px-8 hidden sm:block">
+      <div className="bg-[#00001a] text-white py-2 px-4 sm:px-6 lg:px-8 hidden sm:block">
         <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center">
           <div className="text-center sm:text-left mb-2 sm:mb-0">
             <span className="text-lg font-semibold ml-16">Welcome To Arshyan Insurance</span>
           </div>
           <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
-            <div className="flex items-center">
+            <div className='flex items-center'>
               <EnvelopeIcon className="h-5 w-5 mr-2" />
               <a href="mailto:sales.support@arshyaninsurance.com" className="text-sm hover:underline">
                 sales.support@arshyaninsurance.com
               </a>
             </div>
-            <div className="flex items-center">
-              <PhoneIcon className="h-5 w-5 mr-2" />
-              <div className="flex flex-col sm:flex-row sm:space-x-4">
-                <a href="tel:+919870277495" className="text-sm hover:underline">+91-9870277495</a>
-              </div>
+            <div className='flex items-center'>
+              <PhoneIcon className="h-4 w-4 mr-2" />
+              <a href="tel:+919870277495" className="text-sm hover:underline">+91-9870277495</a>
             </div>
           </div>
         </div>
       </div>
 
       {/* Navbar */}
-      <nav className="bg-white text-gray-800 shadow-lg  w-full z-20 top-[60px]">
+      <nav className="bg-white text-[#00001a] shadow-lg w-full z-20 top-[60px]">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
@@ -118,7 +116,7 @@ const Navbar = () => {
                 to="/"
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
-                    isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+                    isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                   }`
                 }
               >
@@ -128,7 +126,7 @@ const Navbar = () => {
                 to="/about"
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
-                    isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+                    isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                   }`
                 }
               >
@@ -144,28 +142,19 @@ const Navbar = () => {
                 aria-expanded={dropdownOpen.personal}
                 aria-controls="personal-dropdown"
               >
-                <div className="flex items-center">
-                  <NavLink
-                    to="/insurance/personal"
-                    className={({ isActive }) =>
-                      `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
-                        isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
-                      }`
-                    }
-                  >
-                    Personal Insurance
-                  </NavLink>
-                  <span className="pointer-events-none">
-                    <ChevronDownIcon
-                      className={`ml-0.5 h-4 w-4 transition-transform duration-300 ${
-                        dropdownOpen.personal ? "rotate-180" : "rotate-0"
-                      }`}
-                    />
-                  </span>
-                </div>
+                <NavLink
+                  to="/insurance/personal"
+                  className={({ isActive }) =>
+                    `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
+                      isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
+                    }`
+                  }
+                >
+                  Personal Insurance
+                </NavLink>
                 <div
                   id="personal-dropdown"
-                  className={`absolute bg-blue-50 text-gray-800 shadow-lg rounded-md mt-2 w-56 z-50 transition-opacity duration-300 ${
+                  className={`absolute bg-white text-[#00001a] shadow-lg rounded-md mt-2 w-56 z-50 transition-opacity duration-300 ${
                     dropdownOpen.personal
                       ? "opacity-100"
                       : "opacity-0 pointer-events-none"
@@ -197,8 +186,8 @@ const Navbar = () => {
                       className={({ isActive }) =>
                         `block px-4 py-3 text-base transition duration-200 ${
                           isActive
-                            ? "bg-blue-100 text-blue-600"
-                            : "hover:bg-blue-200"
+                            ? "bg-gray-200 text-[#00001a]"
+                            : "hover:bg-gray-300"
                         }`
                       }
                     >
@@ -217,28 +206,19 @@ const Navbar = () => {
                 aria-expanded={dropdownOpen.business}
                 aria-controls="business-dropdown"
               >
-                <div className="flex items-center">
-                  <NavLink
-                    to="/insurance/business"
-                    className={({ isActive }) =>
-                      `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
-                        isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
-                      }`
-                    }
-                  >
-                    Business & Group Insurance
-                  </NavLink>
-                  <span className="pointer-events-none">
-                    <ChevronDownIcon
-                      className={`ml-0.5 h-4 w-4 transition-transform duration-300 ${
-                        dropdownOpen.business ? "rotate-180" : "rotate-0"
-                      }`}
-                    />
-                  </span>
-                </div>
+                <NavLink
+                  to="/insurance/business"
+                  className={({ isActive }) =>
+                    `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
+                      isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
+                    }`
+                  }
+                >
+                  Business & Group Insurance
+                </NavLink>
                 <div
                   id="business-dropdown"
-                  className={`absolute bg-blue-50 text-gray-800 shadow-lg rounded-md mt-2 w-80 z-50 transition-opacity duration-300 ${
+                  className={`absolute bg-white text-[#00001a] shadow-lg rounded-md mt-2 w-80 z-50 transition-opacity duration-300 ${
                     dropdownOpen.business
                       ? "opacity-100"
                       : "opacity-0 pointer-events-none"
@@ -289,8 +269,8 @@ const Navbar = () => {
                       className={({ isActive }) =>
                         `block px-4 py-3 text-base transition duration-200 ${
                           isActive
-                            ? "bg-blue-100 text-blue-600"
-                            : "hover:bg-blue-200"
+                            ? "bg-gray-200 text-[#00001a]"
+                            : "hover:bg-gray-300"
                         }`
                       }
                     >
@@ -304,7 +284,7 @@ const Navbar = () => {
                 to="/contact"
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
-                    isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+                    isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                   }`
                 }
               >
@@ -314,51 +294,22 @@ const Navbar = () => {
                 to="/get-quote"
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
-                    isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+                    isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                   }`
                 }
               >
                 Get a Quote
               </NavLink>
 
-              {/* Login Dropdown */}
-              <div
-                className="relative"
-                ref={dropdownRefs.login}
-                onMouseEnter={() => handleMouseEnter("login")}
-                onMouseLeave={(e) => handleMouseLeave("login", e)}
-                aria-expanded={dropdownOpen.login}
-                aria-controls="login-dropdown"
-              >
-                <div className="flex items-center">
-                  <NavLink
-                    to="/login"
-                    className={({ isActive }) =>
-                      `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
-                        isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
-                      }`
-                    }
-                  >
-                    Login
-                  </NavLink>
-                </div>
-                <div
-                  id="login-dropdown"
-                  className={`absolute bg-blue-50 text-gray-800 shadow-lg rounded-md mt-2 w-56 z-50 transition-opacity duration-300 ${
-                    dropdownOpen.login
-                      ? "opacity-100"
-                      : "opacity-0 pointer-events-none"
-                  }`}
-                >
-                </div>
-              </div>
+              
+              
             </div>
 
             {/* Hamburger Icon */}
             <div className="md:hidden flex items-center">
               <button
                 onClick={toggleMenu}
-                className="text-gray-800 hover:text-blue-600 focus:outline-none"
+                className="text-[#00001a] hover:text-gray-600 focus:outline-none"
                 aria-label="Toggle menu"
               >
                 <svg
@@ -395,7 +346,7 @@ const Navbar = () => {
               to="/"
               className={({ isActive }) =>
                 `block px-3 py-2 rounded-md text-lg font-medium transition duration-200 ${
-                  isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+                  isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                 }`
               }
               onClick={toggleMenu}
@@ -406,15 +357,10 @@ const Navbar = () => {
             {/* Personal Insurance Mobile */}
             <div>
               <button
-                className="w-full text-left px-3 py-2 rounded-md text-lg font-medium hover:bg-blue-100 transition duration-200 flex justify-between items-center"
+                className="w-full text-left px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-200 transition duration-200"
                 onClick={() => toggleMobileDropdown("personal")}
               >
                 Personal Insurance
-                <ChevronDownIcon
-                  className={`h-4 w-4 transition-transform duration-300 ${
-                    mobileDropdownOpen.personal ? "rotate-180" : "rotate-0"
-                  }`}
-                />
               </button>
               <div
                 className={`pl-4 ${mobileDropdownOpen.personal ? "block" : "hidden"}`}
@@ -443,7 +389,7 @@ const Navbar = () => {
                     to={item.path}
                     className={({ isActive }) =>
                       `block px-3 py-2 text-base transition duration-200 ${
-                        isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+                        isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                       }`
                     }
                     onClick={() => {
@@ -460,15 +406,10 @@ const Navbar = () => {
             {/* Business & Group Insurance Mobile */}
             <div>
               <button
-                className="w-full text-left px-3 py-2 rounded-md text-lg font-medium hover:bg-blue-100 transition duration-200 flex justify-between items-center"
+                className="w-full text-left px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-200 transition duration-200"
                 onClick={() => toggleMobileDropdown("business")}
               >
                 Business & Group Insurance
-                <ChevronDownIcon
-                  className={`h-4 w-4 transition-transform duration-300 ${
-                    mobileDropdownOpen.business ? "rotate-180" : "rotate-0"
-                  }`}
-                />
               </button>
               <div
                 className={`pl-4 ${mobileDropdownOpen.business ? "block" : "hidden"}`}
@@ -516,7 +457,7 @@ const Navbar = () => {
                     to={item.path}
                     className={({ isActive }) =>
                       `block px-3 py-2 text-base transition duration-200 ${
-                        isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+                        isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                       }`
                     }
                     onClick={() => {
@@ -534,7 +475,7 @@ const Navbar = () => {
               to="/contact"
               className={({ isActive }) =>
                 `block px-3 py-2 rounded-md text-lg font-medium transition duration-200 ${
-                  isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+                  isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                 }`
               }
               onClick={toggleMenu}
@@ -545,19 +486,18 @@ const Navbar = () => {
               to="/get-quote"
               className={({ isActive }) =>
                 `block px-3 py-2 rounded-md text-lg font-medium transition duration-200 ${
-                  isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+                  isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                 }`
               }
               onClick={toggleMenu}
             >
               Get a Quote
             </NavLink>
-
             <NavLink
               to="/about"
               className={({ isActive }) =>
                 `block px-3 py-2 rounded-md text-lg font-medium transition duration-200 ${
-                  isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
+                  isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                 }`
               }
               onClick={toggleMenu}
@@ -565,24 +505,8 @@ const Navbar = () => {
               About Us
             </NavLink>
 
-            {/* Login Mobile */}
-            <div>
-              <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                  `block px-3 py-2 rounded-md text-lg font-medium transition duration-200 ${
-                    isActive ? "bg-blue-100 text-blue-600" : "hover:bg-blue-100"
-                  }`
-                }
-                onClick={toggleMenu}
-              >
-                Login
-              </NavLink>
-              <div
-                className={`pl-4 ${mobileDropdownOpen.login ? "block" : "hidden"}`}
-              >
-              </div>
-            </div>
+            
+            
           </div>
         </div>
       </nav>
