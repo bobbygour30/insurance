@@ -9,7 +9,8 @@ import {
   StarIcon, 
   ArrowRightIcon,
   ChevronDownIcon,
-  UserGroupIcon,
+  DevicePhoneMobileIcon,
+  TruckIcon,
 } from '@heroicons/react/24/outline';
 
 import 'slick-carousel/slick/slick.css';
@@ -78,8 +79,8 @@ const HomePage = () => {
     datasets: [
       {
         data: [70, 20, 10],
-        backgroundColor: ['#3B82F6', '#FBBF24', '#EF4444'],
-        hoverBackgroundColor: ['#2563EB', '#F59E0B', '#DC2626'],
+        backgroundColor: ['#00001a', '#FBBF24', '#EF4444'],
+        hoverBackgroundColor: ['#1a1a3d', '#F59E0B', '#DC2626'],
         borderColor: '#ffffff',
         borderWidth: 2,
       },
@@ -94,14 +95,14 @@ const HomePage = () => {
       legend: {
         position: 'top',
         labels: {
-          font: { size: 14 },
-          color: '#1F2937',
+          font: { size: 14, family: "'Outfit', sans-serif" },
+          color: '#00001a',
         },
       },
       tooltip: {
-        backgroundColor: '#1F2937',
-        titleFont: { size: 14 },
-        bodyFont: { size: 12 },
+        backgroundColor: '#00001a',
+        titleFont: { size: 14, family: "'Outfit', sans-serif" },
+        bodyFont: { size: 12, family: "'Outfit', sans-serif" },
       },
     },
   };
@@ -113,8 +114,8 @@ const HomePage = () => {
       {
         label: 'Policies Issued',
         data: [5000, 8000, 12000, 18000, 25000],
-        backgroundColor: '#3B82F6',
-        borderColor: '#2563EB',
+        backgroundColor: '#00001a',
+        borderColor: '#1a1a3d',
         borderWidth: 1,
       },
     ],
@@ -129,8 +130,8 @@ const HomePage = () => {
         title: {
           display: true,
           text: 'Year',
-          color: '#1F2937',
-          font: { size: 14 },
+          color: '#00001a',
+          font: { size: 14, family: "'Outfit', sans-serif" },
         },
         grid: { display: false },
       },
@@ -138,8 +139,8 @@ const HomePage = () => {
         title: {
           display: true,
           text: 'Number of Policies',
-          color: '#1F2937',
-          font: { size: 14 },
+          color: '#00001a',
+          font: { size: 14, family: "'Outfit', sans-serif" },
         },
         beginAtZero: true,
       },
@@ -148,14 +149,14 @@ const HomePage = () => {
       legend: {
         position: 'top',
         labels: {
-          font: { size: 14 },
-          color: '#1F2937',
+          font: { size: 14, family: "'Outfit', sans-serif" },
+          color: '#00001a',
         },
       },
       tooltip: {
-        backgroundColor: '#1F2937',
-        titleFont: { size: 14 },
-        bodyFont: { size: 12 },
+        backgroundColor: '#00001a',
+        titleFont: { size: 14, family: "'Outfit', sans-serif" },
+        bodyFont: { size: 12, family: "'Outfit', sans-serif" },
       },
     },
   };
@@ -190,30 +191,163 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white font-outfit">
+      <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+        .font-outfit {
+          font-family: 'Outfit', sans-serif;
+        }
+        .section-heading {
+          position: relative;
+          display: inline-block;
+        }
+        .section-heading::after {
+          content: '';
+          position: absolute;
+          bottom: -8px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60%;
+          height: 3px;
+          background: linear-gradient(to right, #00001a, #3b82f6);
+          border-radius: 2px;
+        }
+        .slick-slider {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+        .slick-slide {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+        }
+        .slick-slide img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+        .slick-prev,
+        .slick-next {
+          z-index: 10;
+          width: 40px;
+          height: 40px;
+          background-color: #3B82F6;
+          border-radius: 50%;
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          transition: background-color 0.3s, transform 0.3s;
+        }
+        .slick-prev:hover,
+        .slick-next:hover {
+          background-color: #2563EB;
+          transform: scale(1.1);
+        }
+        .slick-prev:before,
+        .slick-next:before {
+          content: '';
+          display: block;
+          width: 16px;
+          height: 16px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        .slick-prev:before {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15 19l-7-7 7-7'/%3E%3C/svg%3E");
+        }
+        .slick-next:before {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 5l7 7-7 7'/%3E%3C/svg%3E");
+        }
+        .slick-prev {
+          left: 15px;
+        }
+        .slick-next {
+          right: 15px;
+        }
+        .custom-dots {
+          bottom: 20px;
+        }
+        .custom-dot {
+          width: 12px;
+          height: 12px;
+          background-color: #ffffff;
+          border-radius: 50%;
+          display: inline-block;
+          margin: 0 6px;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+          transition: background-color 0.3s, transform 0.3s;
+        }
+        .custom-dot:hover {
+          transform: scale(1.2);
+        }
+        .slick-active .custom-dot {
+          background-color: #3B82F6;
+        }
+        .hero-slider,
+        .hero-slider .slick-list,
+        .hero-slider .slick-track,
+        .hero-slider .slick-slide,
+        .hero-slider .slick-slide > div,
+        .hero-slider .slick-slide img {
+          height: 60vh !important;
+        }
+        .partners-slider,
+        .partners-slider .slick-list,
+        .partners-slider .slick-track,
+        .partners-slider .slick-slide,
+        .partners-slider .slick-slide > div {
+          height: auto !important;
+        }
+        .partners-slider .slick-slide img {
+          height: 4rem !important;
+          width: auto !important;
+        }
+        .insurance-card {
+          opacity: 0;
+          animation: fadeInUp 0.6s ease-out forwards;
+        }
+        .insurance-card:nth-child(1) { animation-delay: 0.1s; }
+        .insurance-card:nth-child(2) { animation-delay: 0.2s; }
+        .insurance-card:nth-child(3) { animation-delay: 0.3s; }
+        .insurance-card:nth-child(4) { animation-delay: 0.4s; }
+        .insurance-card:nth-child(5) { animation-delay: 0.5s; }
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @media (max-width: 640px) {
+          .custom-dot {
+            width: 10px;
+            height: 10px;
+            margin: 0 4px;
+          }
+          .slick-prev,
+          .slick-next {
+            width: 32px;
+            height: 32px;
+          }
+          .slick-prev:before,
+          .slick-next:before {
+            width: 12px;
+            height: 12px;
+          }
+        }
+      `}</style>
+
       {/* Hero Slider */}
       <section className="relative">
-        <style jsx>{`
-          .hero-slider,
-          .hero-slider .slick-list,
-          .hero-slider .slick-track,
-          .hero-slider .slick-slide,
-          .hero-slider .slick-slide > div,
-          .hero-slider .slick-slide img {
-            height: 60vh !important;
-          }
-          @media (min-width: 640px) {
-            .hero-slider,
-            .hero-slider .slick-list,
-            .hero-slider .slick-track,
-            .hero-slider .slick-slide,
-            .hero-slider .slick-slide > div,
-            .hero-slider .slick-slide img {
-              height: 91vh !important;
-            }
-          }
-        `}</style>
-        <Slider {...heroSliderSettings} className="hero-slider w-full h-[60vh] sm:h-[91vh] overflow-hidden">
+        <Slider {...heroSliderSettings} className="hero-slider w-full h-[60vh] overflow-hidden">
           {[
             { src: assets.banner2, alt: "Health Insurance Hero 1" },
             { src: assets.banner3, alt: "Health Insurance Hero 2" },
@@ -226,7 +360,7 @@ const HomePage = () => {
                 alt={slide.alt}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 flex items-center  bg-opacity-40">
+              <div className="absolute inset-0 flex items-center bg-gradient-to-r from-[#00001a]/60 to-transparent">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                   <div className="text-left max-w-md sm:max-w-lg">
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
@@ -237,7 +371,7 @@ const HomePage = () => {
                     </p>
                     <a
                       href="#"
-                      className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-semibold transition duration-300"
+                      className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#00001a] to-[#3b82f6] hover:from-[#1a1a3d] hover:to-[#2563eb] rounded-full text-white font-semibold transition duration-300"
                     >
                       {bannerText[index].cta} <ArrowRightIcon className="ml-2 h-5 w-5" />
                     </a>
@@ -249,41 +383,55 @@ const HomePage = () => {
         </Slider>
       </section>
 
+      {/* Insurance Plans */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Insurance Plans</h2>
-            <p className="mt-4 text-lg text-gray-600">Choose the plan that best suits your needs</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#00001a] section-heading">Our Insurance Plans</h2>
+            <p className="mt-4 text-lg text-gray-600">Explore our range of insurance plans tailored to your needs</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: HeartIcon,
-                title: 'Individual Health Plan',
-                desc: 'Comprehensive coverage for individuals with flexible options.',
-                price: 'Starting at ₹499/month',
+                icon: assets.icon4,
+                title: 'Mobile & Electronics Equipment',
+                desc: 'Protect your gadgets with coverage for damage, theft, and breakdowns.',
               },
               {
-                icon: UserGroupIcon,
-                title: 'Family Floater Plan',
-                desc: 'Protect your entire family with a single, affordable plan.',
-                price: 'Starting at ₹999/month',
+                icon: assets.icon3,
+                title: 'Car Insurance',
+                desc: 'Comprehensive coverage for your vehicle against accidents and theft.',
               },
               {
-                icon: ShieldCheckIcon,
-                title: 'Senior Citizen Plan',
-                desc: 'Specialized coverage for seniors with extensive benefits.',
-                price: 'Starting at ₹799/month',
+                icon: assets.icon1,
+                title: 'Two Wheeler Insurance',
+                desc: 'Affordable plans to keep your bike or scooter safe on the road.',
+              },
+              {
+                icon: assets.icon3,
+                title: 'Commercial Vehicle Insurance',
+                desc: 'Robust protection for your business vehicles and fleet operations.',
+              },
+              {
+                icon: assets.icon2,
+                title: 'Health Insurance',
+                desc: 'Comprehensive health plans for you and your family’s well-being.',
               },
             ].map((plan, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
-                <plan.icon className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900">{plan.title}</h3>
-                <p className="mt-2 text-gray-600">{plan.desc}</p>
-                <p className="mt-4 text-lg font-bold text-blue-600">{plan.price}</p>
+              <div
+                key={index}
+                className="insurance-card flex flex-col items-center justify-center bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition duration-300 transform hover:scale-103 will-change-transform"
+              >
+                <img
+                  src={plan.icon}
+                  alt={`${plan.title} icon`}
+                  className="w-16 h-16 mx-auto mb-4 object-contain"
+                />
+                <h3 className="text-xl font-semibold text-[#00001a] text-center">{plan.title}</h3>
+                <p className="mt-2 text-gray-600 text-center">{plan.desc}</p>
                 <a
                   href="#"
-                  className="mt-4 inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-semibold transition duration-300"
+                  className="mt-4 inline-flex items-center px-6 py-2 bg-gradient-to-r from-[#00001a] to-[#3b82f6] hover:from-[#1a1a3d] hover:to-[#2563eb] rounded-full text-white font-semibold transition duration-300"
                 >
                   View Details <ArrowRightIcon className="ml-2 h-5 w-5" />
                 </a>
@@ -293,11 +441,12 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-blue-50">
+      {/* About Us */}
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">About Us</h2>
-            <p className="mt-4 text-lg text-gray-600">Empowering lives with trusted health insurance solutions</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#00001a] section-heading">About Us</h2>
+            <p className="mt-4 text-lg text-gray-600">Empowering lives with trusted insurance solutions</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
@@ -309,16 +458,16 @@ const HomePage = () => {
             </div>
             <div className="flex flex-col justify-center">
               <p className="text-gray-600 leading-relaxed">
-                We are a leading health insurance provider dedicated to offering comprehensive and affordable plans to protect you and your loved ones. With a focus on innovation, customer care, and a robust network of healthcare providers, we ensure peace of mind through tailored insurance solutions. Our mission is to make healthcare accessible and stress-free for everyone.
+                We are a leading insurance provider dedicated to offering comprehensive and affordable plans to protect you and your assets. With a focus on innovation, customer care, and a robust network of partners, we ensure peace of mind through tailored insurance solutions. Our mission is to make protection accessible and stress-free for everyone.
               </p>
               <div className="mt-6 flex space-x-4">
-                <ShieldCheckIcon className="h-8 w-8 text-blue-600" />
-                <HeartIcon className="h-8 w-8 text-blue-600" />
-                <UsersIcon className="h-8 w-8 text-blue-600" />
+                <ShieldCheckIcon className="h-8 w-8 text-[#00001a]" />
+                <HeartIcon className="h-8 w-8 text-[#00001a]" />
+                <UsersIcon className="h-8 w-8 text-[#00001a]" />
               </div>
               <a
                 href="#"
-                className="mt-6 inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-semibold transition duration-300"
+                className="mt-6 inline-flex items-center px-6 py-2 bg-gradient-to-r from-[#00001a] to-[#3b82f6] hover:from-[#1a1a3d] hover:to-[#2563eb] rounded-full text-white font-semibold transition duration-300"
               >
                 Learn More <ArrowRightIcon className="ml-2 h-5 w-5" />
               </a>
@@ -327,22 +476,23 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Why Choose Us */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Why Choose Us</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#00001a] section-heading">Why Choose Us</h2>
             <p className="mt-4 text-lg text-gray-600">Discover the benefits of partnering with us</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { icon: ShieldCheckIcon, title: 'Trusted Coverage', desc: 'Comprehensive plans with extensive coverage' },
               { icon: HeartIcon, title: 'Customer Care', desc: '24/7 support for all your needs' },
-              { icon: UsersIcon, title: 'Wide Network', desc: 'Access to top hospitals nationwide' },
+              { icon: UsersIcon, title: 'Wide Network', desc: 'Access to top hospitals and service providers' },
               { icon: StarIcon, title: 'Fast Claims', desc: 'Quick and hassle-free claim processing' },
             ].map((item, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
-                <item.icon className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900">{item.title}</h3>
+              <div key={index} className="bg-white p-6 rounded-lg shadow-lg border border-gray-100 hover:shadow-xl transition duration-300 transform hover:scale-103">
+                <item.icon className="h-12 w-12 text-[#00001a] mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-[#00001a]">{item.title}</h3>
                 <p className="mt-2 text-gray-600">{item.desc}</p>
               </div>
             ))}
@@ -350,21 +500,22 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-blue-50">
+      {/* Milestones & Achievements */}
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Milestones & Achievements</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#00001a] section-heading">Milestones & Achievements</h2>
             <p className="mt-4 text-lg text-gray-600">Our journey in numbers</p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="bg-white p-6 rounded-lg shadow-md h-96">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Claims Processed</h3>
+            <div className="bg-white p-6 rounded-lg shadow-lg border border-gray-100 h-96">
+              <h3 className="text-xl font-semibold text-[#00001a] mb-4">Claims Processed</h3>
               <div className="h-80">
                 <Pie data={pieData} options={pieOptions} />
               </div>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md h-96">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Policy Growth Over Years</h3>
+            <div className="bg-white p-6 rounded-lg shadow-lg border border-gray-100 h-96">
+              <h3 className="text-xl font-semibold text-[#00001a] mb-4">Policy Growth Over Years</h3>
               <div className="h-80">
                 <Bar data={barData} options={barOptions} />
               </div>
@@ -373,14 +524,15 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Success Story */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Success Story</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#00001a] section-heading">Our Success Story</h2>
             <p className="mt-4 text-lg text-gray-600">Real stories from our satisfied customers</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-lg border border-gray-100">
               <p className="text-gray-600 italic">"When I needed urgent medical care, their quick claim processing saved me from financial stress. Truly a lifesaver!"</p>
               <div className="mt-4 flex items-center">
                 <img
@@ -389,12 +541,12 @@ const HomePage = () => {
                   className="h-12 w-12 rounded-full object-cover"
                 />
                 <div className="ml-4">
-                  <p className="font-semibold text-gray-900">Priya Sharma</p>
+                  <p className="font-semibold text-[#00001a]">Priya Sharma</p>
                   <p className="text-gray-600">Policyholder since 2022</p>
                 </div>
               </div>
             </div>
-            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-lg border border-gray-100">
               <p className="text-gray-600 italic">"The wide hospital network made it easy to find quality care. Their support team was always there for me."</p>
               <div className="mt-4 flex items-center">
                 <img
@@ -403,7 +555,7 @@ const HomePage = () => {
                   className="h-12 w-12 rounded-full object-cover"
                 />
                 <div className="ml-4">
-                  <p className="font-semibold text-gray-900">Rahul Verma</p>
+                  <p className="font-semibold text-[#00001a]">Rahul Verma</p>
                   <p className="text-gray-600">Policyholder since 2021</p>
                 </div>
               </div>
@@ -412,11 +564,12 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-blue-50">
+      {/* FAQ */}
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>
-            <p className="mt-4 text-lg text-gray-600">Find answers to common questions about our health insurance plans</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#00001a] section-heading">Frequently Asked Questions</h2>
+            <p className="mt-4 text-lg text-gray-600">Find answers to common questions about our insurance plans</p>
           </div>
           <div className="space-y-4">
             {[
@@ -433,18 +586,18 @@ const HomePage = () => {
                 answer: 'Yes, we offer flexible options to tailor your plan to your specific needs and budget.',
               },
               {
-                question: 'What is the hospital network coverage?',
-                answer: 'We have a wide network of over 5000 hospitals across India for cashless treatment.',
+                question: 'What is the coverage for vehicle and electronics insurance?',
+                answer: 'Our vehicle plans cover accidents, theft, and damages, while electronics plans cover breakdowns, accidental damage, and theft.',
               },
             ].map((faq, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md">
+              <div key={index} className="bg-white rounded-lg shadow-lg border border-gray-100">
                 <button
-                  className="w-full text-left px-6 py-4 flex justify-between items-center"
+                  className="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition duration-200"
                   onClick={() => toggleFaq(index)}
                 >
-                  <span className="text-lg font-semibold text-gray-900">{faq.question}</span>
+                  <span className="text-lg font-semibold text-[#00001a]">{faq.question}</span>
                   <ChevronDownIcon
-                    className={`h-6 w-6 text-blue-600 transform transition-transform duration-200 ${
+                    className={`h-6 w-6 text-[#00001a] transform transition-transform duration-200 ${
                       faqOpen[index] ? 'rotate-180' : ''
                     }`}
                   />
@@ -462,25 +615,13 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Partners */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Trusted Partners</h2>
-            <p className="mt-4 text-lg text-gray-600">Collaborating with leading healthcare providers</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#00001a] section-heading">Our Trusted Partners</h2>
+            <p className="mt-4 text-lg text-gray-600">Collaborating with leading insurance and service providers</p>
           </div>
-          <style jsx>{`
-            .partners-slider,
-            .partners-slider .slick-list,
-            .partners-slider .slick-track,
-            .partners-slider .slick-slide,
-            .partners-slider .slick-slide > div {
-              height: auto !important;
-            }
-            .partners-slider .slick-slide img {
-              height: 4rem !important;
-              width: auto !important;
-            }
-          `}</style>
           <Slider {...partnersSliderSettings} className="partners-slider w-full">
             {[
               { src: assets.logo2, alt: 'Cigna' },
@@ -497,10 +638,11 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-blue-50">
+      {/* Testimonials */}
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Testimonials</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#00001a] section-heading">Testimonials</h2>
             <p className="mt-4 text-lg text-gray-600">What our customers say about us</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -521,12 +663,12 @@ const HomePage = () => {
                 image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
               },
             ].map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center">
+              <div key={index} className="bg-white p-6 rounded-lg shadow-lg border border-gray-100 text-center">
                 <StarIcon className="h-8 w-8 text-yellow-400 mx-auto mb-4" />
                 <p className="text-gray-600 italic">{testimonial.quote}</p>
                 <div className="mt-4 flex items-center justify-center">
                   <img src={testimonial.image} alt={testimonial.name} className="h-12 w-12 rounded-full object-cover" />
-                  <p className="ml-4 font-semibold text-gray-900">{testimonial.name}</p>
+                  <p className="ml-4 font-semibold text-[#00001a]">{testimonial.name}</p>
                 </div>
               </div>
             ))}
@@ -534,63 +676,24 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+      {/* CTA */}
+      <section className="py-12 sm:py-16 bg-gradient-to-r from-[#00001a] to-[#3b82f6] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Ready to Secure Your Health?</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Ready to Secure Your Future?</h2>
           <p className="text-base sm:text-lg mb-4 sm:mb-6">Get a personalized quote or speak with our experts today!</p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <a
               href="#"
-              className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-white text-blue-600 hover:bg-gray-100 rounded-full font-semibold transition duration-300"
+              className="inline-flex items-center px-6 py-3 bg-white text-[#00001a] hover:bg-gray-100 rounded-full font-semibold transition duration-300"
             >
               Get a Quote <ArrowRightIcon className="ml-2 h-5 w-5" />
             </a>
             <a
               href="#"
-              className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-transparent border border-white hover:bg-white hover:text-blue-600 rounded-full font-semibold transition duration-300"
+              className="inline-flex items-center px-6 py-3 bg-transparent border border-white hover:bg-white hover:text-[#00001a] rounded-full font-semibold transition duration-300"
             >
               Contact Support <ArrowRightIcon className="ml-2 h-5 w-5" />
             </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Latest from Our Blog</h2>
-            <p className="mt-4 text-lg text-gray-600">Stay informed with our health and insurance insights</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Understanding Your Health Insurance Options',
-                excerpt: 'Learn about the different types of health insurance plans and how to choose the right one.',
-                image: 'https://images.unsplash.com/photo-1450101490226-6d72e8a737b7',
-              },
-              {
-                title: 'Tips for a Stress-Free Claims Process',
-                excerpt: 'Discover how to navigate the claims process with ease and efficiency.',
-                image: 'https://images.unsplash.com/photo-1516321310767-75f7200c9998',
-              },
-              {
-                title: 'The Importance of Preventive Care',
-                excerpt: 'Explore why preventive care is key to maintaining your health and reducing costs.',
-                image: 'https://images.unsplash.com/photo-1576091160397-1f3c879a2076',
-              },
-            ].map((post, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <img src={post.image} alt={post.title} className="w-full h-48 object-cover rounded-md mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900">{post.title}</h3>
-                <p className="mt-2 text-gray-600">{post.excerpt}</p>
-                <a
-                  href="#"
-                  className="mt-4 inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-semibold transition duration-300"
-                >
-                  Read More <ArrowRightIcon className="ml-2 h-5 w-5" />
-                </a>
-              </div>
-            ))}
           </div>
         </div>
       </section>

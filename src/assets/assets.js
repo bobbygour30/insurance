@@ -25,7 +25,10 @@ import business from "./business.jpg"
 import contact from "./contact.jpg"
 import privacy from "./privacy.jpg"
 import login from "./login.jpg"
-
+import icon1 from "./icon1.png"
+import icon2 from "./icon2.png"
+import icon3 from "./icon3.png"
+import icon4 from "./icon4.png"
 const assets = {
     banner1,
     banner2,
@@ -53,7 +56,11 @@ const assets = {
     business,
     contact,
     privacy,
-    login
+    login,
+    icon1,
+    icon2,
+    icon3,
+    icon4
 }
 
 export default assets
