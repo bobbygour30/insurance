@@ -2,10 +2,157 @@
 @import "tailwindcss";
 
 
-body {
-  color: #1c1c1c;
-  font-family: Verdana, Geneva, sans-serif;
-}
+ body {
+          color: #1c1c1c;
+          
+          font-family: Verdana, Geneva, sans-serif;
+        }
+        p {
+          font-size: 12px;
+        }
+        .section-heading {
+          position: relative;
+          display: inline-block;
+        }
+        .section-heading::after {
+          content: "";
+          position: absolute;
+          bottom: -8px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60%;
+          height: 3px;
+          background: linear-gradient(to right, #00001a, #4b5563);
+          border-radius: 2px;
+        }
+        .slick-slider {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+        .slick-slide {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+        }
+        .slick-slide img {
+          width: 100%;
+          height: 100%;
+          object-fit: fill;
+          object-position: center;
+        }
+        .slick-prev,
+        .slick-next {
+          z-index: 10;
+          width: 40px;
+          height: 40px;
+          background-color: #00001a;
+          border-radius: 50%;
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          transition: background-color 0.3s, transform 0.3s;
+        }
+        .slick-prev:hover,
+        .slick-next:hover {
+          background-color: #1a1a3d;
+          transform: scale(1.1);
+        }
+        .slick-prev:before,
+        .slick-next:before {
+          content: "";
+          display: block;
+          width: 16px;
+          height: 16px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        .slick-prev:before {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15 19l-7-7 7-7'/%3E%3C/svg%3E");
+        }
+        .slick-next:before {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 5l7 7-7 7'/%3E%3C/svg%3E");
+        }
+        .slick-prev {
+          left: 15px;
+        }
+        .slick-next {
+          right: 15px;
+        }
+        .custom-dots {
+          bottom: 20px;
+        }
+        .custom-dot {
+          width: 12px;
+          height: 12px;
+          background-color: #ffffff;
+          border-radius: 50%;
+          display: inline-block;
+          margin: 0 6px;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+          transition: background-color 0.3s, transform 0.3s;
+        }
+        .custom-dot:hover {
+          transform: scale(1.2);
+        }
+        .slick-active .custom-dot {
+          background-color: #00001a;
+        }
+        .partners-slider,
+        .partners-slider .slick-list,
+        .partners-slider .slick-track,
+        .partners-slider .slick-slide,
+        .partners-slider .slick-slide > div {
+          height: auto !important;
+        }
+        .partners-slider .slick-slide img {
+          height: 4rem !important;
+          width: auto !important;
+          border: 2px solid #d1d5db !important;
+          border-radius: 8px !important;
+        }
+        @media (max-width: 640px) {
+          .custom-dot {
+            width: 10px;
+            height: 10px;
+            margin: 0 4px;
+          }
+          .slick-prev,
+          .slick-next {
+            width: 32px;
+            height: 32px;
+          }
+          .slick-prev:before,
+          .slick-next:before {
+            width: 12px;
+            height: 12px;
+          }
+        }
+        .faq-arrow {
+          transition: transform 0.3s ease;
+        }
+        .faq-arrow.open {
+          transform: rotate(180deg);
+        }
+        .numbers-card {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          background: linear-gradient(135deg, #f0f4f8, #e0e7ff);
+          border-radius: 15px;
+          padding: 20px;
+          text-align: center;
+        }
+        .numbers-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .number-icon {
+          font-size: 2.5rem;
+          color: #2563eb;
+          margin-bottom: 10px;
+        }
 
 
 .animate-fadeIn {
