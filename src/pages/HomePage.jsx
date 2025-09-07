@@ -156,7 +156,7 @@ const HomePage = () => {
         .slick-slide img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: fill;
           object-position: center;
         }
         .slick-prev,
@@ -218,14 +218,6 @@ const HomePage = () => {
         .slick-active .custom-dot {
           background-color: #00001a;
         }
-        .hero-slider,
-        .hero-slider .slick-list,
-        .hero-slider .slick-track,
-        .hero-slider .slick-slide,
-        .hero-slider .slick-slide > div,
-        .hero-slider .slick-slide img {
-          height: 60vh !important;
-        }
         .partners-slider,
         .partners-slider .slick-list,
         .partners-slider .slick-track,
@@ -281,18 +273,18 @@ const HomePage = () => {
       `}</style>
 
       {/* Hero Slider */}
-      <section className="relative bg-[#00001a]">
+      <section className="relative">
         <Slider
           {...heroSliderSettings}
           className="hero-slider w-full h-[60vh] overflow-hidden"
         >
           {[
-            { src: assets.banner2, alt: "Health Insurance Hero 1" },
-            { src: assets.banner3, alt: "Health Insurance Hero 2" },
-            { src: assets.banner1, alt: "Health Insurance Hero 3" },
-            { src: assets.banner2, alt: "Health Insurance Hero 4" },
+            { src: assets.banner5, alt: "Health Insurance Hero 1" },
+            { src: assets.banner3, alt: "Health Insurance Hero 3" },
+            { src: assets.banner4, alt: "Health Insurance Hero 4" },
+            { src: assets.banner2, alt: "Health Insurance Hero 2" },
           ].map((slide, index) => (
-            <div key={index} className="relative h-full">
+            <div key={index} className="relative h-[70vh]">
               <img
                 src={slide.src}
                 alt={slide.alt}

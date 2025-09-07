@@ -1,6 +1,7 @@
 import banner1 from "./banner1.jpg";
 import banner2 from "./banner2.jpg";
-import banner3 from "./banner3.jpg";
+import banner3 from "./banner3.png";
+import banner4 from "./banner4.png";
 import logo from "./logo.png"
 import logo2 from "./logo2.png"
 import logo3 from "./logo3.png"
@@ -41,6 +42,7 @@ import partner8 from "./partner8.avif"
 import partner9 from "./partner9.webp"
 import partner10 from "./partner10.png"
 import partner11 from "./partner11.jpg"
+import banner5 from "./banner5.png"
 
 
 
@@ -91,7 +93,9 @@ const assets = {
     partner8,
     partner9,
     partner10,
-    partner11
+    partner11,
+    banner4,
+    banner5
 }
 
 export default assets
