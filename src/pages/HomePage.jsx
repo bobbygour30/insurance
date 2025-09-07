@@ -1,33 +1,60 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 import Slider from "react-slick";
-import {
-  Chart as ChartJS,
-  ArcElement,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-} from "chart.js";
-import { CheckCircle, Zap, Users, Target, ChevronDown } from "lucide-react";
+import { CheckCircle, Zap, Users, Target, ChevronDown, Home, Shield, Clock } from "lucide-react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import assets from "../assets/assets";
-import { Pie, Bar } from "react-chartjs-2";
-
-// Register Chart.js components
-ChartJS.register(
-  ArcElement,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale
-);
+import assets from "../assets/assets"; // Ensure this path is correct
 
 const HomePage = () => {
   const [faqOpen, setFaqOpen] = useState({});
+
+  // Animation controls for counters
+  const controls = {
+    families: useAnimation(),
+    claims: useAnimation(),
+    years: useAnimation(),
+  };
+
+  // Counter animation effect with visibility check
+  useEffect(() => {
+    const animateCounters = async () => {
+      try {
+        await Promise.all([
+          controls.families.start({
+            value: 5000,
+            transition: { duration: 3, ease: [0.6, -0.05, 0.01, 0.99] },
+          }),
+          controls.claims.start({
+            value: 100,
+            transition: { duration: 2.5, ease: [0.6, -0.05, 0.01, 0.99] },
+          }),
+          controls.years.start({
+            value: 10,
+            transition: { duration: 2.5, ease: [0.6, -0.05, 0.01, 0.99] },
+          }),
+        ]);
+      } catch (error) {
+        console.error("Counter animation error:", error);
+      }
+    };
+
+    // Trigger animation when component is in view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          animateCounters();
+          observer.disconnect(); // Stop observing after animation starts
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    const numbersSection = document.querySelector("#numbers-section");
+    if (numbersSection) observer.observe(numbersSection);
+
+    return () => observer.disconnect();
+  }, [controls.families, controls.claims, controls.years]);
 
   // Hero Slider settings
   const heroSliderSettings = {
@@ -63,107 +90,10 @@ const HomePage = () => {
     autoplaySpeed: 3000,
     arrows: false,
     responsive: [
-      {
-        breakpoint: 1024,
-        settings: { slidesToShow: 4 },
-      },
-      {
-        breakpoint: 768,
-        settings: { slidesToShow: 3 },
-      },
-      {
-        breakpoint: 640,
-        settings: { slidesToShow: 2 },
-      },
+      { breakpoint: 1024, settings: { slidesToShow: 4 } },
+      { breakpoint: 768, settings: { slidesToShow: 3 } },
+      { breakpoint: 640, settings: { slidesToShow: 2 } },
     ],
-  };
-
-  // Data for Pie Chart (Claims Processed)
-  const pieData = {
-    labels: ["Approved Claims", "Pending Claims", "Rejected Claims"],
-    datasets: [
-      {
-        data: [70, 20, 10],
-        backgroundColor: ["#00001a", "#D1D5DB", "#6B7280"],
-        hoverBackgroundColor: ["#1a1a3d", "#9CA3AF", "#4B5563"],
-        borderColor: "#ffffff",
-        borderWidth: 2,
-      },
-    ],
-  };
-
-  // Pie Chart Options
-  const pieOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: "top",
-        labels: {
-          font: { size: 14, family: "'Outfit', sans-serif" },
-          color: "#00001a",
-        },
-      },
-      tooltip: {
-        backgroundColor: "#00001a",
-        titleFont: { size: 14, family: "'Outfit', sans-serif" },
-        bodyFont: { size: 12, family: "'Outfit', sans-serif" },
-      },
-    },
-  };
-
-  // Data for Bar Chart (Policy Growth)
-  const barData = {
-    labels: ["2020", "2021", "2022", "2023", "2024"],
-    datasets: [
-      {
-        label: "Policies Issued",
-        data: [5000, 8000, 12000, 18000, 25000],
-        backgroundColor: "#00001a",
-        borderColor: "#1a1a3d",
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  // Bar Chart Options
-  const barOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      x: {
-        title: {
-          display: true,
-          text: "Year",
-          color: "#00001a",
-          font: { size: 14, family: "'Outfit', sans-serif" },
-        },
-        grid: { display: false },
-      },
-      y: {
-        title: {
-          display: true,
-          text: "Number of Policies",
-          color: "#00001a",
-          font: { size: 14, family: "'Outfit', sans-serif" },
-        },
-        beginAtZero: true,
-      },
-    },
-    plugins: {
-      legend: {
-        position: "top",
-        labels: {
-          font: { size: 14, family: "'Outfit', sans-serif" },
-          color: "#00001a",
-        },
-      },
-      tooltip: {
-        backgroundColor: "#00001a",
-        titleFont: { size: 14, family: "'Outfit', sans-serif" },
-        bodyFont: { size: 12, family: "'Outfit', sans-serif" },
-      },
-    },
   };
 
   // FAQ Toggle Handler
@@ -211,11 +141,15 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white font-outfit">
+    <div className="min-h-screen bg-white">
       <style jsx global>{`
-        @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
-        .font-outfit {
-          font-family: "Outfit", sans-serif;
+        body {
+          color: #1c1c1c;
+          font-weight: bold;
+          font-family: Verdana, Geneva, sans-serif;
+        }
+        p {
+          font-size: 12px;
         }
         .section-heading {
           position: relative;
@@ -352,6 +286,22 @@ const HomePage = () => {
         .faq-arrow.open {
           transform: rotate(180deg);
         }
+        .numbers-card {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          background: linear-gradient(135deg, #f0f4f8, #e0e7ff);
+          border-radius: 15px;
+          padding: 20px;
+          text-align: center;
+        }
+        .numbers-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .number-icon {
+          font-size: 2.5rem;
+          color: #2563eb;
+          margin-bottom: 10px;
+        }
       `}</style>
 
       {/* Hero Slider */}
@@ -391,7 +341,7 @@ const HomePage = () => {
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8 }}
-                      className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition"
+                      className="inline-flex items-center px-6 py-3 bg-[#00001a] text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition"
                     >
                       {bannerText[index].cta}
                     </motion.a>
@@ -422,8 +372,8 @@ const HomePage = () => {
             <h2 className="text-3xl sm:text-4xl font-bold text-[#00001a]">
               Our Insurance Plans
             </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Explore our range of <span className="text-blue-600 font-medium">insurance plans</span> tailored to your needs
+            <p className="mt-4 text-gray-600">
+              Explore our range of <span className="text-blue-600">insurance plans</span> tailored to your needs
             </p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
@@ -466,13 +416,13 @@ const HomePage = () => {
                   alt={`${plan.title} icon`}
                   className="w-16 h-16 mb-4 object-contain"
                 />
-                <h3 className="text-xl font-semibold text-[#00001a] text-center">
+                <h3 className="text-xl font-bold text-[#00001a] text-center">
                   {plan.title}
                 </h3>
-                <p className="mt-2 text-gray-600 text-center">{plan.desc}</p>
+                <p className="mt-2 text-xs text-gray-600 text-center">{plan.desc}</p>
                 <a
                   href="#"
-                  className="mt-6 inline-flex items-center px-6 py-2 bg-blue-600 text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition justify-center"
+                  className="mt-6 inline-flex items-center px-6 py-2 bg-[#00001a] text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition justify-center"
                 >
                   View Details
                 </a>
@@ -501,8 +451,8 @@ const HomePage = () => {
             <h2 className="text-3xl sm:text-4xl font-bold text-[#00001a]">
               About Arshyan Insurance
             </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Empowering lives with <span className="text-blue-600 font-medium">trusted insurance solutions</span>
+            <p className="mt-4 text-gray-600">
+              Empowering lives with <span className="text-blue-600">trusted insurance solutions</span>
             </p>
           </motion.div>
           <motion.div
@@ -519,13 +469,13 @@ const HomePage = () => {
               />
             </div>
             <div className="flex flex-col justify-center">
-              <p className="text-lg text-gray-700 leading-relaxed text-justify">
+              <p className="text-gray-700 leading-relaxed text-justify">
                 We are a leading insurance provider dedicated to offering{" "}
-                <span className="text-blue-600 font-medium">comprehensive and affordable</span> plans to protect you and your assets. With a focus on innovation, customer care, and a robust network of partners, we ensure peace of mind through tailored insurance solutions. Our mission is to make protection accessible and stress-free for everyone.
+                <span className="text-blue-600">comprehensive and affordable</span> plans to protect you and your assets. With a focus on innovation, customer care, and a robust network of partners, we ensure peace of mind through tailored insurance solutions. Our mission is to make protection accessible and stress-free for everyone.
               </p>
               <a
                 href="#"
-                className="mt-6 inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition"
+                className="mt-6 inline-flex items-center px-6 py-3 bg-[#00001a] text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition"
               >
                 Learn More
               </a>
@@ -553,8 +503,8 @@ const HomePage = () => {
             <h2 className="text-3xl sm:text-4xl font-bold text-[#00001a]">
               Why Choose Arshyan Insurance?
             </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Discover the <span className="text-blue-600 font-medium">benefits</span> of partnering with us
+            <p className="mt-4 text-gray-600">
+              Discover the <span className="text-blue-600">benefits</span> of partnering with us
             </p>
           </motion.div>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -591,7 +541,7 @@ const HomePage = () => {
                 <h3 className="text-xl text-center font-semibold text-[#00001a] mb-2">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 text-lg leading-relaxed">{item.desc}</p>
+                <p className="text-gray-600 leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -605,8 +555,8 @@ const HomePage = () => {
         <div className="flex-grow border-t border-gray-300"></div>
       </div>
 
-      {/* Milestones & Achievements */}
-      <section className="py-20 bg-white">
+      {/* The Numbers Speak for Themselves */}
+      <section id="numbers-section" className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -614,36 +564,67 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#00001a]">
-              Milestones & Achievements
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#00001a] section-heading">
+              The Numbers Speak for Themselves
             </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Our journey in <span className="text-blue-600 font-medium">numbers</span>
+            <p className="mt-4 text-gray-600">
+              Our <span className="text-blue-600">achievements</span> in delivering trusted insurance solutions
             </p>
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12"
-          >
-            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 h-96">
-              <h3 className="text-xl font-semibold text-[#00001a] mb-4">
-                Claims Processed
-              </h3>
-              <div className="h-80">
-                <Pie data={pieData} options={pieOptions} />
-              </div>
-            </div>
-            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 h-96">
-              <h3 className="text-xl font-semibold text-[#00001a] mb-4">
-                Policy Growth Over Years
-              </h3>
-              <div className="h-80">
-                <Bar data={barData} options={barOptions} />
-              </div>
-            </div>
-          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Families Insured",
+                value: (
+                  <motion.span animate={controls.families}>
+                    {({ value }) => Math.floor(value).toLocaleString() + "+"}
+                  </motion.span>
+                ),
+                desc: "Providing peace of mind to thousands of families.",
+                icon: <Home className="number-icon" />,
+                target: 5000,
+              },
+              {
+                title: "Claim Settlement",
+                value: (
+                  <motion.span animate={controls.claims}>
+                    {({ value }) => Math.floor(value) + "%"}
+                  </motion.span>
+                ),
+                desc: "100% claim settlement rate for maximum reliability.",
+                icon: <Shield className="number-icon" />,
+                target: 100,
+              },
+              {
+                title: "Years of Delivering Trusted",
+                value: (
+                  <motion.span animate={controls.years}>
+                    {({ value }) => Math.floor(value) + "+"}
+                  </motion.span>
+                ),
+                desc: "Over a decade of trusted service.",
+                icon: <Clock className="number-icon" />,
+                target: 10,
+              },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="numbers-card shadow-lg text-center"
+              >
+                <div className="flex justify-center mb-4">{stat.icon}</div>
+                <h3 className="text-5xl font-extrabold text-blue-600 mb-3">
+                  {stat.value}
+                </h3>
+                <p className="text-lg font-semibold text-[#00001a] mb-2">
+                  {stat.title}
+                </p>
+                <p className="text-gray-600">{stat.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -666,8 +647,8 @@ const HomePage = () => {
             <h2 className="text-3xl sm:text-4xl font-bold text-[#00001a]">
               Our Success Stories
             </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Real stories from our <span className="text-blue-600 font-medium">satisfied customers</span>
+            <p className="mt-4 text-gray-600">
+              Real stories from our <span className="text-blue-600">satisfied customers</span>
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -692,9 +673,7 @@ const HomePage = () => {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100"
               >
-                <p className="text-gray-600 italic text-lg leading-relaxed">
-                  "{story.quote}"
-                </p>
+                <p className="text-gray-600 italic">{story.quote}</p>
                 <div className="mt-4 flex items-center">
                   <img
                     src={story.image}
@@ -719,7 +698,7 @@ const HomePage = () => {
               href="https://www.google.com/search?sca_esv=ab826453f275217b&sxsrf=AE3TifPrCNFHiut7pKQTAYEyst8DHBoXRQ:1757157593193&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E6KP_xY8W6epjaJVSumGSN1RLBWnQmUeCE7RtHgIke19RDPSOVkDM3w1t20fxT9OknQMKMh45sBAesw7F5TDjzqwehKplzBBqczV-gJ2Or0EX5Nlv8zmfiLmkzsp_noXGFMSWbo%3D&q=ARSHYAN+Insurance+Marketing+%26+Services+Pvt+Ltd+Reviews&sa=X&ved=2ahUKEwiPm6CRgsSPAxVOTGwGHQ6OEYYQ0bkNegQIIBAE&biw=2048&bih=983&dpr=1.25"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition"
+              className="inline-flex items-center px-6 py-3 bg-[#00001a] text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition"
             >
               Review Us
             </a>
@@ -746,8 +725,8 @@ const HomePage = () => {
             <h2 className="text-3xl sm:text-4xl font-bold text-[#00001a]">
               Frequently Asked Questions
             </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Find answers to common questions about our <span className="text-blue-600 font-medium">insurance plans</span>
+            <p className="mt-4 text-gray-600">
+              Find answers to common questions about our <span className="text-blue-600">insurance plans</span>
             </p>
           </motion.div>
           <motion.div
@@ -806,7 +785,7 @@ const HomePage = () => {
                       : "max-h-0 opacity-0"
                   }`}
                 >
-                  <p className="px-6 py-4 text-gray-600 text-lg">{faq.answer}</p>
+                  <p className="px-6 py-4 text-gray-600">{faq.answer}</p>
                 </div>
               </motion.div>
             ))}
@@ -833,8 +812,8 @@ const HomePage = () => {
             <h2 className="text-3xl sm:text-4xl font-bold text-[#00001a]">
               Our Trusted Partners
             </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Collaborating with <span className="text-blue-600 font-medium">leading insurance</span> and service providers
+            <p className="mt-4 text-gray-600">
+              Collaborating with <span className="text-blue-600">leading insurance</span> and service providers
             </p>
           </motion.div>
           <motion.div
@@ -877,7 +856,7 @@ const HomePage = () => {
           <h2 className="text-3xl sm:text-4xl font-bold">
             Ready to Secure Your Future?
           </h2>
-          <p className="mt-4 text-lg text-gray-300">
+          <p className="mt-4 text-gray-300">
             Get a <span className="text-blue-400 font-semibold">personalized quote</span> or speak with our experts today!
           </p>
         </motion.div>
