@@ -8,22 +8,18 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState({
     personal: false,
     business: false,
-    
   });
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState({
     personal: false,
     business: false,
-    
   });
   const dropdownRefs = {
     personal: useRef(null),
     business: useRef(null),
-    
   };
   const timeoutRefs = {
     personal: useRef(null),
     business: useRef(null),
-    
   };
 
   const toggleMenu = () => {
@@ -145,12 +141,17 @@ const Navbar = () => {
                 <NavLink
                   to="/insurance/personal"
                   className={({ isActive }) =>
-                    `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
+                    `flex items-center px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
                       isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                     }`
                   }
                 >
                   Personal Insurance
+                  <ChevronDownIcon
+                    className={`ml-2 h-4 w-4 transform transition-transform duration-300 ${
+                      dropdownOpen.personal ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
                 </NavLink>
                 <div
                   id="personal-dropdown"
@@ -209,12 +210,17 @@ const Navbar = () => {
                 <NavLink
                   to="/insurance/business"
                   className={({ isActive }) =>
-                    `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
+                    `flex items-center px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
                       isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                     }`
                   }
                 >
                   Business & Group Insurance
+                  <ChevronDownIcon
+                    className={`ml-2 h-4 w-4 transform transition-transform duration-300 ${
+                      dropdownOpen.business ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
                 </NavLink>
                 <div
                   id="business-dropdown"
@@ -300,9 +306,6 @@ const Navbar = () => {
               >
                 Get a Quote
               </NavLink>
-
-              
-              
             </div>
 
             {/* Hamburger Icon */}
@@ -357,10 +360,15 @@ const Navbar = () => {
             {/* Personal Insurance Mobile */}
             <div>
               <button
-                className="w-full text-left px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-200 transition duration-200"
+                className="w-full flex items-center justify-between px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-200 transition duration-200"
                 onClick={() => toggleMobileDropdown("personal")}
               >
                 Personal Insurance
+                <ChevronDownIcon
+                  className={`h-4 w-4 transform transition-transform duration-300 ${
+                    mobileDropdownOpen.personal ? "rotate-180" : "rotate-0"
+                  }`}
+                />
               </button>
               <div
                 className={`pl-4 ${mobileDropdownOpen.personal ? "block" : "hidden"}`}
@@ -406,10 +414,15 @@ const Navbar = () => {
             {/* Business & Group Insurance Mobile */}
             <div>
               <button
-                className="w-full text-left px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-200 transition duration-200"
+                className="w-full flex items-center justify-between px-3 py-2 rounded-md text-lg font-medium hover:bg-gray-200 transition duration-200"
                 onClick={() => toggleMobileDropdown("business")}
               >
                 Business & Group Insurance
+                <ChevronDownIcon
+                  className={`h-4 w-4 transform transition-transform duration-300 ${
+                    mobileDropdownOpen.business ? "rotate-180" : "rotate-0"
+                  }`}
+                />
               </button>
               <div
                 className={`pl-4 ${mobileDropdownOpen.business ? "block" : "hidden"}`}
@@ -504,9 +517,6 @@ const Navbar = () => {
             >
               About Us
             </NavLink>
-
-            
-            
           </div>
         </div>
       </nav>
