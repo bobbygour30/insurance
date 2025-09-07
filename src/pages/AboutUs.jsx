@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { CheckCircle, Zap, Users, Target } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 const AboutUs = () => {
   return (
@@ -210,7 +211,8 @@ const AboutUs = () => {
         >
           Let us help you protect what matters most. Get started today!
         </motion.p>
-        <motion.button
+        <NavLink to="/get-quote">
+          <motion.button
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -218,6 +220,7 @@ const AboutUs = () => {
         >
           Get a Free Quote
         </motion.button>
+        </NavLink>
       </section>
     </div>
   );

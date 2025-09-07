@@ -32,7 +32,7 @@ const CarInsurance = () => {
           <img
             src={assets.car}
             alt="Car Insurance Banner"
-            className="w-full h-72 object-cover rounded-2xl shadow-lg mb-8"
+            className="w-full h-full object-cover rounded-2xl shadow-lg mb-8"
           />
           <h1 className="text-4xl sm:text-5xl font-extrabold text-[#00001a] mb-6">
             Arshyan Car Insurance
@@ -48,8 +48,8 @@ const CarInsurance = () => {
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
-              to="/quote"
-              className="mt-8 inline-block bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300"
+              to="/get-quote"
+              className="mt-8 inline-block bg-[#00001a] text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300"
             >
               Get a Car Quote
             </Link>
@@ -61,7 +61,7 @@ const CarInsurance = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="rounded-2xl p-10 mb-16 bg-white shadow"
+          className="rounded-2xl p-10 mb-16 "
         >
           <h2 className="text-3xl font-bold text-[#00001a] mb-8 text-center">
             What is Car Insurance?
@@ -127,7 +127,7 @@ const CarInsurance = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="rounded-2xl p-10 mb-16 bg-gray-50"
+          className="rounded-2xl p-10 mb-16 "
         >
           <h2 className="text-3xl font-bold text-[#00001a] mb-10 text-center">
             What’s Covered in Car Insurance?
@@ -234,7 +234,7 @@ const CarInsurance = () => {
             while driving with confidence.
           </p>
           <Link
-            to="/quote"
+            to="/get-quote"
             className="inline-block bg-white text-blue-700 px-8 py-3 rounded-full text-lg font-semibold shadow hover:bg-gray-100 transition"
           >
             Get a Quote

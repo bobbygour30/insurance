@@ -157,8 +157,8 @@ const ShopInsurance = () => {
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
-              to="/quote"
-              className="inline-block bg-blue-600 text-white px-10 py-3 rounded-xl text-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-md"
+              to="/get-quote"
+              className="inline-block bg-[#00001a] text-white px-10 py-3 rounded-xl text-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-md"
             >
               Get Started Today
             </Link>

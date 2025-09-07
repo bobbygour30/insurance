@@ -64,7 +64,7 @@ const GetQuote = () => {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               to="/contact"
-              className="mt-6 inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
+              className="mt-6 inline-block bg-[#00001a] text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
             >
               Contact Us
             </Link>
@@ -125,10 +125,10 @@ const GetQuote = () => {
                   >
                     <option value="">Select Insurance Type</option>
                     <option value="Health">Health Insurance</option>
-                    <option value="Life">Life Insurance</option>
-                    <option value="Travel">Travel Insurance</option>
-                    <option value="Family">Family Floater</option>
-                    <option value="Senior">Senior Citizen</option>
+                    <option value="Life">Car Insurance</option>
+                    <option value="Travel">Two Wheeler Insurance</option>
+                    <option value="Family">Commercial Vehical Insurance</option>
+                    <option value="Senior">Mobile & Equipment</option>
                   </select>
                 </div>
                 <div>
@@ -243,7 +243,7 @@ const GetQuote = () => {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <button
                     onClick={handleSubmit}
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-[#00001a] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   >
                     Submit Quote Request
                     <ArrowRightIcon className="ml-2 h-5 w-5" />
@@ -259,7 +259,7 @@ const GetQuote = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="py-12 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg shadow-md text-center"
+          className="py-12 bg-[#00001a] text-white rounded-lg shadow-md text-center"
         >
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">
             Ready to Secure Your Future?

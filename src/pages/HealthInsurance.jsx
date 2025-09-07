@@ -35,7 +35,7 @@ const HealthInsurance = () => {
           <img
             src={assets.banner1}
             alt="Health Insurance Banner"
-            className="w-full h-72 object-cover rounded-2xl shadow-lg mb-8"
+            className="w-full h-full object-cover rounded-2xl shadow-lg mb-8"
           />
           <h1 className="text-4xl sm:text-5xl font-extrabold text-[#00001a] mb-6">
             Arshyan Health Insurance
@@ -50,8 +50,8 @@ const HealthInsurance = () => {
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
-              to="/quote"
-              className="mt-8 inline-block bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300"
+              to="/get-quote"
+              className="mt-8 inline-block bg-[#00001a] text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300"
             >
               Get a Health Quote
             </Link>
@@ -248,7 +248,7 @@ const HealthInsurance = () => {
             protection today!
           </p>
           <Link
-            to="/quote"
+            to="/get-quote"
             className="inline-block bg-white text-blue-700 px-8 py-3 rounded-full text-lg font-semibold shadow hover:bg-gray-100 transition"
           >
             Get a Quote

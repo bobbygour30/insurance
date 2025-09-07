@@ -101,30 +101,6 @@ const HomePage = () => {
     setFaqOpen((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
-  // Banner text data
-  const bannerText = [
-    {
-      title: "Protect Your Future",
-      subtitle: "Secure your health with our trusted insurance plans.",
-      cta: "Get Covered Now",
-    },
-    {
-      title: "Peace of Mind",
-      subtitle: "Comprehensive coverage for you and your loved ones.",
-      cta: "Explore Plans",
-    },
-    {
-      title: "Your Health, Our Priority",
-      subtitle: "Affordable plans tailored to your needs.",
-      cta: "Learn More",
-    },
-    {
-      title: "Stay Worry-Free",
-      subtitle: "Fast claims and wide hospital network.",
-      cta: "Get a Quote",
-    },
-  ];
-
   // Partner images array
   const partnerImages = [
     { src: assets.partner1, alt: "Partner 1" },
@@ -322,32 +298,6 @@ const HomePage = () => {
                 alt={slide.alt}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 flex items-center bg-gradient-to-r from-[#00001a]/80 to-transparent">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                  <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="text-left max-w-md sm:max-w-lg"
-                  >
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">
-                      {bannerText[index].title}
-                    </h2>
-                    <p className="text-lg sm:text-xl text-gray-200 mb-6">
-                      {bannerText[index].subtitle}
-                    </p>
-                    <motion.a
-                      href="#"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8 }}
-                      className="inline-flex items-center px-6 py-3 bg-[#00001a] text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition"
-                    >
-                      {bannerText[index].cta}
-                    </motion.a>
-                  </motion.div>
-                </div>
-              </div>
             </div>
           ))}
         </Slider>
@@ -382,26 +332,31 @@ const HomePage = () => {
                 icon: assets.icon4,
                 title: "Mobile & Electronics Equipment",
                 desc: "Protect your gadgets with coverage for damage, theft, and breakdowns.",
+                link: "/insurance/personal/mobile",
               },
               {
                 icon: assets.icon3,
                 title: "Car Insurance",
                 desc: "Comprehensive coverage for your vehicle against accidents and theft.",
+                link: "/insurance/personal/car",
               },
               {
                 icon: assets.icon1,
                 title: "Two Wheeler Insurance",
                 desc: "Affordable plans to keep your bike or scooter safe on the road.",
+                link: "/insurance/personal/two-wheelers",
               },
               {
                 icon: assets.icon3,
                 title: "Commercial Vehicle Insurance",
                 desc: "Robust protection for your business vehicles and fleet operations.",
+                link: "/insurance/personal/commercial-vehicle",
               },
               {
                 icon: assets.icon2,
                 title: "Health Insurance",
                 desc: "Comprehensive health plans for you and your family’s well-being.",
+                link: "/insurance/personal/health",
               },
             ].map((plan, index) => (
               <motion.div
@@ -421,7 +376,7 @@ const HomePage = () => {
                 </h3>
                 <p className="mt-2 text-xs text-gray-600 text-center">{plan.desc}</p>
                 <a
-                  href="#"
+                  href={plan.link}
                   className="mt-6 inline-flex items-center px-6 py-2 bg-[#00001a] text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition justify-center"
                 >
                   View Details
@@ -474,7 +429,7 @@ const HomePage = () => {
                 <span className="text-blue-600">comprehensive and affordable</span> plans to protect you and your assets. With a focus on innovation, customer care, and a robust network of partners, we ensure peace of mind through tailored insurance solutions. Our mission is to make protection accessible and stress-free for everyone.
               </p>
               <a
-                href="#"
+                href="/about"
                 className="mt-6 inline-flex items-center px-6 py-3 bg-[#00001a] text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition"
               >
                 Learn More
@@ -867,7 +822,7 @@ const HomePage = () => {
           className="mt-8"
         >
           <a
-            href="#"
+            href="/get-quote"
             className="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition"
           >
             Get a Free Quote

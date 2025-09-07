@@ -18,7 +18,7 @@ const BharatGrihaRakshaInsurance = () => {
           <img
             src={assets.home}
             alt="Bharat Griha Raksha Insurance"
-            className="w-full h-72 object-cover rounded-2xl shadow-md mb-6"
+            className="w-full h-full object-cover rounded-2xl shadow-md mb-6"
           />
           <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-4">
             Bharat Griha Raksha (Home Insurance Policy)
@@ -183,8 +183,8 @@ const BharatGrihaRakshaInsurance = () => {
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
-              to="/quote"
-              className="inline-block bg-blue-600 text-white px-10 py-3 rounded-xl text-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-md"
+              to="/get-quote"
+              className="inline-block bg-[#00001a] text-white px-10 py-3 rounded-xl text-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-md"
             >
               Get Started Today
             </Link>

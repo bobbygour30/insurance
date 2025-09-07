@@ -17,7 +17,7 @@ const BurglaryInsurance = () => {
           <img
             src={assets.Burglary}
             alt="Burglary Insurance Banner"
-            className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
+            className="w-full h-full object-cover rounded-lg shadow-md mb-6"
           />
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
             Arshyan Burglary Insurance
@@ -28,8 +28,8 @@ const BurglaryInsurance = () => {
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
-              to="/quote"
-              className="mt-6 inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
+              to="/get-quote"
+              className="mt-6 inline-block bg-[#00001a] text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
             >
               Get a Quote
             </Link>
@@ -136,8 +136,8 @@ const BurglaryInsurance = () => {
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
-              to="/quote"
-              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
+              to="/get-quote"
+              className="inline-block bg-[#00001a] text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
             >
               Get a Quote
             </Link>

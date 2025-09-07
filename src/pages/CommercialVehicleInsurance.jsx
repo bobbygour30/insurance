@@ -17,7 +17,7 @@ const CommercialVehicleInsurance = () => {
           <img
             src={assets.bike}
             alt="Commercial Vehicle Insurance Banner"
-            className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
+            className="w-full h-full object-cover rounded-lg shadow-md mb-6"
           />
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
             Arshyan Commercial Vehicle Insurance
@@ -27,8 +27,8 @@ const CommercialVehicleInsurance = () => {
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
-              to="/quote"
-              className="mt-6 inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
+              to="/get-quote"
+              className="mt-6 inline-block bg-[#00001a] text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
             >
               Get a Commercial Quote
             </Link>
