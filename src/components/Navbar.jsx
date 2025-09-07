@@ -71,12 +71,12 @@ const Navbar = () => {
   return (
     <div>
       {/* Top Bar with Welcome Text and Contact Info */}
-      <div className="bg-[#00001a] text-white py-2 px-4 sm:px-6 lg:px-8 hidden sm:block">
-        <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center">
-          <div className="text-center sm:text-left mb-2 sm:mb-0">
-            <span className="text-lg font-semibold ml-16">Welcome To Arshyan Insurance</span>
+      <div className="bg-[#00001a] text-white py-3 px-4 sm:px-6 lg:px-8 hidden sm:block ">
+        <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
+          <div className="text-center sm:text-left">
+            <span className="text-base sm:text-lg font-semibold ml-0 sm:ml-16">Welcome To Arshyan Insurance</span>
           </div>
-          <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
+          <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6">
             <div className='flex items-center'>
               <EnvelopeIcon className="h-5 w-5 mr-2" />
               <a href="mailto:sales.support@arshyaninsurance.com" className="text-sm hover:underline">
@@ -84,7 +84,7 @@ const Navbar = () => {
               </a>
             </div>
             <div className='flex items-center'>
-              <PhoneIcon className="h-4 w-4 mr-2" />
+              <PhoneIcon className="h-5 w-5 mr-2" />
               <a href="tel:+919870277495" className="text-sm hover:underline">+91-9870277495</a>
             </div>
           </div>
@@ -92,14 +92,14 @@ const Navbar = () => {
       </div>
 
       {/* Navbar */}
-      <nav className="bg-white text-[#00001a] shadow-lg w-full z-20 top-[60px]">
+      <nav className="bg-white text-[#00001a] shadow-lg w-full z-20">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <div className="flex-shrink-0">
               <NavLink to="/">
                 <img
-                  className="w-[277px]"
+                  className="w-[150px] sm:w-[200px] lg:w-[277px]"
                   src={assets.logo}
                   alt="Insurance Logo"
                 />
@@ -107,11 +107,11 @@ const Navbar = () => {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-2 xl:space-x-4">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
+                  `px-2 py-2 rounded-md text-sm xl:text-base font-medium transition duration-300 ${
                     isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                   }`
                 }
@@ -121,7 +121,7 @@ const Navbar = () => {
               <NavLink
                 to="/about"
                 className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
+                  `px-2 py-2 rounded-md text-sm xl:text-base font-medium transition duration-300 ${
                     isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                   }`
                 }
@@ -141,14 +141,14 @@ const Navbar = () => {
                 <NavLink
                   to="/insurance/personal"
                   className={({ isActive }) =>
-                    `flex items-center px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
+                    `flex items-center px-2 py-2 rounded-md text-sm xl:text-base font-medium transition duration-300 ${
                       isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                     }`
                   }
                 >
                   Personal Insurance
                   <ChevronDownIcon
-                    className={`ml-2 h-4 w-4 transform transition-transform duration-300 ${
+                    className={`ml-1 xl:ml-2 h-4 w-4 transform transition-transform duration-300 ${
                       dropdownOpen.personal ? "rotate-180" : "rotate-0"
                     }`}
                   />
@@ -185,7 +185,7 @@ const Navbar = () => {
                       to={item.path}
                       onClick={() => closeDropdown("personal")}
                       className={({ isActive }) =>
-                        `block px-4 py-3 text-base transition duration-200 ${
+                        `block px-4 py-2 text-sm transition duration-200 ${
                           isActive
                             ? "bg-gray-200 text-[#00001a]"
                             : "hover:bg-gray-300"
@@ -210,21 +210,21 @@ const Navbar = () => {
                 <NavLink
                   to="/insurance/business"
                   className={({ isActive }) =>
-                    `flex items-center px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
+                    `flex items-center px-2 py-2 rounded-md text-sm xl:text-base font-medium transition duration-300 ${
                       isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                     }`
                   }
                 >
                   Business & Group Insurance
                   <ChevronDownIcon
-                    className={`ml-2 h-4 w-4 transform transition-transform duration-300 ${
+                    className={`ml-1 xl:ml-2 h-4 w-4 transform transition-transform duration-300 ${
                       dropdownOpen.business ? "rotate-180" : "rotate-0"
                     }`}
                   />
                 </NavLink>
                 <div
                   id="business-dropdown"
-                  className={`absolute bg-white text-[#00001a] shadow-lg rounded-md mt-2 w-80 z-50 transition-opacity duration-300 ${
+                  className={`absolute bg-white text-[#00001a] shadow-lg rounded-md mt-2 w-72 sm:w-80 z-50 transition-opacity duration-300 ${
                     dropdownOpen.business
                       ? "opacity-100"
                       : "opacity-0 pointer-events-none"
@@ -273,7 +273,7 @@ const Navbar = () => {
                       to={item.path}
                       onClick={() => closeDropdown("business")}
                       className={({ isActive }) =>
-                        `block px-4 py-3 text-base transition duration-200 ${
+                        `block px-4 py-2 text-sm transition duration-200 ${
                           isActive
                             ? "bg-gray-200 text-[#00001a]"
                             : "hover:bg-gray-300"
@@ -289,7 +289,7 @@ const Navbar = () => {
               <NavLink
                 to="/contact"
                 className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
+                  `px-2 py-2 rounded-md text-sm xl:text-base font-medium transition duration-300 ${
                     isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                   }`
                 }
@@ -299,7 +299,7 @@ const Navbar = () => {
               <NavLink
                 to="/get-quote"
                 className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-base font-medium transition duration-300 ${
+                  `px-2 py-2 rounded-md text-sm xl:text-base font-medium transition duration-300 ${
                     isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
                   }`
                 }
@@ -309,7 +309,7 @@ const Navbar = () => {
             </div>
 
             {/* Hamburger Icon */}
-            <div className="md:hidden flex items-center">
+            <div className="lg:hidden flex items-center">
               <button
                 onClick={toggleMenu}
                 className="text-[#00001a] hover:text-gray-600 focus:outline-none"
@@ -340,7 +340,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+          className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${
             isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
           }`}
         >
