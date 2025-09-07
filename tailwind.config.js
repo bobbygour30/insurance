@@ -1,12 +1,12 @@
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Verdana', 'Geneva', 'Tahoma', 'Arial', 'Helvetica', 'sans-serif'],
+        sans: ['"PT Sans"', "Verdana", "Geneva", "Tahoma", "sans-serif"],
       },
     },
   },
