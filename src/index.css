@@ -1,9 +1,16 @@
 @import "tailwindcss";
 
-body {
-  color: #1c1c1c;
-  font-family: Verdana, Geneva, Tahoma, Arial, Helvetica, sans-serif;
+@font-face {
+  font-family: "MyVerdana";
+  src: url("/fonts/Verdana-Bold.woff") format("woff2");
+  font-weight: normal;
+  font-style: normal;
 }
+
+body {
+  font-family: "MyVerdana", Verdana, Geneva, Tahoma, sans-serif;
+}
+
 p {
   font-size: 12px;
 }
