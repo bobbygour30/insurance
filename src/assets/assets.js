@@ -1,4 +1,5 @@
 import banner2 from "./banner2.png";
+import banner1 from "./banner1.jpg";
 import banner3 from "./banner3.png";
 import banner4 from "./banner4.png";
 import logo from "./logo.png"
@@ -50,6 +51,7 @@ import banner5 from "./banner5.png"
 
 
 const assets = {
+    banner1,
     banner2,
     banner3,
     logo,
