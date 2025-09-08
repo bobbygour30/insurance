@@ -71,7 +71,7 @@ const Navbar = () => {
   return (
     <div>
       {/* Top Bar with Welcome Text and Contact Info */}
-      <div className="bg-[#00001a] text-white py-3 px-4 sm:px-6 lg:px-8 hidden sm:block ">
+      <div className="bg-[#00001a] text-white py-3 px-4 sm:px-6 lg:px-8 ">
         <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
           <div className="text-center sm:text-left">
             <span className="text-base sm:text-lg font-semibold ml-0 sm:ml-16">Welcome To Arshyan Insurance</span>
