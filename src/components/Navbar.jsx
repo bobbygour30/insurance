@@ -356,6 +356,17 @@ const Navbar = () => {
             >
               Home
             </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `block px-3 py-2 rounded-md text-lg font-medium transition duration-200 ${
+                  isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
+                }`
+              }
+              onClick={toggleMenu}
+            >
+              About Us
+            </NavLink>
 
             {/* Personal Insurance Mobile */}
             <div>
@@ -506,17 +517,7 @@ const Navbar = () => {
             >
               Get a Quote
             </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                `block px-3 py-2 rounded-md text-lg font-medium transition duration-200 ${
-                  isActive ? "bg-gray-200 text-[#00001a]" : "hover:bg-gray-200"
-                }`
-              }
-              onClick={toggleMenu}
-            >
-              About Us
-            </NavLink>
+            
           </div>
         </div>
       </nav>
