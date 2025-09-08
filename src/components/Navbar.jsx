@@ -72,20 +72,20 @@ const Navbar = () => {
     <div>
       {/* Top Bar with Welcome Text and Contact Info */}
       <div className="bg-[#00001a] text-white py-3 px-4 sm:px-6 lg:px-8 ">
-        <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
+        <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-0 sm:gap-4">
           <div className="text-center sm:text-left">
-            <span className="text-base sm:text-lg font-semibold ml-0 sm:ml-16">Welcome To Arshyan Insurance</span>
+            <span className="text-xs sm:text-lg font-semibold ml-0 sm:ml-16">Welcome To Arshyan Insurance</span>
           </div>
-          <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6">
+          <div className="flex flex-col sm:flex-row items-center  sm:space-y-0 sm:space-x-6">
             <div className='flex items-center'>
-              <EnvelopeIcon className="h-5 w-5 mr-2" />
-              <a href="mailto:sales.support@arshyaninsurance.com" className="text-sm hover:underline">
+              <EnvelopeIcon className="h-3 w-3 sm:h-5 sm:w-5 mr-2" />
+              <a href="mailto:sales.support@arshyaninsurance.com" className="text-xs sm:text-sm hover:underline">
                 sales.support@arshyaninsurance.com
               </a>
             </div>
             <div className='flex items-center'>
-              <PhoneIcon className="h-5 w-5 mr-2" />
-              <a href="tel:+919870277495" className="text-sm hover:underline">+91-9870277495</a>
+              <PhoneIcon className="h-3 w-3 sm:h-5 sm:w-5 mr-2" />
+              <a href="tel:+919870277495" className="text-xs sm:text-sm hover:underline">+91-9870277495</a>
             </div>
           </div>
         </div>
