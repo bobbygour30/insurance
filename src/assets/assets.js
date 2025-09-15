@@ -33,7 +33,6 @@ import icon3 from "./icon3.png"
 import icon4 from "./icon4.png"
 import partner1 from "./partner1.jpg"
 import partner2 from "./partner2.jpg"
-import partner3 from "./partner3.avif"
 import partner4 from "./partner4.png"
 import partner5 from "./partner5.webp"
 import partner6 from "./partner6.png"
@@ -42,6 +41,10 @@ import partner8 from "./partner8.avif"
 import partner9 from "./partner9.webp"
 import partner10 from "./partner10.png"
 import partner11 from "./partner11.jpg"
+import partner12 from "./partner12.jpg"
+import partner13 from "./partner13.png"
+import partner14 from "./partner14.png"
+import partner15 from "./partner15.jpg"
 import banner5 from "./banner5.png"
 
 
@@ -85,7 +88,6 @@ const assets = {
     icon4,
     partner1,
     partner2,
-    partner3,
     partner4,
     partner5,
     partner6,
@@ -95,7 +97,11 @@ const assets = {
     partner10,
     partner11,
     banner4,
-    banner5
+    banner5,
+    partner12,
+    partner13,
+    partner14,
+    partner15
 }
 
 export default assets

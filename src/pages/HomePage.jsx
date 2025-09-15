@@ -87,8 +87,9 @@ const HomePage = () => {
     slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2000,
     arrows: false,
+    pauseOnHover: false,
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 4 } },
       { breakpoint: 768, settings: { slidesToShow: 3 } },
@@ -105,7 +106,6 @@ const HomePage = () => {
   const partnerImages = [
     { src: assets.partner1, alt: "Partner 1" },
     { src: assets.partner2, alt: "Partner 2" },
-    { src: assets.partner3, alt: "Partner 3" },
     { src: assets.partner4, alt: "Partner 4" },
     { src: assets.partner5, alt: "Partner 5" },
     { src: assets.partner6, alt: "Partner 6" },
@@ -114,6 +114,10 @@ const HomePage = () => {
     { src: assets.partner9, alt: "Partner 9" },
     { src: assets.partner10, alt: "Partner 10" },
     { src: assets.partner11, alt: "Partner 11" },
+    { src: assets.partner12, alt: "Partner 12" },
+    { src: assets.partner13, alt: "Partner 13" },
+    { src: assets.partner14, alt: "Partner 14" },
+    { src: assets.partner15, alt: "Partner 15" },
   ];
 
   return (
@@ -151,7 +155,7 @@ const HomePage = () => {
 
       {/* Insurance Plans */}
       <section className="py-20 bg-gradient-to-r from-gray-50 to-gray-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className=" w-ful sm:w-[60%] md:w-[80%] lg:w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}

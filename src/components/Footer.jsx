@@ -125,20 +125,20 @@ const Footer = () => {
           </div>
 
           {/* Contact Us */}
-          <div className="flex flex-col">
+          <div className="flex flex-col max-w-full">
             <h3 className="text-xl font-semibold text-white mb-4">Contact Us</h3>
             <ul className="space-y-2 text-base text-gray-300">
               <li className="flex items-center">
-                <FontAwesomeIcon icon={faEnvelope} className="h-5 w-5 mr-2 text-white" />
+                <FontAwesomeIcon icon={faEnvelope} className="h-5 w-5 mr-2 text-white flex-shrink-0" />
                 <a 
                   href="mailto:sales.support@arshyaninsurance.com" 
-                  className="block hover:text-white transition duration-200 transform hover:translate-x-2"
+                  className="block hover:text-white transition duration-200 transform hover:translate-x-2 email-link"
                 >
                   sales.support@arshyaninsurance.com
                 </a>
               </li>
               <li className="flex items-center">
-                <FontAwesomeIcon icon={faPhone} className="h-5 w-5 mr-2 text-white" />
+                <FontAwesomeIcon icon={faPhone} className="h-5 w-5 mr-2 text-white flex-shrink-0" />
                 <a 
                   href="tel:+919870277495" 
                   className="block hover:text-white transition duration-200 transform hover:translate-x-2"
@@ -147,7 +147,7 @@ const Footer = () => {
                 </a>
               </li>
               <li className="flex items-center">
-                <FontAwesomeIcon icon={faPhone} className="h-5 w-5 mr-2 text-white" />
+                <FontAwesomeIcon icon={faPhone} className="h-5 w-5 mr-2 text-white flex-shrink-0" />
                 <a 
                   href="tel:+911143592951" 
                   className="block hover:text-white transition duration-200 transform hover:translate-x-2"
@@ -156,8 +156,8 @@ const Footer = () => {
                 </a>
               </li>
               <li className="flex items-start">
-                <FontAwesomeIcon icon={faMapMarkerAlt} className="h-12 w-12 mr-2 text-white mt-1" />
-                <span className="block text-gray-300">
+                <FontAwesomeIcon icon={faMapMarkerAlt} className="h-12 w-12 mr-2 text-white mt-1 flex-shrink-0" />
+                <span className="block text-gray-300 break-words">
                   Office No. 212, 1st Floor, Block-G3, Opposite DDA Market, Sector 16, Rohini, New Delhi - 110089
                 </span>
               </li>
@@ -203,6 +203,24 @@ const Footer = () => {
           <p className="text-base text-gray-400">&copy; {new Date().getFullYear()} Arshyan Insurance Co. All rights reserved.</p>
         </div>
       </div>
+
+      {/* Custom CSS for responsive fix */}
+      <style jsx>{`
+        @media (min-width: 1022px) and (max-width: 1446px) {
+          .flex-col.max-w-full {
+            max-width: 100%;
+          }
+          .email-link {
+            overflow-wrap: anywhere;
+            word-break: break-all;
+          }
+        }
+        @media (min-width: 1447px) {
+          .email-link {
+            white-space: nowrap;
+          }
+        }
+      `}</style>
     </footer>
   );
 };
