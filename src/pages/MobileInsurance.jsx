@@ -127,8 +127,6 @@ const MobileInsurance = () => {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               to="/mobile-equipment"
-              target="_blank"
-              rel="noopener noreferrer"
               className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
             >
               Purchase Now
