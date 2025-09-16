@@ -41,7 +41,7 @@ const GetQuote = () => {
   };
 
   return (
-    <div className="bg-blue-50 min-h-screen pt-20">
+    <div className="bg-blue-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <motion.section
@@ -51,7 +51,7 @@ const GetQuote = () => {
           className="text-center mb-12"
         >
           <img
-            src={assets.banner1}
+            src={assets.contact}
             alt="Get a Quote Banner"
             className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
           />

@@ -5,7 +5,7 @@ import assets from '../assets/assets';
 
 const BharatSookshmaInsurance = () => {
   return (
-    <div className="bg-blue-50 min-h-screen pt-20">
+    <div className="bg-blue-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
         {/* Hero Section */}
@@ -17,14 +17,14 @@ const BharatSookshmaInsurance = () => {
         >
           <img
             src={assets.fire}
-            alt="Bharat Sookshma Udyam Suraksha Banner"
-            className="w-full h-92 object-cover rounded-lg shadow-md mb-6"
+            alt="Property Insurance Banner"
+            className="w-full h-92 object-contain rounded-lg shadow-md mb-6 bg-[#FFFFFF]"
           />
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
-            Arshyan Bharat Sookshma Udyam Suraksha
+           Property Insurance
           </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Safeguard your small business with Arshyan Insurance’s Bharat Sookshma Udyam Suraksha, 
+            Safeguard your small business with Arshyan Insurance’s Property Insurance, 
             offering protection against fire, natural disasters, and more for enterprises valued up to ₹5 crores.
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -48,7 +48,7 @@ const BharatSookshmaInsurance = () => {
             Coverage Includes
           </h2>
           <p className="text-base text-gray-600 mb-4 text-center">
-            The Bharat Sookshma Udyam Suraksha policy provides comprehensive protection tailored for 
+            The Property Insurance policy provides comprehensive protection tailored for 
             small and medium-sized enterprises.
           </p>
           <ul className="list-disc list-inside space-y-2 text-gray-600 text-base">
@@ -106,7 +106,7 @@ const BharatSookshmaInsurance = () => {
             Secure Your Small Business
           </h2>
           <p className="text-base text-gray-600 mb-6">
-            With Arshyan Bharat Sookshma Udyam Suraksha, protect your enterprise from fire and other perils. Get started today!
+            With Arshyan Property Insurance, protect your enterprise from fire and other perils. Get started today!
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link

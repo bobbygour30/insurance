@@ -20,7 +20,7 @@ const TwoWheelersInsurance = () => {
   };
 
   return (
-    <div className="bg-blue-50 min-h-screen pt-20">
+    <div className="bg-blue-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <motion.section
@@ -35,11 +35,11 @@ const TwoWheelersInsurance = () => {
             className="w-full h-full object-cover rounded-2xl shadow-lg mb-8"
           />
           <h1 className="text-4xl sm:text-5xl font-extrabold text-[#00001a] mb-6">
-            Arshyan Bike Insurance
+           Bike Insurance
           </h1>
           <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Owning a bike brings freedom, convenience, and joy, but it also
-            comes with responsibilities. Arshyan Bike Insurance protects you and
+            comes with responsibilities. Bike Insurance protects you and
             your bike from{" "}
             <span className="text-blue-600 font-semibold">
               accidents, theft, natural disasters, and third-party liabilities
@@ -64,7 +64,7 @@ const TwoWheelersInsurance = () => {
           className="rounded-2xl p-10 mb-16 "
         >
           <h2 className="text-3xl font-bold text-[#00001a] mb-10 text-center">
-            Key Benefits of Arshyan Bike Insurance
+            Key Benefits of Bike Insurance
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
@@ -162,7 +162,7 @@ const TwoWheelersInsurance = () => {
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ride Worry-Free</h2>
           <p className="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
             Stay protected and focus on enjoying the{" "}
-            <span className="font-semibold">road ahead</span> with Arshyan Bike
+            <span className="font-semibold">road ahead</span> with Bike
             Insurance.
           </p>
           <Link

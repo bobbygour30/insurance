@@ -5,7 +5,7 @@ import assets from '../assets/assets';
 
 const MobileInsurance = () => {
   return (
-    <div className="bg-blue-50 min-h-screen pt-20">
+    <div className="bg-blue-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <motion.section
@@ -25,10 +25,10 @@ const MobileInsurance = () => {
             className="w-full h-full object-cover rounded-lg shadow-md mb-6"
           />
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
-            Arshyan Mobile Insurance
+           Mobile Insurance
           </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Protect your smartphones and tablets with Arshyan Mobile Insurance, ensuring coverage for damage, theft, and technical failures.
+            Protect your smartphones and tablets with Mobile Insurance, ensuring coverage for damage, theft, and technical failures.
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
@@ -48,7 +48,7 @@ const MobileInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Key Features of Arshyan Mobile Insurance
+            Key Features of Mobile Insurance
           </h2>
           <ul className="list-disc list-inside text-gray-700 space-y-2">
             <li>Policy can be issued for long-term & short-term (1 day to 3 years).</li>
@@ -122,11 +122,13 @@ const MobileInsurance = () => {
             Protect Your Mobile Devices
           </h2>
           <p className="text-base text-gray-600 mb-6">
-            With Arshyan Mobile Insurance, safeguard your smartphones and tablets from unexpected damages and theft. Get covered today with our Electronic Equipment Insurance Policy!
+            With Mobile Insurance, safeguard your smartphones and tablets from unexpected damages and theft. Get covered today with our Electronic Equipment Insurance Policy!
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               to="/mobile-equipment"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
             >
               Purchase Now

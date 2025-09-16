@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import assets from '../assets/assets';
 
 const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    mobile: '',
+    reason: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
   return (
-    <div className="bg-blue-50 min-h-screen pt-20">
+    <div className="bg-blue-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <motion.section
@@ -81,6 +97,9 @@ const ContactUs = () => {
                   <input
                     type="text"
                     id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="Your Name"
                     aria-label="Your name"
@@ -93,10 +112,47 @@ const ContactUs = () => {
                   <input
                     type="email"
                     id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="your.email@example.com"
                     aria-label="Your email"
                   />
+                </div>
+                <div>
+                  <label htmlFor="mobile" className="block text-sm font-medium text-gray-700">
+                    Mobile Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    value={formData.mobile}
+                    onChange={handleChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    placeholder="Your Mobile Number"
+                    aria-label="Your mobile number"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="reason" className="block text-sm font-medium text-gray-700">
+                    Reason for Contact
+                  </label>
+                  <select
+                    id="reason"
+                    name="reason"
+                    value={formData.reason}
+                    onChange={handleChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    aria-label="Reason for contact"
+                  >
+                    <option value="">Select Reason</option>
+                    <option value="New Policy Inquiry">New Policy Inquiry</option>
+                    <option value="Existing Policy Support">Existing Policy Support</option>
+                    <option value="Claims Assistance">Claims Assistance</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700">
@@ -104,7 +160,10 @@ const ContactUs = () => {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows="4"
+                    value={formData.message}
+                    onChange={handleChange}
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="Your message or inquiry"
                     aria-label="Your message"
@@ -112,7 +171,7 @@ const ContactUs = () => {
                 </div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <a
-                    href="mailto:sales.support@arshyaninsurance.com?subject=Contact%20Us%20Inquiry"
+                    href={`mailto:sales.support@arshyaninsurance.com?subject=Contact%20Us%20Inquiry&body=Name:%20${formData.name}%0AEmail:%20${formData.email}%0AMobile:%20${formData.mobile}%0AReason:%20${formData.reason}%0AMessage:%20${formData.message}`}
                     className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-[#00001a] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   >
                     Send Message
@@ -122,8 +181,6 @@ const ContactUs = () => {
             </div>
           </div>
         </motion.section>
-
-        
       </div>
     </div>
   );

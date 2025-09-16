@@ -91,7 +91,7 @@ const MarineInsurance = () => {
   };
 
   return (
-    <div className="bg-blue-50 min-h-screen pt-20">
+    <div className="bg-blue-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <motion.section
@@ -105,7 +105,7 @@ const MarineInsurance = () => {
             alt="Marine Insurance Banner"
             className="w-full h-92 object-cover rounded-lg shadow-md mb-6"
           />
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Arshyan Marine Insurance</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4"> Marine Insurance</h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
             Protect your cargo, vessels, and logistics operations with Arshyan Marine Insurance, covering transit by sea, air, or land.
           </p>

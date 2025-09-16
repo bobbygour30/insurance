@@ -9,16 +9,16 @@ import logo4 from "./logo4.png"
 import logo5 from "./logo5.png"
 import logo6 from "./logo6.png"
 import about from "./about.jpg"
-import car from "./car.jpg"
-import bike from "./bike.jpg"
+import car from "./car.webp"
+import bike from "./bike.png"
 import mobile1 from "./mobile1.jpg"
 import mobile2 from "./mobile2.jpg"
 import marine from "./marine.jpg"
-import fire from "./fire.jpg"
+import fire from "./fire.png"
 import Burglary from "./Burglary.jpg"
 import employee from "./employee.jpg"
 import mediclaim from "./mediclaim.jpg"
-import machine from "./machine.jpg"
+import machine from "./machine.png"
 import group from "./group.jpg"
 import home from "./home.jpg"
 import shop from "./shop.jpg"
@@ -46,7 +46,10 @@ import partner13 from "./partner13.png"
 import partner14 from "./partner14.png"
 import partner15 from "./partner15.jpg"
 import banner5 from "./banner5.png"
-
+import commitment from "./commitment.png"
+import vision from "./vision.png"
+import journey from "./journey.png"
+import commercial from "./commercial.jpg"
 
 
 
@@ -101,7 +104,11 @@ const assets = {
     partner12,
     partner13,
     partner14,
-    partner15
+    partner15,
+    commitment,
+    vision,
+    journey,
+    commercial
 }
 
 export default assets

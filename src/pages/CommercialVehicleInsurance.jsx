@@ -5,7 +5,7 @@ import assets from '../assets/assets';
 
 const CommercialVehicleInsurance = () => {
   return (
-    <div className="bg-blue-50 min-h-screen pt-20">
+    <div className="bg-blue-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <motion.section
@@ -15,12 +15,12 @@ const CommercialVehicleInsurance = () => {
           className="text-center mb-12"
         >
           <img
-            src={assets.bike}
+            src={assets.commercial}
             alt="Commercial Vehicle Insurance Banner"
             className="w-full h-full object-cover rounded-lg shadow-md mb-6"
           />
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
-            Arshyan Commercial Vehicle Insurance
+           Commercial Vehicle Insurance
           </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
             Running a business that relies on vehicles requires not only keeping them in good condition but also ensuring they are adequately protected. Arshyan Insurance Services offers tailored commercial vehicle insurance to safeguard your business assets, reduce financial risks, and ensure smooth operations in the event of an accident or damage.
@@ -43,7 +43,7 @@ const CommercialVehicleInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Key Benefits of Arshyan Commercial Vehicle Insurance
+            Key Benefits of Commercial Vehicle Insurance
           </h2>
           <ul className="list-disc list-inside space-y-3 text-gray-700 text-base">
             <li><strong>Comprehensive Coverage:</strong> Protects your commercial vehicles, such as trucks, buses, taxis, and delivery vans, from accidents, theft, fire, natural disasters, and more.</li>
@@ -62,7 +62,7 @@ const CommercialVehicleInsurance = () => {
           className="bg-white rounded-lg shadow-md p-8 mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-            Why Choose Arshyan Commercial Vehicle Insurance?
+            Why Choose Commercial Vehicle Insurance?
           </h2>
           <ul className="list-disc list-inside space-y-3 text-gray-700 text-base">
             <li><strong>Flexible Premiums:</strong> Competitive options designed for your business needs.</li>
@@ -83,16 +83,9 @@ const CommercialVehicleInsurance = () => {
             Safeguard Your Fleet
           </h2>
           <p className="text-base text-gray-600 mb-6">
-            With Arshyan Commercial Vehicle Insurance, safeguard your business on the road and ensure the security of your commercial fleet. Stay covered, stay ahead!
+            With  Commercial Vehicle Insurance, safeguard your business on the road and ensure the security of your commercial fleet. Stay covered, stay ahead!
           </p>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <a
-              href="https://www.bajajallianz.com/health-insurance-plans/critical-Illness-insurance/buy-online.html?pid=8407&src=CBM_0901123"
-              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
-            >
-              Buy From Bajaj Allianz
-            </a>
-          </motion.div>
+          
         </motion.section>
       </div>
     </div>

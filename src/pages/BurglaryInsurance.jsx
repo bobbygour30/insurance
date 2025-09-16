@@ -5,7 +5,7 @@ import assets from '../assets/assets';
 
 const BurglaryInsurance = () => {
   return (
-    <div className="bg-blue-50 min-h-screen pt-20">
+    <div className="bg-blue-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <motion.section
@@ -20,7 +20,7 @@ const BurglaryInsurance = () => {
             className="w-full h-full object-cover rounded-lg shadow-md mb-6"
           />
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
-            Arshyan Burglary Insurance
+           Burglary Insurance
           </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
             Protect your business from theft and burglary with Arshyan Insurance’s

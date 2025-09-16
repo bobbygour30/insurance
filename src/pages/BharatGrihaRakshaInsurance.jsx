@@ -5,7 +5,7 @@ import assets from "../assets/assets";
 
 const BharatGrihaRakshaInsurance = () => {
   return (
-    <div className="bg-blue-50 min-h-screen pt-20">
+    <div className="bg-blue-50 min-h-screen">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
         {/* Hero Section */}

@@ -20,7 +20,7 @@ const CarInsurance = () => {
   };
 
   return (
-    <div className="bg-blue-50 min-h-screen pt-20">
+    <div className="bg-blue-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <motion.section
@@ -32,10 +32,10 @@ const CarInsurance = () => {
           <img
             src={assets.car}
             alt="Car Insurance Banner"
-            className="w-full h-full object-cover rounded-2xl shadow-lg mb-8"
+            className="w-full h-full object-cover rounded-2xl shadow-lg mb-8 p-20 bg-[#FFFFFF]"
           />
           <h1 className="text-4xl sm:text-5xl font-extrabold text-[#00001a] mb-6">
-            Arshyan Car Insurance
+           Car Insurance
           </h1>
           <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Car insurance provides{" "}
@@ -229,7 +229,7 @@ const CarInsurance = () => {
             Protect Your Drive Today
           </h2>
           <p className="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
-            With Arshyan Car Insurance, safeguard your{" "}
+            With Car Insurance, safeguard your{" "}
             <span className="font-semibold">vehicle and financial security</span>{" "}
             while driving with confidence.
           </p>

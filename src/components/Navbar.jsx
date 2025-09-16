@@ -236,8 +236,8 @@ const Navbar = () => {
                       path: "/insurance/business/marine",
                     },
                     {
-                      label: "Bharat Sookshma Udyam Suraksha (Standard Fire Policy)",
-                      path: "/insurance/business/bharat-sookshma",
+                      label: "Property Insurance",
+                      path: "/insurance/business/property-insurance",
                     },
                     {
                       label: "Burglary Insurance Policy",
@@ -444,8 +444,8 @@ const Navbar = () => {
                     path: "/insurance/business/marine",
                   },
                   {
-                    label: "Bharat Sookshma Udyam Suraksha (Standard Fire Policy)",
-                    path: "/insurance/business/bharat-sookshma",
+                    label: "Property Insurance",
+                    path: "/insurance/business/property-insurance",
                   },
                   {
                     label: "Burglary Insurance Policy",

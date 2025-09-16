@@ -23,7 +23,7 @@ const HealthInsurance = () => {
   };
 
   return (
-    <div className="bg-blue-50 min-h-screen pt-20">
+    <div className="bg-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <motion.section
@@ -38,7 +38,7 @@ const HealthInsurance = () => {
             className="w-full h-full object-cover rounded-2xl shadow-lg mb-8"
           />
           <h1 className="text-4xl sm:text-5xl font-extrabold text-[#00001a] mb-6">
-            Arshyan Health Insurance
+            Health Insurance
           </h1>
           <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Health is wealth, and protecting it is essential. Secure your
@@ -66,7 +66,7 @@ const HealthInsurance = () => {
           className=" rounded-2xl  p-10 mb-16"
         >
           <h2 className="text-3xl font-bold text-[#00001a] mb-10 text-center">
-            Key Benefits of Arshyan Health Insurance
+            Key Benefits of Health Insurance
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
@@ -130,7 +130,7 @@ const HealthInsurance = () => {
           className=" rounded-2xl  p-10 mb-16"
         >
           <h2 className="text-3xl font-bold text-[#00001a] mb-12 text-center">
-            Why Choose Arshyan Health Insurance?
+            Why Choose Health Insurance?
           </h2>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {[
@@ -187,7 +187,7 @@ const HealthInsurance = () => {
           className=" rounded-2xl  p-10 mb-16"
         >
           <h2 className="text-3xl font-bold text-[#00001a] mb-10 text-center">
-            OPD Benefits with Arshyan Health Insurance
+            OPD Benefits with Health Insurance
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
@@ -200,17 +200,10 @@ const HealthInsurance = () => {
                 desc: "Coverage for lab tests, X-rays, and other diagnostics.",
               },
               {
-                title: "Prescription Medicines",
-                desc: "Covers costs of medicines prescribed during outpatient visits.",
-              },
-              {
                 title: "Flexibility in Usage",
                 desc: "Access a wide network of doctors and clinics at your convenience.",
               },
-              {
-                title: "No Waiting Period",
-                desc: "Start utilizing OPD coverage immediately.",
-              },
+              
             ].map((item, index) => (
               <motion.div
                 key={item.title}

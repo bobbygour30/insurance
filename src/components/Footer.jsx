@@ -72,7 +72,7 @@ const Footer = () => {
             <ul className="space-y-2 text-base text-gray-300">
               {[
                 { label: "Marine Insurance", path: "/insurance/business/marine" },
-                { label: "Bharat Sookshma Udyam Suraksha (Standard Fire Policy)", path: "/insurance/business/bharat-sookshma" },
+                { label: "Property Insurance", path: "/insurance/business/property-insurance" },
                 { label: "Burglary Insurance Policy", path: "/insurance/business/burglary" },
                 { label: "Employee Compensation Insurance Policy", path: "/insurance/business/employee-compensation" },
                 { label: "Group Mediclaim Insurance Policy", path: "/insurance/business/group-mediclaim" },

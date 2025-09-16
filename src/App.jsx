@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import AboutUs from './pages/AboutUs';
@@ -22,26 +22,37 @@ import ContactUs from './pages/ContactUs';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
 import RefundPolicy from './pages/RefundPolicy';
-
 import GetQuote from './pages/GetQuote';
 import Form from './pages/MobileEquipmentForm';
+
+// ScrollToTop component to handle scrolling to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
+
+  return null;
+}
 
 const App = () => {
   return (
     <BrowserRouter>
       <div className="min-h-screen flex flex-col">
         <Navbar />
+        <ScrollToTop />
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutUs />} />
-            <Route path="//insurance/personal/health" element={<HealthInsurance />} />
+            <Route path="/insurance/personal/health" element={<HealthInsurance />} />
             <Route path="/insurance/personal/car" element={<CarInsurance />} />
             <Route path="/insurance/personal/two-wheelers" element={<TwoWheelersInsurance />} />
             <Route path="/insurance/personal/commercial-vehicle" element={<CommercialVehicleInsurance />} />
             <Route path="/insurance/personal/mobile" element={<MobileInsurance />} />
             <Route path="/insurance/business/marine" element={<MarineInsurance />} />
-            <Route path="/insurance/business/bharat-sookshma" element={<BharatSookshmaInsurance />} />
+            <Route path="/insurance/business/property-insurance" element={<BharatSookshmaInsurance />} />
             <Route path="/insurance/business/burglary" element={<BurglaryInsurance />} />
             <Route path="/insurance/business/employee-compensation" element={<EmployeeCompensationInsurance />} />
             <Route path="/insurance/business/group-mediclaim" element={<GroupMediclaimInsurance />} />
@@ -54,10 +65,7 @@ const App = () => {
             <Route path="/contact/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/contact/refund-policy" element={<RefundPolicy />} />
             <Route path="/get-quote" element={<GetQuote />} />
-            <Route path="/mobile-equipment" element={< Form/>} />
-
-
-
+            <Route path="/mobile-equipment" element={<Form />} />
           </Routes>
         </main>
         <Footer />

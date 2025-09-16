@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 const Form = () => {
   const [formData, setFormData] = useState({
+    nameOfInsured: '',
     dateOfPurchase: '',
     insuredMobileNumber: '',
     insuredEmailId: '',
@@ -14,13 +15,15 @@ const Form = () => {
     equipmentBrandModel: '',
     equipmentSerialNumber: '',
     valueOfEquipment: '',
-    premium1Year: '',
-    premium2Year: '',
-    premium3Year: '',
+    selectedPeriod: '', // Removed default value
+    insurancePremium: '',
     aadhaarCard: null,
     purchaseInvoice: null,
     insurancePaymentReceipt: null,
+    imeiImage: null,
   });
+
+  const [showUploadSection, setShowUploadSection] = useState(false);
 
   const premiumData = {
     '0-19999': { '1': 2000, '2': 3850, '3': 5875 },
@@ -35,20 +38,41 @@ const Form = () => {
     '200000-250000': { '1': 10999, '2': 19999, '3': 30999 },
   };
 
+  useEffect(() => {
+    if (formData.dateOfPurchase) {
+      const purchaseDate = new Date(formData.dateOfPurchase);
+      const currentDate = new Date();
+
+      // Normalize both to midnight (ignoring hours/minutes)
+      purchaseDate.setHours(0, 0, 0, 0);
+      currentDate.setHours(0, 0, 0, 0);
+
+      const differenceInTime = currentDate.getTime() - purchaseDate.getTime();
+      const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+
+      if (differenceInDays > 30) {
+        setShowUploadSection(true); // show if date is older than 30 days
+      } else {
+        setShowUploadSection(false); // hide if within 30 days
+      }
+    }
+  }, [formData.dateOfPurchase]);
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    setFormData((prev) => ({
-      ...prev,
+    const updatedFormData = {
+      ...formData,
       [name]: files ? files[0] : value,
-    }));
+    };
+    setFormData(updatedFormData);
 
-    if (name === 'valueOfEquipment') {
-      calculatePremium(value);
+    if (name === 'valueOfEquipment' || name === 'selectedPeriod') {
+      calculatePremium(updatedFormData.valueOfEquipment, updatedFormData.selectedPeriod);
     }
   };
 
-  const calculatePremium = (value) => {
-    const numValue = parseInt(value) || 0;
+  const calculatePremium = (valueOfEquipment, selectedPeriod) => {
+    const numValue = parseInt(valueOfEquipment) || 0;
     let selectedRange = null;
 
     for (const range in premiumData) {
@@ -59,19 +83,15 @@ const Form = () => {
       }
     }
 
-    if (selectedRange) {
+    if (selectedRange && selectedPeriod) {
       setFormData((prev) => ({
         ...prev,
-        premium1Year: premiumData[selectedRange]['1'],
-        premium2Year: premiumData[selectedRange]['2'],
-        premium3Year: premiumData[selectedRange]['3'],
+        insurancePremium: premiumData[selectedRange][selectedPeriod],
       }));
     } else {
       setFormData((prev) => ({
         ...prev,
-        premium1Year: '',
-        premium2Year: '',
-        premium3Year: '',
+        insurancePremium: '',
       }));
     }
   };
@@ -83,7 +103,7 @@ const Form = () => {
   };
 
   return (
-    <div className="bg-blue-50 min-h-screen pt-20">
+    <div className="bg-blue-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <motion.section
           initial={{ opacity: 0, y: 20 }}
@@ -104,6 +124,22 @@ const Form = () => {
           className="bg-white rounded-lg shadow-md p-8"
         >
           <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label htmlFor="nameOfInsured" className="block text-sm font-medium text-gray-700">
+                Name of Insured *
+              </label>
+              <input
+                type="text"
+                id="nameOfInsured"
+                name="nameOfInsured"
+                value={formData.nameOfInsured}
+                onChange={handleChange}
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                placeholder="e.g., Rahul Kumar"
+                required
+              />
+            </div>
+
             <div>
               <label htmlFor="dateOfPurchase" className="block text-sm font-medium text-gray-700">
                 Date of Purchase *
@@ -196,6 +232,10 @@ const Form = () => {
               >
                 <option value="">Select Equipment</option>
                 <option value="Mobile">Mobile</option>
+                <option value="Mobile">Camera</option>
+                <option value="Mobile">Laptop</option>
+                <option value="Mobile">I-Pad</option>
+                <option value="Mobile">Others</option>
               </select>
             </div>
 
@@ -281,42 +321,33 @@ const Form = () => {
             </div>
 
             <div>
-              <label htmlFor="premium1Year" className="block text-sm font-medium text-gray-700">
-                Insurance Premium Including GST - For 1 Year
+              <label htmlFor="selectedPeriod" className="block text-sm font-medium text-gray-700">
+                Period *
               </label>
-              <input
-                type="text"
-                id="premium1Year"
-                name="premium1Year"
-                value={formData.premium1Year || 'Please select'}
-                readOnly
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-gray-100"
-              />
+              <select
+                id="selectedPeriod"
+                name="selectedPeriod"
+                value={formData.selectedPeriod}
+                onChange={handleChange}
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                required
+              >
+                <option value="">Select Period</option>
+                <option value="1">1 Year</option>
+                <option value="2">2 Years</option>
+                <option value="3">3 Years</option>
+              </select>
             </div>
 
             <div>
-              <label htmlFor="premium2Year" className="block text-sm font-medium text-gray-700">
-                Insurance Premium Including GST - For 2 Years
+              <label htmlFor="insurancePremium" className="block text-sm font-medium text-gray-700">
+                Insurance Premium Including GST
               </label>
               <input
                 type="text"
-                id="premium2Year"
-                name="premium2Year"
-                value={formData.premium2Year || 'Please select'}
-                readOnly
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-gray-100"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="premium3Year" className="block text-sm font-medium text-gray-700">
-                Insurance Premium Including GST - For 3 Years
-              </label>
-              <input
-                type="text"
-                id="premium3Year"
-                name="premium3Year"
-                value={formData.premium3Year || 'Please select'}
+                id="insurancePremium"
+                name="insurancePremium"
+                value={formData.insurancePremium ? `₹ ${formData.insurancePremium}` : 'Please select value and period'}
                 readOnly
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-gray-100"
               />
@@ -342,6 +373,33 @@ const Form = () => {
                 </div>
               </div>
             </div>
+
+            {showUploadSection && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                transition={{ duration: 0.5 }}
+              >
+                <label htmlFor="imeiImage" className="block text-sm font-medium text-gray-700">
+                  Upload image of the device with IMEI number *
+                </label>
+                <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                  <div className="space-y-1 text-center">
+                    <p className="text-sm text-gray-600">Drop your file here or click here to upload</p>
+                    <p className="text-xs text-gray-500">You can upload up to 1 files.</p>
+                    <input
+                      type="file"
+                      id="imeiImage"
+                      name="imeiImage"
+                      onChange={handleChange}
+                      className="mt-2"
+                      accept="image/*,application/pdf"
+                      required
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            )}
 
             <div>
               <label htmlFor="purchaseInvoice" className="block text-sm font-medium text-gray-700">
