@@ -13,13 +13,20 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Intro Section */}
-      <section className="py-20 bg-[#00001a] text-white">
+      <section className="py-20 bg-gradient-to-r from-gray-50 to-gray-100 text-black">
         <div className="max-w-6xl mx-auto px-6 text-center">
+          <div>
+              <img
+                src={assets.about}
+                alt="About Us"
+                className="w-full h-92 object-cover rounded-lg shadow-md mb-20"
+              />
+            </div>
           <motion.h1
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
-            className="text-2xl sm:text-3xl font-extrabold"
+            className="text-2xl sm:text-4xl font-extrabold"
           >
             About Arshyan Insurance Marketing & Services PVT LTD
           </motion.h1>
@@ -27,7 +34,7 @@ const AboutUs = () => {
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
-            className="mt-6 text-lg sm:text-xl text-gray-200 leading-relaxed"
+            className="mt-6 text-lg sm:text-xl  leading-relaxed"
           >
             At{" "}
             <span className="text-blue-400 font-semibold">

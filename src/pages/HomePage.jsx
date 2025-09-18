@@ -262,7 +262,7 @@ const HomePage = () => {
           >
             <div>
               <img
-                src={assets.about}
+                src={assets.about2}
                 alt="About Us"
                 className="w-full  object-cover rounded-lg shadow-md"
               />

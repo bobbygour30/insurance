@@ -51,7 +51,7 @@ import commitment from "./commitment.png"
 import vision from "./vision.png"
 import journey from "./journey.png"
 import commercial from "./commercial.jpg"
-
+import about2 from "./about2.jpeg"
 
 
 
@@ -110,7 +110,8 @@ const assets = {
     commitment,
     vision,
     journey,
-    commercial
+    commercial,
+    about2
 }
 
 export default assets
