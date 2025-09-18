@@ -136,7 +136,7 @@ const HomePage = () => {
             { src: assets.banner4, alt: "Health Insurance Hero 4" },
             { src: assets.banner2, alt: "Health Insurance Hero 2" },
           ].map((slide, index) => (
-            <div key={index} className="relative h-[50vh] sm:h-[70vh]">
+            <div key={index} className="relative h-[32vh] sm:h-[70vh]">
               <img
                 src={slide.src}
                 alt={slide.alt}
