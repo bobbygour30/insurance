@@ -232,10 +232,10 @@ const Form = () => {
               >
                 <option value="">Select Equipment</option>
                 <option value="Mobile">Mobile</option>
-                <option value="Mobile">Camera</option>
-                <option value="Mobile">Laptop</option>
-                <option value="Mobile">I-Pad</option>
-                <option value="Mobile">Others</option>
+                <option value="Camera">Camera</option>
+                <option value="Laptop">Laptop</option>
+                <option value="I-Pad">I-Pad</option>
+                <option value="Others">Others</option>
               </select>
             </div>
 
