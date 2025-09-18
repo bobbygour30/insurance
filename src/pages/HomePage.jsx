@@ -165,7 +165,7 @@ const HomePage = () => {
             <h2 className="text-3xl sm:text-4xl font-bold text-[#00001a]">
               Our Insurance Plans
             </h2>
-            <p className="mt-4 text-gray-600">
+            <p className="mt-4 text-gray-600 text-lg">
               Explore our range of <span className="text-blue-600">insurance plans</span> tailored to your needs
             </p>
           </motion.div>
