@@ -32,7 +32,7 @@ const CarInsurance = () => {
           <img
             src={assets.car}
             alt="Car Insurance Banner"
-            className="w-full h-full object-cover rounded-2xl shadow-lg mb-8 p-20 bg-[#FFFFFF]"
+            className="w-full h-full object-cover rounded-2xl shadow-lg mb-8 bg-[#FFFFFF]"
           />
           <h1 className="text-4xl sm:text-5xl font-extrabold text-[#00001a] mb-6">
            Car Insurance

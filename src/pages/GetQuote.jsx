@@ -53,7 +53,7 @@ const GetQuote = () => {
           <img
             src={assets.contact}
             alt="Get a Quote Banner"
-            className="w-full h-64 object-cover rounded-lg shadow-md mb-6"
+            className="w-full h-92 object-cover rounded-lg shadow-md mb-6"
           />
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
             Get Your Personalized Quote

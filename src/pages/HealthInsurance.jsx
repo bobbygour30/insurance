@@ -35,7 +35,7 @@ const HealthInsurance = () => {
           <img
             src={assets.banner1}
             alt="Health Insurance Banner"
-            className="w-full h-full object-cover rounded-2xl shadow-lg mb-8"
+            className="w-full h-[55vh] object-cover rounded-2xl shadow-lg mb-8"
           />
           <h1 className="text-4xl sm:text-5xl font-extrabold text-[#00001a] mb-6">
             Health Insurance

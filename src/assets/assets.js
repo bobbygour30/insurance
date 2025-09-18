@@ -1,7 +1,7 @@
-import banner2 from "./banner2.png";
-import banner1 from "./banner1.jpg";
-import banner3 from "./banner3.png";
-import banner4 from "./banner4.png";
+import banner2 from "./banner2.jpeg";
+import banner1 from "./banner1.jpeg";
+import banner3 from "./banner3.jpeg";
+import banner4 from "./banner4.jpeg";
 import logo from "./logo.png"
 import logo2 from "./logo2.png"
 import logo3 from "./logo3.png"
@@ -9,22 +9,22 @@ import logo4 from "./logo4.png"
 import logo5 from "./logo5.png"
 import logo6 from "./logo6.png"
 import about from "./about.jpg"
-import car from "./car.webp"
-import bike from "./bike.png"
+import car from "./car.jpeg"
+import bike from "./bike.jpeg"
 import mobile1 from "./mobile1.jpg"
 import mobile2 from "./mobile2.jpg"
 import marine from "./marine.jpg"
 import fire from "./fire.png"
 import Burglary from "./Burglary.jpg"
 import employee from "./employee.jpg"
-import mediclaim from "./mediclaim.jpg"
+import mediclaim from "./mediclaim.jpeg"
 import machine from "./machine.png"
 import group from "./group.jpg"
 import home from "./home.jpg"
 import shop from "./shop.jpg"
 import personal from "./personal.jpg"
 import business from "./business.jpg"
-import contact from "./contact.jpg"
+import contact from "./contact.jpeg"
 import privacy from "./privacy.jpg"
 import login from "./login.jpg"
 import icon1 from "./icon1.png"
@@ -45,7 +45,8 @@ import partner12 from "./partner12.jpg"
 import partner13 from "./partner13.png"
 import partner14 from "./partner14.png"
 import partner15 from "./partner15.jpg"
-import banner5 from "./banner5.png"
+import banner5 from "./banner5.jpeg"
+import banner6 from "./banner6.jpeg"
 import commitment from "./commitment.png"
 import vision from "./vision.png"
 import journey from "./journey.png"
@@ -60,6 +61,7 @@ const assets = {
     banner1,
     banner2,
     banner3,
+    banner6,
     logo,
     about,
     logo2,

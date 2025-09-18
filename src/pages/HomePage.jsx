@@ -131,6 +131,7 @@ const HomePage = () => {
         >
           {[
             { src: assets.banner5, alt: "Health Insurance Hero 1" },
+            { src: assets.banner6, alt: "Health Insurance Hero 2" },
             { src: assets.banner3, alt: "Health Insurance Hero 3" },
             { src: assets.banner4, alt: "Health Insurance Hero 4" },
             { src: assets.banner2, alt: "Health Insurance Hero 2" },
@@ -165,7 +166,7 @@ const HomePage = () => {
             <h2 className="text-3xl sm:text-4xl font-bold text-[#00001a]">
               Our Insurance Plans
             </h2>
-            <p className="mt-4 text-gray-600 text-lg">
+            <p className="mt-4 text-gray-600">
               Explore our range of <span className="text-blue-600">insurance plans</span> tailored to your needs
             </p>
           </motion.div>
@@ -263,7 +264,7 @@ const HomePage = () => {
               <img
                 src={assets.about}
                 alt="About Us"
-                className="w-full h-96 object-cover rounded-lg shadow-md"
+                className="w-full  object-cover rounded-lg shadow-md"
               />
             </div>
             <div className="flex flex-col justify-center">
