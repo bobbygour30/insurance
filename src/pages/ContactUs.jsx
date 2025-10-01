@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import assets from '../assets/assets';
 
 const ContactUs = () => {
@@ -12,6 +13,8 @@ const ContactUs = () => {
     reason: '',
     message: ''
   });
+  const [isSending, setIsSending] = useState(false);
+  const [sendStatus, setSendStatus] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,6 +22,42 @@ const ContactUs = () => {
       ...prevData,
       [name]: value
     }));
+  };
+
+  
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSending(true);
+
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      mobile: formData.mobile,
+      reason: formData.reason,
+      message: formData.message,
+    };
+
+    emailjs
+      .send(
+        'service_tdgmvjw', // Replace with your EmailJS service ID
+        'template_6mae6ws', // Replace with your EmailJS template ID
+        templateParams,
+        'nzSxlj_Ia1QlBAyKY' // Replace with your EmailJS user ID
+      )
+      .then(
+        (result) => {
+          console.log('Email sent successfully:', result.text);
+          setSendStatus('success');
+          setFormData({ name: '', email: '', mobile: '', reason: '', message: '' });
+          setIsSending(false);
+        },
+        (error) => {
+          console.error('Email sending failed:', error.text);
+          setSendStatus('error');
+          setIsSending(false);
+        }
+      );
   };
 
   return (
@@ -89,7 +128,7 @@ const ContactUs = () => {
                 <EnvelopeIcon className="h-6 w-6 text-blue-600 mr-2" />
                 Send a Message
               </h3>
-              <div className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                     Name
@@ -103,6 +142,7 @@ const ContactUs = () => {
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="Your Name"
                     aria-label="Your name"
+                    required
                   />
                 </div>
                 <div>
@@ -118,6 +158,7 @@ const ContactUs = () => {
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="your.email@example.com"
                     aria-label="Your email"
+                    required
                   />
                 </div>
                 <div>
@@ -133,6 +174,7 @@ const ContactUs = () => {
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="Your Mobile Number"
                     aria-label="Your mobile number"
+                    required
                   />
                 </div>
                 <div>
@@ -146,6 +188,7 @@ const ContactUs = () => {
                     onChange={handleChange}
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     aria-label="Reason for contact"
+                    required
                   >
                     <option value="">Select Reason</option>
                     <option value="New Policy Inquiry">New Policy Inquiry</option>
@@ -167,17 +210,27 @@ const ContactUs = () => {
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="Your message or inquiry"
                     aria-label="Your message"
+                    required
                   ></textarea>
                 </div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <a
-                    href={`mailto:sales.support@arshyaninsurance.com?subject=Contact%20Us%20Inquiry&body=Name:%20${formData.name}%0AEmail:%20${formData.email}%0AMobile:%20${formData.mobile}%0AReason:%20${formData.reason}%0AMessage:%20${formData.message}`}
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-[#00001a] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  <button
+                    type="submit"
+                    disabled={isSending}
+                    className={`inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-[#00001a] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
+                      isSending ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
                   >
-                    Send Message
-                  </a>
+                    {isSending ? 'Sending...' : 'Send Message'}
+                  </button>
                 </motion.div>
-              </div>
+                {sendStatus === 'success' && (
+                  <p className="text-green-600 mt-2">Message sent successfully!</p>
+                )}
+                {sendStatus === 'error' && (
+                  <p className="text-red-600 mt-2">Failed to send message. Please try again.</p>
+                )}
+              </form>
             </div>
           </div>
         </motion.section>

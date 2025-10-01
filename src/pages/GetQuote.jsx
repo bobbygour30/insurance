@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { EnvelopeIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import assets from '../assets/assets';
 
 const GetQuote = () => {
@@ -15,6 +16,8 @@ const GetQuote = () => {
     newPolicy: false,
     message: '',
   });
+  const [isSending, setIsSending] = useState(false);
+  const [sendStatus, setSendStatus] = useState(null);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -24,20 +27,52 @@ const GetQuote = () => {
     }));
   };
 
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent('Get a Quote Inquiry');
-    const body = encodeURIComponent(
-      `Insurance Type: ${formData.insuranceType}\n` +
-      `Full Name: ${formData.fullName}\n` +
-      `Mobile Number: ${formData.mobileNumber}\n` +
-      `Email: ${formData.email}\n` +
-      `Company Name: ${formData.companyName}\n` +
-      `Reason for Contact: ${formData.reason}\n` +
-      `New Policy: ${formData.newPolicy ? 'Yes' : 'No'}\n` +
-      `Message: ${formData.message}`
-    );
-    window.location.href = `mailto:sales.support@arshyaninsurance.com?subject=${subject}&body=${body}`;
+    setIsSending(true);
+
+    const templateParams = {
+      insuranceType: formData.insuranceType,
+      fullName: formData.fullName,
+      mobileNumber: formData.mobileNumber,
+      email: formData.email,
+      companyName: formData.companyName,
+      reason: formData.reason,
+      newPolicy: formData.newPolicy ? 'Yes' : 'No',
+      message: formData.message,
+    };
+
+    emailjs
+      .send(
+        'service_tdgmvjw', // Replace with your EmailJS service ID
+        'template_9n55oli', // Replace with your EmailJS template ID
+        templateParams,
+        'nzSxlj_Ia1QlBAyKY' // Replace with your EmailJS user ID
+      )
+      .then(
+        (result) => {
+          console.log('Email sent successfully:', result.text);
+          setSendStatus('success');
+          setFormData({
+            insuranceType: '',
+            fullName: '',
+            mobileNumber: '',
+            email: '',
+            companyName: '',
+            reason: '',
+            newPolicy: false,
+            message: '',
+          });
+          setIsSending(false);
+        },
+        (error) => {
+          console.error('Email sending failed:', error.text);
+          setSendStatus('error');
+          setIsSending(false);
+        }
+      );
   };
 
   return (
@@ -110,7 +145,7 @@ const GetQuote = () => {
                 <EnvelopeIcon className="h-6 w-6 text-blue-600 mr-2" />
                 Quote Form
               </h3>
-              <div className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="insuranceType" className="block text-sm font-medium text-gray-700">
                     Insurance Type
@@ -122,13 +157,14 @@ const GetQuote = () => {
                     onChange={handleChange}
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     aria-label="Select insurance type"
+                    required
                   >
                     <option value="">Select Insurance Type</option>
                     <option value="Health">Health Insurance</option>
-                    <option value="Life">Car Insurance</option>
-                    <option value="Travel">Two Wheeler Insurance</option>
-                    <option value="Family">Commercial Vehical Insurance</option>
-                    <option value="Senior">Mobile & Equipment</option>
+                    <option value="Life">Life Insurance</option>
+                    <option value="Motor">Motor Insurance</option>
+                    <option value="Travel">Travel Insurance</option>
+                    <option value="Commercial">Commercial/Business Insurance</option>
                   </select>
                 </div>
                 <div>
@@ -144,6 +180,7 @@ const GetQuote = () => {
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="Your Full Name"
                     aria-label="Your full name"
+                    required
                   />
                 </div>
                 <div>
@@ -159,6 +196,7 @@ const GetQuote = () => {
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="+91-XXXXXXXXXX"
                     aria-label="Your mobile number"
+                    required
                   />
                 </div>
                 <div>
@@ -174,6 +212,7 @@ const GetQuote = () => {
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="your.email@example.com"
                     aria-label="Your email"
+                    required
                   />
                 </div>
                 <div>
@@ -202,6 +241,7 @@ const GetQuote = () => {
                     onChange={handleChange}
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     aria-label="Reason for contact"
+                    required
                   >
                     <option value="">Select Reason</option>
                     <option value="New Policy Inquiry">New Policy Inquiry</option>
@@ -242,14 +282,23 @@ const GetQuote = () => {
                 </div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <button
-                    onClick={handleSubmit}
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-[#00001a] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    type="submit"
+                    disabled={isSending}
+                    className={`inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-[#00001a] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
+                      isSending ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
                   >
-                    Submit Quote Request
+                    {isSending ? 'Submitting...' : 'Submit Quote Request'}
                     <ArrowRightIcon className="ml-2 h-5 w-5" />
                   </button>
                 </motion.div>
-              </div>
+                {sendStatus === 'success' && (
+                  <p className="text-green-600 mt-2">Quote request sent successfully!</p>
+                )}
+                {sendStatus === 'error' && (
+                  <p className="text-red-600 mt-2">Failed to send quote request. Please try again.</p>
+                )}
+              </form>
             </div>
           </div>
         </motion.section>

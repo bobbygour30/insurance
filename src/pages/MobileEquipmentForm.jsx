@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -15,15 +16,16 @@ const Form = () => {
     equipmentBrandModel: '',
     equipmentSerialNumber: '',
     valueOfEquipment: '',
-    selectedPeriod: '', // Removed default value
+    selectedPeriod: '',
     insurancePremium: '',
     aadhaarCard: null,
     purchaseInvoice: null,
     insurancePaymentReceipt: null,
     imeiImage: null,
   });
-
   const [showUploadSection, setShowUploadSection] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [sendStatus, setSendStatus] = useState(null);
 
   const premiumData = {
     '0-19999': { '1': 2000, '2': 3850, '3': 5875 },
@@ -37,6 +39,41 @@ const Form = () => {
     '150000-199999': { '1': 8999, '2': 16449, '3': 25999 },
     '200000-250000': { '1': 10999, '2': 19999, '3': 30999 },
   };
+
+  const insuranceInfo = `
+Arshyan Insurance Marketing & Services Private Limited
+
+The Numbers Speak for Themselves
+- Families Insured: 0+
+- Claim Settlement: 0%
+- Years of Delivering Trusted: 0+
+
+Why Choose Us?
+[Include your unique value propositions here]
+
+Our Key Offerings:
+- Health Insurance: Comprehensive health plans that cover hospitalization, critical illness, surgeries, and more.
+- Life Insurance: Safeguard your family’s future with our term and life insurance plans.
+- Motor Insurance: Secure your vehicles with reliable motor insurance plans covering damages, theft, and accidents.
+- Travel Insurance: Travel worry-free with coverage for medical emergencies, flight delays, lost luggage, and more.
+- Commercial/Business Insurance: Safeguard your business properties and stocks and other items pertains to your business for loss suffered by unexpected events.
+- Consultancy Fee: Starts from 5k – 30k/INR
+
+FAQ:
+- What is a No-Claim Bonus (NCB)?
+  A No-Claim Bonus (NCB) is a discount offered on your motor or health insurance premium for every year that you don’t file a claim. This benefit rewards safe driving or healthy living by lowering your premiums during policy renewal.
+- Can I modify the coverage on my policy?
+  Yes, you can modify the coverage on your policy, such as increasing or decreasing the sum insured or adding riders for enhanced protection. Contact our customer support team, and they will guide you through the process.
+- Can I cancel my policy anytime?
+  Yes, you can cancel your policy anytime by contacting our customer support team or visiting the nearest Arshyan Insurance branch. Depending on the type of policy and the duration for which the policy was active, there may be a cancellation fee or refund process in place. Refer to the policy terms for detailed cancellation conditions.
+- How can I get a quote?
+  Getting a quote from Arshyan Insurance services is easy! Simply visit our Get a Quote page, fill in the required details, and you’ll receive a personalized quote instantly. You can also call our customer service team for assistance.
+
+Our Trusted Partners: [List partners here]
+
+Get a Free Quote Now!
+Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in touch now!
+`;
 
   useEffect(() => {
     if (formData.dateOfPurchase) {
@@ -98,8 +135,69 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
+    setIsSending(true);
+
+    const templateParams = {
+      nameOfInsured: formData.nameOfInsured,
+      dateOfPurchase: formData.dateOfPurchase,
+      insuredMobileNumber: formData.insuredMobileNumber,
+      insuredEmailId: formData.insuredEmailId,
+      correspondenceAddress: formData.correspondenceAddress,
+      nameOfStore: formData.nameOfStore,
+      equipment: formData.equipment,
+      mobile: formData.mobile,
+      nameOfEquipment: formData.nameOfEquipment,
+      equipmentBrandModel: formData.equipmentBrandModel,
+      equipmentSerialNumber: formData.equipmentSerialNumber,
+      valueOfEquipment: formData.valueOfEquipment,
+      selectedPeriod: formData.selectedPeriod,
+      insurancePremium: formData.insurancePremium ? `₹ ${formData.insurancePremium}` : 'Not calculated',
+      aadhaarCard: formData.aadhaarCard ? formData.aadhaarCard.name : 'Not uploaded',
+      purchaseInvoice: formData.purchaseInvoice ? formData.purchaseInvoice.name : 'Not uploaded',
+      insurancePaymentReceipt: formData.insurancePaymentReceipt ? formData.insurancePaymentReceipt.name : 'Not uploaded',
+      imeiImage: formData.imeiImage ? formData.imeiImage.name : 'Not uploaded',
+      insurance_info: insuranceInfo,
+    };
+
+    emailjs
+      .send(
+        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        templateParams,
+        'YOUR_USER_ID' // Replace with your EmailJS user ID
+      )
+      .then(
+        (result) => {
+          console.log('Email sent successfully:', result.text);
+          setSendStatus('success');
+          setFormData({
+            nameOfInsured: '',
+            dateOfPurchase: '',
+            insuredMobileNumber: '',
+            insuredEmailId: '',
+            correspondenceAddress: '',
+            nameOfStore: '',
+            equipment: '',
+            mobile: '',
+            nameOfEquipment: '',
+            equipmentBrandModel: '',
+            equipmentSerialNumber: '',
+            valueOfEquipment: '',
+            selectedPeriod: '',
+            insurancePremium: '',
+            aadhaarCard: null,
+            purchaseInvoice: null,
+            insurancePaymentReceipt: null,
+            imeiImage: null,
+          });
+          setIsSending(false);
+        },
+        (error) => {
+          console.error('Email sending failed:', error.text);
+          setSendStatus('error');
+          setIsSending(false);
+        }
+      );
   };
 
   return (
@@ -445,11 +543,20 @@ const Form = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <button
                 type="submit"
-                className="w-full bg-[#00001a] text-white px-4 py-2 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
+                disabled={isSending}
+                className={`w-full bg-[#00001a] text-white px-4 py-2 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300 ${
+                  isSending ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
               >
-                Submit
+                {isSending ? 'Submitting...' : 'Submit'}
               </button>
             </motion.div>
+            {sendStatus === 'success' && (
+              <p className="text-green-600 mt-2 text-center">Form submitted successfully!</p>
+            )}
+            {sendStatus === 'error' && (
+              <p className="text-red-600 mt-2 text-center">Failed to submit form. Please try again.</p>
+            )}
           </form>
         </motion.section>
       </div>
