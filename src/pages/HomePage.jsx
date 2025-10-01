@@ -5,6 +5,7 @@ import { CheckCircle, Zap, Users, Target, ChevronDown, Home, Shield, Clock } fro
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import assets from "../assets/assets"; // Ensure this path is correct
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [faqOpen, setFaqOpen] = useState({});
@@ -219,12 +220,12 @@ const HomePage = () => {
                   {plan.title}
                 </h3>
                 <p className="mt-2 text-xs text-gray-600 text-center">{plan.desc}</p>
-                <a
-                  href={plan.link}
+                <Link
+                  to={plan.link}
                   className="mt-6 inline-flex items-center px-6 py-2 bg-[#00001a] text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition justify-center"
                 >
                   View Details
-                </a>
+                </Link>
               </motion.div>
             ))}
           </div>
