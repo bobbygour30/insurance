@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import axios from "axios";
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -26,6 +27,8 @@ const Form = () => {
   const [showUploadSection, setShowUploadSection] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [sendStatus, setSendStatus] = useState(null);
+  const [fileSizeError, setFileSizeError] = useState(null);
+  const [errorDetails, setErrorDetails] = useState(null);
 
   const premiumData = {
     "0-19999": { 1: 2000, 2: 3850, 3: 5875 },
@@ -42,72 +45,57 @@ const Form = () => {
 
   const insuranceInfo = `
 Arshyan Insurance Marketing & Services Private Limited
-
-The Numbers Speak for Themselves
 - Families Insured: 0+
 - Claim Settlement: 0%
-- Years of Delivering Trusted: 0+
-
-Why Choose Us?
-[Include your unique value propositions here]
-
-Our Key Offerings:
-- Health Insurance: Comprehensive health plans that cover hospitalization, critical illness, surgeries, and more.
-- Life Insurance: Safeguard your family’s future with our term and life insurance plans.
-- Motor Insurance: Secure your vehicles with reliable motor insurance plans covering damages, theft, and accidents.
-- Travel Insurance: Travel worry-free with coverage for medical emergencies, flight delays, lost luggage, and more.
-- Commercial/Business Insurance: Safeguard your business properties and stocks and other items pertains to your business for loss suffered by unexpected events.
-- Consultancy Fee: Starts from 5k – 30k/INR
-
-FAQ:
-- What is a No-Claim Bonus (NCB)?
-  A No-Claim Bonus (NCB) is a discount offered on your motor or health insurance premium for every year that you don’t file a claim. This benefit rewards safe driving or healthy living by lowering your premiums during policy renewal.
-- Can I modify the coverage on my policy?
-  Yes, you can modify the coverage on your policy, such as increasing or decreasing the sum insured or adding riders for enhanced protection. Contact our customer support team, and they will guide you through the process.
-- Can I cancel my policy anytime?
-  Yes, you can cancel your policy anytime by contacting our customer support team or visiting the nearest Arshyan Insurance branch. Depending on the type of policy and the duration for which the policy was active, there may be a cancellation fee or refund process in place. Refer to the policy terms for detailed cancellation conditions.
-- How can I get a quote?
-  Getting a quote from Arshyan Insurance services is easy! Simply visit our Get a Quote page, fill in the required details, and you’ll receive a personalized quote instantly. You can also call our customer service team for assistance.
-
-Our Trusted Partners: [List partners here]
-
-Get a Free Quote Now!
-Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in touch now!
+- Years of Trusted Service: 0+
+Key Offerings:
+- Health, Life, Motor, Travel, and Business Insurance
+- Consultancy Fee: 5k–30k INR
+Get a Free Quote: Visit our website or contact us!
 `;
 
   useEffect(() => {
+    emailjs.init("SI_DkM7ROXjm3pbnI");
+
     if (formData.dateOfPurchase) {
       const purchaseDate = new Date(formData.dateOfPurchase);
       const currentDate = new Date();
 
-      // Normalize both to midnight (ignoring hours/minutes)
       purchaseDate.setHours(0, 0, 0, 0);
       currentDate.setHours(0, 0, 0, 0);
 
       const differenceInTime = currentDate.getTime() - purchaseDate.getTime();
       const differenceInDays = differenceInTime / (1000 * 3600 * 24);
 
-      if (differenceInDays > 30) {
-        setShowUploadSection(true); // show if date is older than 30 days
-      } else {
-        setShowUploadSection(false); // hide if within 30 days
-      }
+      setShowUploadSection(differenceInDays > 30);
     }
   }, [formData.dateOfPurchase]);
 
+  const sanitizeInput = (value) => {
+    if (!value) return "";
+    return String(value)
+      .replace(/[^\w\s@.-]/g, "")
+      .substring(0, 500);
+  };
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
+    if (files) {
+      const file = files[0];
+      if (file && file.size > 5 * 1024 * 1024) {
+        setFileSizeError(`File ${file.name} is too large. Maximum size is 5MB.`);
+        return;
+      }
+      setFileSizeError(null);
+    }
     const updatedFormData = {
       ...formData,
-      [name]: files ? files[0] : value,
+      [name]: files ? files[0] : sanitizeInput(value),
     };
     setFormData(updatedFormData);
 
     if (name === "valueOfEquipment" || name === "selectedPeriod") {
-      calculatePremium(
-        updatedFormData.valueOfEquipment,
-        updatedFormData.selectedPeriod
-      );
+      calculatePremium(updatedFormData.valueOfEquipment, updatedFormData.selectedPeriod);
     }
   };
 
@@ -136,79 +124,119 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSending(true);
+    setFileSizeError(null);
+    setSendStatus(null);
+    setErrorDetails(null);
 
-    const templateParams = {
-      nameOfInsured: formData.nameOfInsured,
-      dateOfPurchase: formData.dateOfPurchase,
-      insuredMobileNumber: formData.insuredMobileNumber,
-      insuredEmailId: formData.insuredEmailId,
-      correspondenceAddress: formData.correspondenceAddress,
-      nameOfStore: formData.nameOfStore,
-      equipment: formData.equipment,
-      mobile: formData.mobile,
-      nameOfEquipment: formData.nameOfEquipment,
-      equipmentBrandModel: formData.equipmentBrandModel,
-      equipmentSerialNumber: formData.equipmentSerialNumber,
-      valueOfEquipment: formData.valueOfEquipment,
-      selectedPeriod: formData.selectedPeriod,
-      insurancePremium: formData.insurancePremium
-        ? `₹ ${formData.insurancePremium}`
-        : "Not calculated",
-      aadhaarCard: formData.aadhaarCard
-        ? formData.aadhaarCard.name
-        : "Not uploaded",
-      purchaseInvoice: formData.purchaseInvoice
-        ? formData.purchaseInvoice.name
-        : "Not uploaded",
-      insurancePaymentReceipt: formData.insurancePaymentReceipt
-        ? formData.insurancePaymentReceipt.name
-        : "Not uploaded",
-      imeiImage: formData.imeiImage ? formData.imeiImage.name : "Not uploaded",
-      insurance_info: insuranceInfo,
+    let aadhaarCardUrl = "";
+    let purchaseInvoiceUrl = "";
+    let insurancePaymentReceiptUrl = "";
+    let imeiImageUrl = "";
+
+    const uploadFile = async (file, fileName) => {
+      if (!file) return "";
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "insurance_uploads");
+      formData.append("public_id", `insurance_${Date.now()}_${sanitizeInput(fileName)}`);
+
+      try {
+        const response = await axios.post(
+          `https://api.cloudinary.com/v1_1/dkn28xbes/upload`,
+          formData
+        );
+        return response.data.secure_url || "";
+      } catch (error) {
+        console.error(`Error uploading ${fileName}:`, error);
+        throw error;
+      }
     };
 
-    emailjs
-      .send(
-        "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
-        "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
-        templateParams,
-        "YOUR_USER_ID" // Replace with your EmailJS user ID
-      )
-      .then(
-        (result) => {
-          console.log("Email sent successfully:", result.text);
-          setSendStatus("success");
-          setFormData({
-            nameOfInsured: "",
-            dateOfPurchase: "",
-            insuredMobileNumber: "",
-            insuredEmailId: "",
-            correspondenceAddress: "",
-            nameOfStore: "",
-            equipment: "",
-            mobile: "",
-            nameOfEquipment: "",
-            equipmentBrandModel: "",
-            equipmentSerialNumber: "",
-            valueOfEquipment: "",
-            selectedPeriod: "",
-            insurancePremium: "",
-            aadhaarCard: null,
-            purchaseInvoice: null,
-            insurancePaymentReceipt: null,
-            imeiImage: null,
-          });
-          setIsSending(false);
-        },
-        (error) => {
-          console.error("Email sending failed:", error.text);
-          setSendStatus("error");
-          setIsSending(false);
-        }
+    try {
+      if (formData.aadhaarCard) {
+        aadhaarCardUrl = await uploadFile(formData.aadhaarCard, formData.aadhaarCard.name);
+      }
+      if (formData.purchaseInvoice) {
+        purchaseInvoiceUrl = await uploadFile(formData.purchaseInvoice, formData.purchaseInvoice.name);
+      }
+      if (formData.insurancePaymentReceipt) {
+        insurancePaymentReceiptUrl = await uploadFile(formData.insurancePaymentReceipt, formData.insurancePaymentReceipt.name);
+      }
+      if (formData.imeiImage) {
+        imeiImageUrl = await uploadFile(formData.imeiImage, formData.imeiImage.name);
+      }
+
+      const templateParams = {
+        name: sanitizeInput(formData.nameOfInsured) || "Not provided", // Added for {{name}}
+        nameOfInsured: sanitizeInput(formData.nameOfInsured) || "Not provided",
+        dateOfPurchase: sanitizeInput(formData.dateOfPurchase) || "Not provided",
+        insuredMobileNumber: sanitizeInput(formData.insuredMobileNumber) || "Not provided",
+        insuredEmailId: sanitizeInput(formData.insuredEmailId) || "Not provided",
+        correspondenceAddress: sanitizeInput(formData.correspondenceAddress) || "Not provided",
+        nameOfStore: sanitizeInput(formData.nameOfStore) || "Not provided",
+        equipment: sanitizeInput(formData.equipment) || "Not provided",
+        mobile: sanitizeInput(formData.mobile) || "Not provided",
+        nameOfEquipment: sanitizeInput(formData.nameOfEquipment) || "Not provided",
+        equipmentBrandModel: sanitizeInput(formData.equipmentBrandModel) || "Not provided",
+        equipmentSerialNumber: sanitizeInput(formData.equipmentSerialNumber) || "Not provided",
+        valueOfEquipment: sanitizeInput(formData.valueOfEquipment) || "Not provided",
+        selectedPeriod: sanitizeInput(formData.selectedPeriod) || "Not provided",
+        insurancePremium: formData.insurancePremium
+          ? `₹ ${sanitizeInput(formData.insurancePremium)}`
+          : "Not calculated",
+        aadhaarCard: aadhaarCardUrl || "Not uploaded",
+        aadhaarCardName: formData.aadhaarCard ? sanitizeInput(formData.aadhaarCard.name) : "Not uploaded",
+        purchaseInvoice: purchaseInvoiceUrl || "Not uploaded",
+        purchaseInvoiceName: formData.purchaseInvoice ? sanitizeInput(formData.purchaseInvoice.name) : "Not uploaded",
+        insurancePaymentReceipt: insurancePaymentReceiptUrl || "Not uploaded",
+        insurancePaymentReceiptName: formData.insurancePaymentReceipt
+          ? sanitizeInput(formData.insurancePaymentReceipt.name)
+          : "Not uploaded",
+        imeiImage: imeiImageUrl || "Not uploaded",
+        imeiImageName: formData.imeiImage ? sanitizeInput(formData.imeiImage.name) : "Not uploaded",
+        insurance_info: insuranceInfo,
+      };
+
+      console.log("templateParams:", JSON.stringify(templateParams, null, 2));
+
+      const response = await emailjs.send(
+        "service_dxkt4ga",
+        "template_67i33ab",
+        templateParams
       );
+      console.log("EmailJS response:", response);
+
+      setSendStatus("success");
+      setFormData({
+        nameOfInsured: "",
+        dateOfPurchase: "",
+        insuredMobileNumber: "",
+        insuredEmailId: "",
+        correspondenceAddress: "",
+        nameOfStore: "",
+        equipment: "",
+        mobile: "",
+        nameOfEquipment: "",
+        equipmentBrandModel: "",
+        equipmentSerialNumber: "",
+        valueOfEquipment: "",
+        selectedPeriod: "",
+        insurancePremium: "",
+        aadhaarCard: null,
+        purchaseInvoice: null,
+        insurancePaymentReceipt: null,
+        imeiImage: null,
+      });
+      setIsSending(false);
+    } catch (error) {
+      console.error("Error uploading files or sending email:", error);
+      setErrorDetails(error.text || error.message || "Unknown error");
+      setSendStatus("error");
+      setIsSending(false);
+    }
   };
 
   return (
@@ -510,9 +538,7 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
               />
             </div>
 
-            {/* File Upload Section */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
-              {/* Aadhaar Card Upload */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
               <label className="cursor-pointer flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-xl p-6 bg-gray-50 hover:bg-gray-100 transition">
                 <div className="flex flex-col items-center space-y-2">
                   <svg
@@ -533,8 +559,13 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
                     Aadhaar Card *
                   </span>
                   <p className="text-xs text-gray-500 text-center">
-                    Upload PDF / Image
+                    Upload PDF / Image (max 5MB)
                   </p>
+                  {formData.aadhaarCard && (
+                    <p className="text-xs text-gray-700">
+                      Selected: {formData.aadhaarCard.name}
+                    </p>
+                  )}
                 </div>
                 <input
                   type="file"
@@ -546,7 +577,6 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
                 />
               </label>
 
-              {/* Purchase Invoice Upload */}
               <label className="cursor-pointer flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-xl p-6 bg-gray-50 hover:bg-gray-100 transition">
                 <div className="flex flex-col items-center space-y-2">
                   <svg
@@ -567,8 +597,13 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
                     Purchase Invoice *
                   </span>
                   <p className="text-xs text-gray-500 text-center">
-                    Upload PDF / Image
+                    Upload PDF / Image (max 5MB)
                   </p>
+                  {formData.purchaseInvoice && (
+                    <p className="text-xs text-gray-700">
+                      Selected: {formData.purchaseInvoice.name}
+                    </p>
+                  )}
                 </div>
                 <input
                   type="file"
@@ -580,7 +615,6 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
                 />
               </label>
 
-              {/* Payment Receipt Upload */}
               <label className="cursor-pointer flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-xl p-6 bg-gray-50 hover:bg-gray-100 transition">
                 <div className="flex flex-col items-center space-y-2">
                   <svg
@@ -601,8 +635,13 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
                     Payment Receipt
                   </span>
                   <p className="text-xs text-gray-500 text-center">
-                    Upload PDF / Image (optional)
+                    Upload PDF / Image (max 5MB, optional)
                   </p>
+                  {formData.insurancePaymentReceipt && (
+                    <p className="text-xs text-gray-700">
+                      Selected: {formData.insurancePaymentReceipt.name}
+                    </p>
+                  )}
                 </div>
                 <input
                   type="file"
@@ -614,12 +653,62 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
               </label>
             </div>
 
+            {showUploadSection && (
+              <div className="grid grid-cols-1 gap-6 mt-6">
+                <label className="cursor-pointer flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-xl p-6 bg-gray-50 hover:bg-gray-100 transition">
+                  <div className="flex flex-col items-center space-y-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-10 w-10 text-blue-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span className="text-sm font-medium text-gray-700">
+                      IMEI Image
+                    </span>
+                    <p className="text-xs text-gray-500 text-center">
+                      Upload PDF / Image (max 5MB, optional)
+                    </p>
+                    {formData.imeiImage && (
+                      <p className="text-xs text-gray-700">
+                        Selected: {formData.imeiImage.name}
+                      </p>
+                    )}
+                  </div>
+                  <input
+                    type="file"
+                    name="imeiImage"
+                    onChange={handleChange}
+                    accept="image/*,application/pdf"
+                    className="hidden"
+                  />
+                </label>
+              </div>
+            )}
+
+            {fileSizeError && (
+              <p className="text-red-600 mt-2 text-center">{fileSizeError}</p>
+            )}
+            {errorDetails && (
+              <p className="text-red-600 mt-2 text-center">
+                Error: {errorDetails}
+              </p>
+            )}
+
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <button
                 type="submit"
-                disabled={isSending}
+                disabled={isSending || fileSizeError}
                 className={`w-full bg-[#00001a] text-white px-4 py-2 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300 ${
-                  isSending ? "opacity-50 cursor-not-allowed" : ""
+                  isSending || fileSizeError ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >
                 {isSending ? "Submitting..." : "Submit"}
@@ -627,12 +716,12 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
             </motion.div>
             {sendStatus === "success" && (
               <p className="text-green-600 mt-2 text-center">
-                Form submitted successfully!
+                Form submitted successfully! Check your email for the documents.
               </p>
             )}
             {sendStatus === "error" && (
               <p className="text-red-600 mt-2 text-center">
-                Failed to submit form. Please try again.
+                Failed to submit form. Please check your input and try again.
               </p>
             )}
           </form>
