@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import assets from '../assets/assets';
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import assets from "../assets/assets";
 
 const MobileInsurance = () => {
   return (
@@ -25,10 +25,11 @@ const MobileInsurance = () => {
             className="w-full h-full object-cover rounded-lg shadow-md mb-6"
           />
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
-           Mobile Insurance
+            Mobile Insurance
           </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            Protect your smartphones and tablets with Mobile Insurance, ensuring coverage for damage, theft, and technical failures.
+            Protect your smartphones and tablets with Mobile Insurance, ensuring
+            coverage for damage, theft, and technical failures.
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
@@ -51,16 +52,26 @@ const MobileInsurance = () => {
             Key Features of Mobile Insurance
           </h2>
           <ul className="list-disc list-inside text-gray-700 space-y-2">
-            <li>Policy can be issued for long-term & short-term (1 day to 3 years).</li>
+            <li>
+              Policy can be issued for long-term & short-term (1 day to 3
+              years).
+            </li>
             <li>Sum insured options for contents on a new-for-old basis.</li>
             <li>Smooth & fast claim processing.</li>
             <li>Guaranteed unlimited claims for partial losses.</li>
-            <li>No depreciation deduction for partial and total loss claims.</li>
-            <li>Coverage available for mobile devices less than 3 years old.</li>
+            <li>
+              No depreciation deduction for partial and total loss claims.
+            </li>
+            <li>
+              Coverage available for mobile devices less than 3 years old.
+            </li>
           </ul>
-          <h3 className="text-lg font-semibold text-gray-800 mt-6">Excess / Deductible</h3>
+          <h3 className="text-lg font-semibold text-gray-800 mt-6">
+            Excess / Deductible
+          </h3>
           <p className="text-base text-gray-600 mt-2">
-            For portable equipment: <strong>INR 2,500</strong> for each and every claim.
+            For portable equipment: <strong>INR 2,500</strong> for each and
+            every claim.
           </p>
           <p className="text-base text-gray-600 mt-2">
             <strong>Note:</strong> Insurance policy wording shall apply.
@@ -78,17 +89,22 @@ const MobileInsurance = () => {
             Claim Process
           </h2>
           <p className="text-base text-gray-600 mb-4 text-center">
-            Call us at <strong>+91-11-43592951</strong> for claims-related services. Below are the required documents:
+            Call us at <strong>+91-11-43592951</strong> for claims-related
+            services. Below are the required documents:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Damage Claim */}
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">For Damage Claim</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                For Damage Claim
+              </h3>
               <ul className="list-disc list-inside text-gray-700 space-y-2">
                 <li>Claim Form</li>
                 <li>Purchase invoice for damaged item</li>
-                <li>Repair estimate/quotation from Authorized Service Centre</li>
+                <li>
+                  Repair estimate/quotation from Authorized Service Centre
+                </li>
                 <li>Photograph of damaged equipment</li>
                 <li>Service engineer report from Authorized Service Centre</li>
                 <li>Final Repair Bill</li>
@@ -99,7 +115,9 @@ const MobileInsurance = () => {
 
             {/* Theft Claim */}
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">For Theft Claim</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                For Theft Claim
+              </h3>
               <ul className="list-disc list-inside text-gray-700 space-y-2">
                 <li>Claim Form</li>
                 <li>Purchase invoice for stolen item</li>
@@ -122,15 +140,19 @@ const MobileInsurance = () => {
             Protect Your Mobile Devices
           </h2>
           <p className="text-base text-gray-600 mb-6">
-            With Mobile Insurance, safeguard your smartphones and tablets from unexpected damages and theft. Get covered today with our Electronic Equipment Insurance Policy!
+            With Mobile Insurance, safeguard your smartphones and tablets from
+            unexpected damages and theft. Get covered today with our Electronic
+            Equipment Insurance Policy!
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link
-              to="/mobile-equipment"
+            <a
+              href="/mobile-equipment"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300"
             >
               Purchase Now
-            </Link>
+            </a>
           </motion.div>
         </motion.section>
       </div>

@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 const Form = () => {
   const [formData, setFormData] = useState({
-    nameOfInsured: '',
-    dateOfPurchase: '',
-    insuredMobileNumber: '',
-    insuredEmailId: '',
-    correspondenceAddress: '',
-    nameOfStore: '',
-    equipment: '',
-    mobile: '',
-    nameOfEquipment: '',
-    equipmentBrandModel: '',
-    equipmentSerialNumber: '',
-    valueOfEquipment: '',
-    selectedPeriod: '',
-    insurancePremium: '',
+    nameOfInsured: "",
+    dateOfPurchase: "",
+    insuredMobileNumber: "",
+    insuredEmailId: "",
+    correspondenceAddress: "",
+    nameOfStore: "",
+    equipment: "",
+    mobile: "",
+    nameOfEquipment: "",
+    equipmentBrandModel: "",
+    equipmentSerialNumber: "",
+    valueOfEquipment: "",
+    selectedPeriod: "",
+    insurancePremium: "",
     aadhaarCard: null,
     purchaseInvoice: null,
     insurancePaymentReceipt: null,
@@ -28,16 +28,16 @@ const Form = () => {
   const [sendStatus, setSendStatus] = useState(null);
 
   const premiumData = {
-    '0-19999': { '1': 2000, '2': 3850, '3': 5875 },
-    '20000-29999': { '1': 2350, '2': 4250, '3': 6099 },
-    '30000-34999': { '1': 2500, '2': 4750, '3': 6599 },
-    '35000-49999': { '1': 2800, '2': 5099, '3': 7299 },
-    '50000-74999': { '1': 4250, '2': 6999, '3': 8999 },
-    '75000-99999': { '1': 4998, '2': 8599, '3': 10999 },
-    '100000-124999': { '1': 5546, '2': 10546, '3': 15650 },
-    '125000-149999': { '1': 6195, '2': 11999, '3': 16999 },
-    '150000-199999': { '1': 8999, '2': 16449, '3': 25999 },
-    '200000-250000': { '1': 10999, '2': 19999, '3': 30999 },
+    "0-19999": { 1: 2000, 2: 3850, 3: 5875 },
+    "20000-29999": { 1: 2350, 2: 4250, 3: 6099 },
+    "30000-34999": { 1: 2500, 2: 4750, 3: 6599 },
+    "35000-49999": { 1: 2800, 2: 5099, 3: 7299 },
+    "50000-74999": { 1: 4250, 2: 6999, 3: 8999 },
+    "75000-99999": { 1: 4998, 2: 8599, 3: 10999 },
+    "100000-124999": { 1: 5546, 2: 10546, 3: 15650 },
+    "125000-149999": { 1: 6195, 2: 11999, 3: 16999 },
+    "150000-199999": { 1: 8999, 2: 16449, 3: 25999 },
+    "200000-250000": { 1: 10999, 2: 19999, 3: 30999 },
   };
 
   const insuranceInfo = `
@@ -103,8 +103,11 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
     };
     setFormData(updatedFormData);
 
-    if (name === 'valueOfEquipment' || name === 'selectedPeriod') {
-      calculatePremium(updatedFormData.valueOfEquipment, updatedFormData.selectedPeriod);
+    if (name === "valueOfEquipment" || name === "selectedPeriod") {
+      calculatePremium(
+        updatedFormData.valueOfEquipment,
+        updatedFormData.selectedPeriod
+      );
     }
   };
 
@@ -113,7 +116,7 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
     let selectedRange = null;
 
     for (const range in premiumData) {
-      const [min, max] = range.split('-').map(Number);
+      const [min, max] = range.split("-").map(Number);
       if (numValue >= min && (max === undefined || numValue <= max)) {
         selectedRange = range;
         break;
@@ -128,7 +131,7 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
     } else {
       setFormData((prev) => ({
         ...prev,
-        insurancePremium: '',
+        insurancePremium: "",
       }));
     }
   };
@@ -151,40 +154,48 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
       equipmentSerialNumber: formData.equipmentSerialNumber,
       valueOfEquipment: formData.valueOfEquipment,
       selectedPeriod: formData.selectedPeriod,
-      insurancePremium: formData.insurancePremium ? `₹ ${formData.insurancePremium}` : 'Not calculated',
-      aadhaarCard: formData.aadhaarCard ? formData.aadhaarCard.name : 'Not uploaded',
-      purchaseInvoice: formData.purchaseInvoice ? formData.purchaseInvoice.name : 'Not uploaded',
-      insurancePaymentReceipt: formData.insurancePaymentReceipt ? formData.insurancePaymentReceipt.name : 'Not uploaded',
-      imeiImage: formData.imeiImage ? formData.imeiImage.name : 'Not uploaded',
+      insurancePremium: formData.insurancePremium
+        ? `₹ ${formData.insurancePremium}`
+        : "Not calculated",
+      aadhaarCard: formData.aadhaarCard
+        ? formData.aadhaarCard.name
+        : "Not uploaded",
+      purchaseInvoice: formData.purchaseInvoice
+        ? formData.purchaseInvoice.name
+        : "Not uploaded",
+      insurancePaymentReceipt: formData.insurancePaymentReceipt
+        ? formData.insurancePaymentReceipt.name
+        : "Not uploaded",
+      imeiImage: formData.imeiImage ? formData.imeiImage.name : "Not uploaded",
       insurance_info: insuranceInfo,
     };
 
     emailjs
       .send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
+        "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
         templateParams,
-        'YOUR_USER_ID' // Replace with your EmailJS user ID
+        "YOUR_USER_ID" // Replace with your EmailJS user ID
       )
       .then(
         (result) => {
-          console.log('Email sent successfully:', result.text);
-          setSendStatus('success');
+          console.log("Email sent successfully:", result.text);
+          setSendStatus("success");
           setFormData({
-            nameOfInsured: '',
-            dateOfPurchase: '',
-            insuredMobileNumber: '',
-            insuredEmailId: '',
-            correspondenceAddress: '',
-            nameOfStore: '',
-            equipment: '',
-            mobile: '',
-            nameOfEquipment: '',
-            equipmentBrandModel: '',
-            equipmentSerialNumber: '',
-            valueOfEquipment: '',
-            selectedPeriod: '',
-            insurancePremium: '',
+            nameOfInsured: "",
+            dateOfPurchase: "",
+            insuredMobileNumber: "",
+            insuredEmailId: "",
+            correspondenceAddress: "",
+            nameOfStore: "",
+            equipment: "",
+            mobile: "",
+            nameOfEquipment: "",
+            equipmentBrandModel: "",
+            equipmentSerialNumber: "",
+            valueOfEquipment: "",
+            selectedPeriod: "",
+            insurancePremium: "",
             aadhaarCard: null,
             purchaseInvoice: null,
             insurancePaymentReceipt: null,
@@ -193,8 +204,8 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
           setIsSending(false);
         },
         (error) => {
-          console.error('Email sending failed:', error.text);
-          setSendStatus('error');
+          console.error("Email sending failed:", error.text);
+          setSendStatus("error");
           setIsSending(false);
         }
       );
@@ -209,7 +220,9 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">Insurance Form</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
+            Insurance Form
+          </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
             Please fill out the details to get your insurance quote.
           </p>
@@ -223,7 +236,10 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
         >
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="nameOfInsured" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="nameOfInsured"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Name of Insured *
               </label>
               <input
@@ -239,7 +255,10 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
             </div>
 
             <div>
-              <label htmlFor="dateOfPurchase" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="dateOfPurchase"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Date of Purchase *
               </label>
               <input
@@ -254,7 +273,10 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
             </div>
 
             <div>
-              <label htmlFor="insuredMobileNumber" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="insuredMobileNumber"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Insured Mobile Number *
               </label>
               <input
@@ -270,7 +292,10 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
             </div>
 
             <div>
-              <label htmlFor="insuredEmailId" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="insuredEmailId"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Insured Email ID *
               </label>
               <input
@@ -286,7 +311,10 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
             </div>
 
             <div>
-              <label htmlFor="correspondenceAddress" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="correspondenceAddress"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Correspondence Address *
               </label>
               <textarea
@@ -301,7 +329,10 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
             </div>
 
             <div>
-              <label htmlFor="nameOfStore" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="nameOfStore"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Name of Store / Outlet *
               </label>
               <input
@@ -317,7 +348,10 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
             </div>
 
             <div>
-              <label htmlFor="equipment" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="equipment"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Equipment *
               </label>
               <select
@@ -337,10 +371,13 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
               </select>
             </div>
 
-            {formData.equipment === 'Mobile' && (
+            {formData.equipment === "Mobile" && (
               <>
                 <div>
-                  <label htmlFor="mobile" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="mobile"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Mobile
                   </label>
                   <input
@@ -354,7 +391,10 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
                   />
                 </div>
                 <div>
-                  <label htmlFor="nameOfEquipment" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="nameOfEquipment"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Name of Equipment if not in list
                   </label>
                   <input
@@ -371,7 +411,10 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
             )}
 
             <div>
-              <label htmlFor="equipmentBrandModel" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="equipmentBrandModel"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Equipment Brand and Model *
               </label>
               <input
@@ -387,7 +430,10 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
             </div>
 
             <div>
-              <label htmlFor="equipmentSerialNumber" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="equipmentSerialNumber"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Equipment Serial Number / IMEI Number *
               </label>
               <input
@@ -403,7 +449,10 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
             </div>
 
             <div>
-              <label htmlFor="valueOfEquipment" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="valueOfEquipment"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Value of Equipment *
               </label>
               <input
@@ -419,7 +468,10 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
             </div>
 
             <div>
-              <label htmlFor="selectedPeriod" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="selectedPeriod"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Period *
               </label>
               <select
@@ -438,106 +490,128 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
             </div>
 
             <div>
-              <label htmlFor="insurancePremium" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="insurancePremium"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Insurance Premium Including GST
               </label>
               <input
                 type="text"
                 id="insurancePremium"
                 name="insurancePremium"
-                value={formData.insurancePremium ? `₹ ${formData.insurancePremium}` : 'Please select value and period'}
+                value={
+                  formData.insurancePremium
+                    ? `₹ ${formData.insurancePremium}`
+                    : "Please select value and period"
+                }
                 readOnly
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-gray-100"
               />
             </div>
 
-            <div>
-              <label htmlFor="aadhaarCard" className="block text-sm font-medium text-gray-700">
-                Upload Aadhaar Card *
-              </label>
-              <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                <div className="space-y-1 text-center">
-                  <p className="text-sm text-gray-600">Drop your file here or click here to upload</p>
-                  <p className="text-xs text-gray-500">You can upload up to 1 files.</p>
-                  <input
-                    type="file"
-                    id="aadhaarCard"
-                    name="aadhaarCard"
-                    onChange={handleChange}
-                    className="mt-2"
-                    accept="image/*,application/pdf"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-
-            {showUploadSection && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                transition={{ duration: 0.5 }}
-              >
-                <label htmlFor="imeiImage" className="block text-sm font-medium text-gray-700">
-                  Upload image of the device with IMEI number *
-                </label>
-                <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                  <div className="space-y-1 text-center">
-                    <p className="text-sm text-gray-600">Drop your file here or click here to upload</p>
-                    <p className="text-xs text-gray-500">You can upload up to 1 files.</p>
-                    <input
-                      type="file"
-                      id="imeiImage"
-                      name="imeiImage"
-                      onChange={handleChange}
-                      className="mt-2"
-                      accept="image/*,application/pdf"
-                      required
+            {/* File Upload Section */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
+              {/* Aadhaar Card Upload */}
+              <label className="cursor-pointer flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-xl p-6 bg-gray-50 hover:bg-gray-100 transition">
+                <div className="flex flex-col items-center space-y-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-10 w-10 text-blue-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6h.1a5 5 0 010 10H7z"
                     />
-                  </div>
+                  </svg>
+                  <span className="text-sm font-medium text-gray-700">
+                    Aadhaar Card *
+                  </span>
+                  <p className="text-xs text-gray-500 text-center">
+                    Upload PDF / Image
+                  </p>
                 </div>
-              </motion.div>
-            )}
-
-            <div>
-              <label htmlFor="purchaseInvoice" className="block text-sm font-medium text-gray-700">
-                Purchase Invoice *
+                <input
+                  type="file"
+                  name="aadhaarCard"
+                  onChange={handleChange}
+                  accept="image/*,application/pdf"
+                  className="hidden"
+                  required
+                />
               </label>
-              <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                <div className="space-y-1 text-center">
-                  <p className="text-sm text-gray-600">Drop your file here or click here to upload</p>
-                  <p className="text-xs text-gray-500">You can upload up to 1 files.</p>
-                  <input
-                    type="file"
-                    id="purchaseInvoice"
-                    name="purchaseInvoice"
-                    onChange={handleChange}
-                    className="mt-2"
-                    accept="image/*,application/pdf"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
 
-            <div>
-              <label htmlFor="insurancePaymentReceipt" className="block text-sm font-medium text-gray-700">
-                Insurance Payment Receipt
-              </label>
-              <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                <div className="space-y-1 text-center">
-                  <p className="text-sm text-gray-600">Drop your file here or click here to upload</p>
-                  <p className="text-xs text-gray-500">You can upload up to 1 files.</p>
-                  <input
-                    type="file"
-                    id="insurancePaymentReceipt"
-                    name="insurancePaymentReceipt"
-                    onChange={handleChange}
-                    className="mt-2"
-                    accept="image/*,application/pdf"
-                  />
+              {/* Purchase Invoice Upload */}
+              <label className="cursor-pointer flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-xl p-6 bg-gray-50 hover:bg-gray-100 transition">
+                <div className="flex flex-col items-center space-y-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-10 w-10 text-blue-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 11c0-1.104.896-2 2-2s2 .896 2 2v5a2 2 0 01-2 2H8v-1h4v-1H8V9h6v2H8v1h4v1H8v1h4v1H8v1H8v1h6a1 1 0 001-1v-5z"
+                    />
+                  </svg>
+                  <span className="text-sm font-medium text-gray-700">
+                    Purchase Invoice *
+                  </span>
+                  <p className="text-xs text-gray-500 text-center">
+                    Upload PDF / Image
+                  </p>
                 </div>
-              </div>
+                <input
+                  type="file"
+                  name="purchaseInvoice"
+                  onChange={handleChange}
+                  accept="image/*,application/pdf"
+                  className="hidden"
+                  required
+                />
+              </label>
+
+              {/* Payment Receipt Upload */}
+              <label className="cursor-pointer flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-xl p-6 bg-gray-50 hover:bg-gray-100 transition">
+                <div className="flex flex-col items-center space-y-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-10 w-10 text-blue-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span className="text-sm font-medium text-gray-700">
+                    Payment Receipt
+                  </span>
+                  <p className="text-xs text-gray-500 text-center">
+                    Upload PDF / Image (optional)
+                  </p>
+                </div>
+                <input
+                  type="file"
+                  name="insurancePaymentReceipt"
+                  onChange={handleChange}
+                  accept="image/*,application/pdf"
+                  className="hidden"
+                />
+              </label>
             </div>
 
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -545,17 +619,21 @@ Wondering how Arshyan Insurance works smoothly with your insurance plan? Get in 
                 type="submit"
                 disabled={isSending}
                 className={`w-full bg-[#00001a] text-white px-4 py-2 rounded-md text-base font-semibold hover:bg-blue-700 transition duration-300 ${
-                  isSending ? 'opacity-50 cursor-not-allowed' : ''
+                  isSending ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >
-                {isSending ? 'Submitting...' : 'Submit'}
+                {isSending ? "Submitting..." : "Submit"}
               </button>
             </motion.div>
-            {sendStatus === 'success' && (
-              <p className="text-green-600 mt-2 text-center">Form submitted successfully!</p>
+            {sendStatus === "success" && (
+              <p className="text-green-600 mt-2 text-center">
+                Form submitted successfully!
+              </p>
             )}
-            {sendStatus === 'error' && (
-              <p className="text-red-600 mt-2 text-center">Failed to submit form. Please try again.</p>
+            {sendStatus === "error" && (
+              <p className="text-red-600 mt-2 text-center">
+                Failed to submit form. Please try again.
+              </p>
             )}
           </form>
         </motion.section>
